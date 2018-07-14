@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 from common.database import Database
 
@@ -13,8 +13,8 @@ def init_db():
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def home():
+    return render_template('forms/register.html')
 
 from models.users.views import user_blueprint
 

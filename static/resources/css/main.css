@@ -1,0 +1,509 @@
+/* ======================================== */
+/* BASIC_SETUP_start */
+/* ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+::selection {
+  background-color: #ebebf2;
+  color: #83828d;
+}
+
+h1{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  word-spacing: 5px;
+  font-family: 'Lato';
+}
+
+h1:after {
+  display: block;
+  height: 2px;
+  /* background-color: #e67e22; */
+  background-color: #18adab;
+  content: " ";
+  /* width: 350px; */
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
+
+q{
+  letter-spacing:3px;
+  word-spacing: 2px;
+  text-align: justify;
+  line-height: 150%;
+}
+
+/* ======================================== */
+/* custom_scroll_bar_start */
+/* ======================================== */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ======================================== */
+/*custom_scroll_bar_end */
+/* ======================================== */
+
+/* ======================================== */
+/* BASIC_SETUP_end */
+/* ======================================== */
+
+/* ======================================== */
+/* reuseable_content_start */
+/* ======================================== */
+.row {
+  /* page width */
+  width: 1140px;
+  /* margin of the width */
+  margin: 0 auto;
+}
+
+/* ======================================== */
+/* reuseable_content_end */
+/* ======================================== */
+
+/* ======================================== */
+/* slide_menue_start */
+/* ======================================== */
+
+.menu-wrap {
+  background-color: rgb(0, 126, 194);
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 280px;
+  margin-left: -280px;
+  font-size: 1em;
+  font-weight: 700;
+  overflow: auto;
+  transition: 0.25s;
+  z-index: 10;
+  letter-spacing: 2px;
+}
+.menu-show {
+  margin-left: 0;
+  box-shadow: 4px 2px 15px 1px #b9adad;
+}
+.menu-sidebar {
+  margin: 75px 0 80px 10px;
+  position: relative;
+  top: 70px;
+}
+.menu-sidebar li {
+  padding: 18px 22px 0;
+}
+.menu-sidebar li > a {
+  color: #f3f3f3;
+  font-size: 1.18em;
+  position: relative;
+}
+.menu-sidebar li > a::after {
+  content: "";
+  display: block;
+  height: 0.15em;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  background-image: linear-gradient(to right, transparent 50.3%, #fffa3b 50.3%);
+  transition: background-position 0.2s 0.1s ease-out;
+  background-size: 200% auto;
+}
+.menu-sidebar li > a:hover::after {
+  background-position: -100% 0;
+}
+.menu-sidebar .menu-item-has-children {
+  position: relative;
+}
+.menu-sidebar .menu-item-has-children .sub-menu {
+  display: none;
+}
+.sidebar-menu-arrow::after {
+  content: "\f107";
+  font-family: "FontAwesome";
+  padding: 10px;
+  color: #fffa3b;
+  position: relative;
+}
+.sidebar-menu-arrow:hover::after {
+  cursor: pointer;
+  color: #fff;
+}
+.sidebar-menu-arrow:active::after {
+  top: 2px;
+}
+
+/*===========Hamburger Button=============*/
+.toggle-button {
+  position: fixed;
+  width: 44px;
+  height: 40px;
+  top: 50px;
+  left: 40px;
+  padding: 4px;
+  transition: 0.25s;
+  z-index: 15;
+}
+.toggle-button:hover {
+  cursor: pointer;
+}
+.toggle-button .menu-bar {
+  position: absolute;
+  border-radius: 2px;
+  width: 80%;
+  transition: 0.5s;
+}
+.toggle-button .menu-bar-top {
+  border: 4px solid #555;
+  border-bottom: none;
+  top: 0;
+}
+.toggle-button .menu-bar-middle {
+  height: 4px;
+  background-color: #555;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  top: 4px;
+}
+.toggle-button .menu-bar-bottom {
+  border: 4px solid #555;
+  border-top: none;
+  top: 22px;
+}
+.button-open {
+  left: 25px;
+}
+.button-open .menu-bar-top {
+  border-color: #fff;
+  transform: rotate(45deg) translate(8px, 8px);
+  transition: 0.5s;
+}
+.button-open .menu-bar-middle {
+  background-color: #fff;
+  transform: translate(230px);
+  transition: 0.1s ease-in;
+  opacity: 0;
+}
+.button-open .menu-bar-bottom {
+  border-color: #fff;
+  transform: rotate(-45deg) translate(7px, -7px);
+  transition: 0.5s;
+}
+
+/* ======================================== */
+/* slide_menue_end */
+/* ======================================== */
+
+
+
+
+
+/* ======================================== */
+/* header_start */
+/* ======================================== */
+
+header {
+  background-image: url(imgs/system-banner.jpg);
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ---------text_box---------------- */
+.text_box {
+  position: absolute;
+  width: 1140px;
+  top: 28%;
+  left: 52%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.text_box h1{
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgb(0, 126, 194);
+    letter-spacing: 3px;
+    word-spacing: 6px;
+    font-size: 350%;
+    margin-bottom: 3%;
+    font-weight:300;
+    font-family: "Lato";
+    cursor: pointer;
+}
+
+
+header h1:after {
+  display: block;
+  height: 2px;
+  /* background-color: #e67e22; */
+  background-color: #18adab;
+  content: " ";
+  width: 175px;
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
+
+header a img{
+  display: block;
+  width: 350px;
+  height: auto;
+  text-align: center;
+  /* transform: translateX(150%) */
+  margin-left: 40%;
+  float: right;
+  padding-top: 25px;
+  /* padding-left: 60px; */
+}
+
+
+
+
+
+.btn:link,
+.btn:visited{
+text-transform: uppercase;
+text-decoration: none;
+padding: 15px 60px;
+display: inline-block;
+border-radius: 200px;
+transition: all 0.3s;
+}
+
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(36, 35, 35, 0.719);
+  background-color:rgba(0, 47, 73, 0.808);
+}
+
+.btn:active{
+  transform: translateY(-1px);
+  box-shadow:0 5px 10px rgba(7, 7, 7, 0.5);
+  background-color: rgba(0, 47, 73, 0.808);
+
+}
+
+.btn_white{
+  /* background-color:#515175; */
+  background-color: #002F49;
+  color:white;
+  margin-top: 40px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-weight: 400;
+}
+
+/* ======================================== */
+/* header_end */
+/* ======================================== */
+
+/* ======================================== */
+/* section_1_about_unv_start_ */
+/* ======================================== */
+.sec1{
+  /* height:450px; */
+  margin-bottom: 5%;
+
+}
+.sec1 img{
+  display:inline-block;
+  width: 1140px;
+  height: auto;
+  /* margin-left: 5%; */
+  border: none;
+  border-radius: 20px;
+/* transform:translate(170%,-105%); */
+padding: 0 10px;
+
+
+}
+.sec1 h1{
+  text-align: center;
+  margin-top: 4%;
+  padding-left: 5px;
+  color:#25A898;
+  font-weight: 400;
+  font-family: 'lato';
+}
+.sec1 .row h1:after{
+  width: 200px;
+ background-color:#007FC2;
+}
+.sec1 p{
+  display: inline-block;
+
+  /* margin-top: 20px; */
+  letter-spacing: 1px;
+  line-height: 150%;
+  /* width: 700px; */
+  text-align: justify;
+  /* transform: translate(-15%,-100%); */
+  margin: none;
+
+}
+
+.sec1  .span-1-of-2{
+  height: 70%;
+}
+
+/* ======================================== */
+/*section_1_about_unv_end_ */
+/* ======================================== */
+
+
+/* ======================================== */
+/*section_2_about_unv_awards_ */
+/* ======================================== */
+.sec2{
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 3%;
+}
+.sec2 .row h1{
+  text-align: center;
+  font-family: "Lato";
+  letter-spacing: 2px;
+  word-spacing: 3px;
+}
+
+.sec2 .row h1:after{
+  width: 200px;
+  font-weight: 300;
+
+}
+
+.sec2 p{
+  letter-spacing: 1px;
+  line-height: 150%;
+  margin-bottom:30px;
+}
+
+
+/* ======================================== */
+/*section_2_about_unv_awards_ */
+/* ======================================== */
+.sec3{
+  margin-bottom: 5%;
+}
+
+
+.sec3 h1{
+text-align: center;
+font-family: "Lato";
+font-weight: 300;
+margin-bottom: 5%
+}
+
+.sec3 h1:after{
+  width:200px;
+}
+
+
+
+
+
+input[type="text"],
+  input[type="email"],
+  input[type='date'],
+  input[type='number'],
+  textarea {
+    width: 80%;
+    padding: 7px;
+    border-radius: 3px;
+    border: none;
+    border-bottom:1px solid rgb(216, 216, 216);
+    background: transparent;
+    color: #fff;
+    outline: 0;
+  border-width: 0 0 0.5px;
+  border-color:grey;
+  }
+
+  .col:first-child {
+    margin-left:1.5%;
+
+}
+
+.span-1-of-2{
+  margin-top: 5%;
+}
+
+
+  input:focus {
+    border-color: green;
+    border-width: 0 0 2px;
+  }
+
+
+  label{
+    text-transform: uppercase;
+    text-align:center;
+  }
+
+
+
+
+/* ======================================== */
+/*animation_start */
+/* ======================================== */
+.js--wp--1{
+  opacity:0;
+  animation-duration: 2s;
+}
+
+.js--wp--1.animated{
+  opacity: 1;
+}
+/* ======================================== */
+/*animation_end */
+/* ======================================== */

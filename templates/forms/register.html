@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block application_form %}
+        <div class="row">
+            <div class="col span-1-of-2">
+                <label for="full_name"> full name</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="text" name="full_name" id="" placeholder="Your full name" required>
+            </div>
+            <!--  -->
+            <div class="col span-1-of-2">
+                <label for="email-id">email</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="email" name="applicants_email" id="" placeholder="your email-id" required>
+            </div>
+            <!--  -->
+
+            <!--  -->
+            <div class="col span-1-of-2">
+                <label for="applicants_phonenumber">Mobile Number</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="number" name="applicants_phonenumber" id="" placeholder="mobile number" required>
+            </div>
+            <!--  -->
+            <div class="col span-1-of-2">
+                <label for="applicants_DOB">date of birth</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="number" name="applicants_DOB" id="" placeholder="D.O.B" required>
+            </div>
+            <!--  -->
+            <div class="col span-1-of-2">
+                <label for="applicants_address">Address</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="text" name="applicants_address" id="" placeholder="address line" required>
+                <br>
+                <input type="text" name="applicants_address" id="" placeholder="address line 2" required>
+                <br>
+                <input type="text" name="applicants_address" id="" placeholder="address line 3" required>
+
+            </div>
+        </div>
+{% endblock %}

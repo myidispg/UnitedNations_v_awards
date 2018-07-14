@@ -1,0 +1,293 @@
+<!--
+
+    Author :Mohammad Arman
+
+    *****read befor you edit*******
+
+    7 line spacing between two different section
+    5 line spacing between the content and section
+    3 line spacing between the different content of a section
+         -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- normalizing_file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/style.css') }}">
+
+
+    <!-- grid_file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/grid.css') }}">
+
+
+    <!--animate_file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/animate.css') }}">
+
+
+    <!-- style_sheet_link -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/main.css') }}">
+
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:300,400,500" rel="stylesheet">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-brands.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-regular.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-solid.css') }}">
+
+    <!-- script file -->
+
+
+</head>
+
+<body>
+
+<!-- ============custom nav start================== -->
+
+
+<!-- hamburger_button_start -->
+<span class="toggle-button">
+        <div class="menu-bar menu-bar-top"></div>
+        <div class="menu-bar menu-bar-middle"></div>
+        <div class="menu-bar menu-bar-bottom"></div>
+    </span>
+<!-- hamburger_button_end -->
+
+
+<!-- menue_items_start -->
+<div class="menu-wrap">
+    <div class="menu-sidebar">
+        <ul class="menu">
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#about_unv">About</a>
+                <span class="sidebar-menu-arrow"></span>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#about_unv">UNV</a>
+                    </li>
+                    <li>
+                        <a href="#about_unv_awards">UNV AWARDS</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#get_inspired">Get Inspired</a>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="">Apply</a>
+                <span class="sidebar-menu-arrow"></span>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">Waiting</a>
+                    </li>
+                    <li>
+                        <a href="#">Waiting</a>
+                    </li>
+                    <li>
+                        <a href="#">Waiting</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Waiting</a>
+            </li>
+            <li>
+                <a href="#">Get In Touch</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- menue_items_end -->
+
+
+<!-- ============custom_nav_end================== -->
+
+
+<!-- =============header_start========================== -->
+
+
+<header id="home">
+    <a href="#">
+        <img src="{{ url_for('static', filename='resources/css/imgs/logos/unv-india-blue.png') }}" alt="unv india logo">
+    </a>
+    <div class="text_box">
+        <h1>v- awards</h1>
+        <a href="#" class="btn btn_white">apply now</a>
+    </div>
+
+</header>
+
+
+<!-- =============header_end========================== -->
+
+
+<!-- =============section_1_about_unv&un_start=========== -->
+
+<section class="sec1" id="about_unv">
+    <div class="row">
+        <h1>about unv</h1>
+        <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="">
+        <p class="js--wp--1">The United Nations Volunteers (UNV) programme contributes to peace and development through
+            volunteerism worldwide.
+            We work with partners to integrate qualified, highly motivated and well supported UN Volunteers into
+            development
+            programming and promote the value and global recognition of volunteerism. UNV is active in around 130
+            countries
+            every year. With Field Presences in over 80 countries, UNV is represented worldwide. UNV is administered
+            by the United Nations Development Programme (UNDP) and reports to the UNDP Executive Board.</p>
+
+    </div>
+
+
+</section>
+
+<!-- =============section_1_about_unv&un_start================= -->
+
+
+<!-- =============section_2_about_unv awards_start============ -->
+<section class="sec2" id="about_unv_awards">
+    <div class="row">
+        <h1>UNV awards</h1>
+        <p>Volunteerism is an important, and increasingly popular, mechanism for young people to bring about positive
+            change
+            in society, and it is becoming more and more relevant as a mechanism to engage young people in human
+            development.
+            Volunteers are constantly contributing and positively influencing India’s social development. It has been
+            highlighted that promoting volunteerism by rewarding and recognizing volunteer’s efforts towards creating
+            a conducive environment is looked as one of the crucial elements towards encouraging people to volunteer.
+            Efforts have been promoted both by Government agencies and private institution to channelize the effort of
+            volunteering by celebrating, rewarding and promoting volunteerism and volunteers in India. This framework
+            would help a host coordinating agency or a consortium to take forward institution of an award and its
+            implementation.
+            <br> There is a felt need to promote culture of youth volunteering in the country and therefore it’s all the
+            more important to reward young people inspiring social change. Long term goal is to: Motivate100 young
+            persons
+            (aged between 18 – 29 years) per annum to achieve excellence in the field of national development or social
+            service in the long term. In this process also inspire incubation of state- level awards with at least 10
+            states creating a platform for celebrating 10 young leaders each. Encourage young people to develop a sense
+            of responsibility to the community and thus to improve their own personal potential as active citizens
+            Create
+            a culture of youth volunteering in the country through rewarding young leaders inspiring social change As
+            a pilot it is proposed to institute one national award with 12 awardees to begin with but the long-term
+            vision
+            is that all states adopt this model and run state wise programmes too. The long-term goal is to have a
+            cohort
+            of 100 awardees nationally eventually with states having 10 awardees each.</p>
+    </div>
+</section>
+
+
+<!-- =============section_2_about_unv_awards_end============= -->
+
+
+<!-- =============section_3_Get_inspired_start============= -->
+
+
+<section class="sec3" id="get_inspired">
+    <div class="row">
+        <h1>
+            Get Inspired
+        </h1>
+        <!-- images and testimonials -->
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nulla illo repudiandae ipsum. Omnis
+            inventore pariatur
+            dolorem voluptatem animi labore tenetur eos quidem esse autem eligendi perspiciatis quaerat, quae
+            consequatur!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam natus repellat blanditiis officiis
+            pariatur
+            dignissimos doloremque sit at delectus assumenda maxime atque, unde laudantium corporis necessitatibus
+            exercitationem
+            sunt asperiores accusantium. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cumque eaque
+            pariatur
+            odit, expedita temporibus beatae sequi dolores dignissimos. Nihil corporis deserunt facere consequatur
+            adipisci,
+            accusamus debitis cum expedita tenetur?
+        </p>
+    </div>
+</section>
+
+
+<!-- =============section_3_get_inspired_end============= -->
+
+
+<!-- =============section_4_applyNow_form_start============= -->
+
+
+<!-- =============section_4_applyNow_form_end============= -->
+
+{#        <div class="col span-1-of-2">#}
+{#            <label for="full_name"> full name</label>#}
+{#        </div>#}
+{#        <div class="col span-2-of-2">#}
+{#            <input type="text" name="full_name" id="" placeholder="Your full name" required>#}
+{#        </div>#}
+{#        <!--  -->#}
+{#        <div class="col span-1-of-2">#}
+{#            <label for="email-id">email</label>#}
+{#        </div>#}
+{#        <div class="col span-2-of-2">#}
+{#            <input type="email" name="applicants_email" id="" placeholder="your email-id" required>#}
+{#        </div>#}
+{#        <!--  -->#}
+{##}
+{#        <!--  -->#}
+{#        <div class="col span-1-of-2">#}
+{#            <label for="applicants_phonenumber">MObile Number</label>#}
+{#        </div>#}
+{#        <div class="col span-2-of-2">#}
+{#            <input type="number" name="applicants_phonenumber" id="" placeholder="mobile number" required>#}
+{#        </div>#}
+{#        <!--  -->#}
+{#        <div class="col span-1-of-2">#}
+{#            <label for="applicants_DOB">date of birth</label>#}
+{#        </div>#}
+{#        <div class="col span-2-of-2">#}
+{#            <input type="number" name="applicants_DOB" id="" placeholder="D.O.B" required>#}
+{#        </div>#}
+{#        <!--  -->#}
+{#        <div class="col span-1-of-2">#}
+{#            <label for="applicants_address">Address</label>#}
+{#        </div>#}
+{#        <div class="col span-2-of-2">#}
+{#            <input type="text" name="applicants_address" id="" placeholder="address line" required>#}
+{#            <br>#}
+{#            <input type="text" name="applicants_address" id="" placeholder="address line 2" required>#}
+{#            <br>#}
+{#            <input type="text" name="applicants_address" id="" placeholder="address line 3" required>#}
+{##}
+{#        </div>#}
+<section class="sec4">
+    {% block application_form %}
+    {% endblock %}
+</section>
+
+<!-- ===============script_start============================= -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
+<script src="{{ url_for('static', filename='support/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='resources/js/script.js') }}"></script>
+
+<!-- ===============script_start============================= -->
+
+
+</body>
+
+</html>
