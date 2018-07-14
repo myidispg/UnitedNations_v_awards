@@ -1,46 +1,66 @@
 {% extends 'base.html' %}
 {% block application_form %}
-        <div class="row">
+    <div class="row">
+        <form id="register-form" action="users/register" method="post">
             <div class="col span-1-of-2">
-                <label for="full_name"> full name</label>
+                <label for="name"> full name</label>
             </div>
             <div class="col span-2-of-2">
-                <input type="text" name="full_name" id="" placeholder="Your full name" required>
+                <input type="text" name="name" id="name" placeholder="Your full name" required>
             </div>
             <!--  -->
             <div class="col span-1-of-2">
-                <label for="email-id">email</label>
+                <label for="email">email</label>
             </div>
             <div class="col span-2-of-2">
-                <input type="email" name="applicants_email" id="" placeholder="your email-id" required>
+                <input type="email" name="email" id="email" placeholder="your email-id" required>
             </div>
             <!--  -->
 
             <!--  -->
             <div class="col span-1-of-2">
-                <label for="applicants_phonenumber">Mobile Number</label>
+                <label for="phone_no">MObile Number</label>
             </div>
             <div class="col span-2-of-2">
-                <input type="number" name="applicants_phonenumber" id="" placeholder="mobile number" required>
+                <input type="number" name="phone_no" id="phone_no" placeholder="mobile number" required>
             </div>
             <!--  -->
             <div class="col span-1-of-2">
-                <label for="applicants_DOB">date of birth</label>
+                <label for="dob">date of birth</label>
             </div>
             <div class="col span-2-of-2">
-                <input type="number" name="applicants_DOB" id="" placeholder="D.O.B" required>
+                <input type="date" name="dob" id="dob" placeholder="D.O.B" required>
             </div>
-            <!--  -->
-            <div class="col span-1-of-2">
-                <label for="applicants_address">Address</label>
-            </div>
-            <div class="col span-2-of-2">
-                <input type="text" name="applicants_address" id="" placeholder="address line" required>
-                <br>
-                <input type="text" name="applicants_address" id="" placeholder="address line 2" required>
-                <br>
-                <input type="text" name="applicants_address" id="" placeholder="address line 3" required>
 
+
+            <div class="col span-1-of-2">
+                <label for="gender">gender</label>
             </div>
-        </div>
+            <div class="col span-2-of-2">
+                <input type="checkbox" name="gender" id="gender" required> male
+                <input type="checkbox" name="gender" id="gender" required> female
+            </div>
+
+
+            <div class="col span-1-of-2">
+                <label for="hashed">password</label>
+            </div>
+            <div class="col span-2-of-2">
+                <input type="password" name="hashed" id="hashed"
+                       placeholder="enter your new password" required>
+                <br>
+                <input type="password" name="hashed" id="hashed" placeholder="confirm your password"
+                       required>
+            </div>
+
+
+            <div class="col span-2-of-2">
+                <!-- apply_button_start -->
+                <button type="submit" class="btn_register" id="register-submit-button">Apply now</button>
+{#                <a href="#" class="btn_register">apply now</a>#}
+                <!-- apply_button_end -->
+            </div>
+            <!-- apply_button_start -->
+        </form>
+    </div>
 {% endblock %}
