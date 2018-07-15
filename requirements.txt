@@ -3,3 +3,4 @@ pymongo
 passlib
 requests
 sqlite
+goslate
