@@ -10,7 +10,7 @@ user_blueprint = Blueprint('users', __name__)
 def login_user():
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form['hashed']
+        password = request.form['password']
 
         try:
             if User.is_login_valid(email, password):
@@ -54,7 +54,7 @@ def register_user():
         #     phone_no = None
         #     gender = None
         #     dob = None
-        password = request.form.get('hashed')
+        password = request.form.get('password')
         name = request.form.get('name')
         phone_no = request.form.get('phone_no')
         gender = request.form.get('gender')

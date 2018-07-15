@@ -2,3 +2,4 @@ Flask
 pymongo
 passlib
 requests
+sqlite

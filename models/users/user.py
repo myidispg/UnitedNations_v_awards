@@ -1,6 +1,6 @@
 import uuid
 import models.users.errors as UserErrors
-from common.database import Database
+from common.database_user import Database
 from common.utils import Utils
 from models.users.constants import COLLECTION
 
@@ -36,7 +36,7 @@ class User:
         :param password: A sha512 hashed password
         :return: True if valid, False otherwise
         """
-        user_data = Database.find_one(COLLECTION, {'email': email})  # password in sha512-> pbkdf2_sha512
+        user_data = Database.find_user(email)  # password in sha512-> pbkdf2_sha512
         if user_data is None:
             # tell the user the email does not exists
             raise UserErrors.UserNotExistsError("This email does not exists.")
@@ -56,17 +56,21 @@ class User:
         :return: True if registration is successful, an exception is raised otherwise
 
         """
-        user_data = Database.find_one(COLLECTION, {'email': email})
+        # user_data = Database.find_one(COLLECTION, {'email': email})
+        user_data = Database.find_user(email)
         if user_data is not None:
             raise UserErrors.UserAlreadyRegisteredError('This email is already registered with us.')
         if not Utils.email_is_valid(email):
             raise UserErrors.InvalidEmailError('The email is not of a valid format')
 
-        User(email, Utils.hash_password(password), name, phone_no, gender, dob).save_to_mongo()
+        User(email, Utils.hash_password(password), name, phone_no, gender, dob).save_to_database()
         return True
 
-    def save_to_mongo(self):
-        Database.insert(COLLECTION, self.json())
+    # def save_to_mongo(self):
+    #     Database.insert(COLLECTION, self.json())
+
+    def save_to_database(self):
+        Database.insert_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender, self.dob)
 
     def json(self):
         return {

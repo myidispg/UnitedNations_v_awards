@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
-from common.database import Database
+from common.database_user import Database
+import create_tables
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -9,7 +10,8 @@ app.secret_key = "v12awards34"
 
 @app.before_first_request
 def init_db():
-    Database.initialize()
+    # Database.initialize()
+    create_tables
 
 
 @app.route('/')
