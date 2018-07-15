@@ -127,7 +127,13 @@
     </a>
     <div class="text_box">
         <h1>v- awards</h1>
-        <a href="#" class="btn btn_white">apply now</a>
+        {% if language == 0 %}
+            <a href="#" class="btn btn-white">Apply now</a>
+            <a href="{{ url_for('home_hindi') }}" class="btn btn-white">हिंदी में देखें</a>
+        {% else %}
+            <a href="#" class="btn btn-white">अप्लाई करें</a>
+            <a href="{{ url_for('home_english') }}" class="btn btn-white">Change to english</a>
+        {% endif %}
     </div>
 
 </header>
@@ -231,47 +237,6 @@
 
 <!-- =============section_4_applyNow_form_end============= -->
 
-{#        <div class="col span-1-of-2">#}
-{#            <label for="full_name"> full name</label>#}
-{#        </div>#}
-{#        <div class="col span-2-of-2">#}
-{#            <input type="text" name="full_name" id="" placeholder="Your full name" required>#}
-{#        </div>#}
-{#        <!--  -->#}
-{#        <div class="col span-1-of-2">#}
-{#            <label for="email-id">email</label>#}
-{#        </div>#}
-{#        <div class="col span-2-of-2">#}
-{#            <input type="email" name="applicants_email" id="" placeholder="your email-id" required>#}
-{#        </div>#}
-{#        <!--  -->#}
-{##}
-{#        <!--  -->#}
-{#        <div class="col span-1-of-2">#}
-{#            <label for="applicants_phonenumber">MObile Number</label>#}
-{#        </div>#}
-{#        <div class="col span-2-of-2">#}
-{#            <input type="number" name="applicants_phonenumber" id="" placeholder="mobile number" required>#}
-{#        </div>#}
-{#        <!--  -->#}
-{#        <div class="col span-1-of-2">#}
-{#            <label for="applicants_DOB">date of birth</label>#}
-{#        </div>#}
-{#        <div class="col span-2-of-2">#}
-{#            <input type="number" name="applicants_DOB" id="" placeholder="D.O.B" required>#}
-{#        </div>#}
-{#        <!--  -->#}
-{#        <div class="col span-1-of-2">#}
-{#            <label for="applicants_address">Address</label>#}
-{#        </div>#}
-{#        <div class="col span-2-of-2">#}
-{#            <input type="text" name="applicants_address" id="" placeholder="address line" required>#}
-{#            <br>#}
-{#            <input type="text" name="applicants_address" id="" placeholder="address line 2" required>#}
-{#            <br>#}
-{#            <input type="text" name="applicants_address" id="" placeholder="address line 3" required>#}
-{##}
-{#        </div>#}
 <section class="sec4">
     {% block application_form %}
     {% endblock %}
