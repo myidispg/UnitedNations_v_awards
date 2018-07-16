@@ -32,10 +32,21 @@ class User:
         return "<user {} with e-mail- {}>".format(self.name, self.email)
 
     @classmethod
-    def get_user_object(cls, email):
-        user_data = Database.find_user(email)
-        user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
-                   user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
+    def get_user_object(cls, email=None, _id=None):
+        """
+        This method returns a user object by searching either through the email or the unique id
+        :param email: The email of the user, None by default
+        :param _id: The unique id of the user, None by default
+        :return: returns a User object either by searching with email or _id
+        """
+        if email is not None:
+            user_data = Database.find_user_email(email)
+            user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
+                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
+        else:
+            user_data = Database.find_user_id(_id)
+            user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
+                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
         return user
 
     @staticmethod
@@ -47,7 +58,7 @@ class User:
         :param password: A sha512 hashed password
         :return: True if valid, False otherwise
         """
-        user_data = Database.find_user(email)  # password in sha512-> pbkdf2_sha512
+        user_data = Database.find_user_email(email)  # password in sha512-> pbkdf2_sha512
         if user_data is None:
             # tell the user the email does not exists
             raise UserErrors.UserNotExistsError("This email does not exists.")
@@ -70,7 +81,7 @@ class User:
 
         """
         # user_data = Database.find_one(COLLECTION, {'email': email})
-        user_data = Database.find_user(email)
+        user_data = Database.find_user_email(email)
         if user_data is not None:
             raise UserErrors.UserAlreadyRegisteredError('This email is already registered with us.')
         if not Utils.email_is_valid(email):

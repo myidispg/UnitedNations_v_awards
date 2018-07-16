@@ -64,7 +64,7 @@ def register_user():
                               sender='myidispg@gmail.com',
                               recipients=[email])
                 msg.body = 'Please verify your email by clicking on the following link- ' \
-                           'http://127.0.0.1:5000/users/user-verify/{}'.format(user._id)
+                           'http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id)
                 mail.send(msg)
                 return 'Please check your inbox for verification of the email before accessing your dashboard'
                 # return redirect(url_for('.user_dashboard'))
@@ -91,10 +91,14 @@ def register_user_hindi():
                 msg = Message('Verify your e-mail',
                               sender='myidispg@gmail.com',
                               recipients=[email])
-                msg.body('Please verify your email by clicking on the following link- '
-                         'http://127.0.0.1:5000/users/user-verify{}\n\n\n'
-                         'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें- '
-                         'http://127.0.0.1:5000/users/user-verify{}'.format(user._id, user._id))
+                # msg.body('Please verify your email by clicking on the following link- ' \
+                #          'http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
+                #          'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें- ' \
+                #          'http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id))
+                msg.body = 'Please verify your email by clicking on the following link-' \
+                           ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
+                           'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
+                           ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
                 mail.send(msg)
                 return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
                 # return redirect(url_for('.user_dashboard_hindi'))
@@ -120,9 +124,25 @@ def user_dashboard_hindi():
 
 @user_blueprint.route('user-verify/<string:_id>')
 def activation_email(_id):
-    email = session['email']
-    user = User.get_user_object(email)
 
-    user.save_email_verified_status()
+    user = User.get_user_object(_id=_id)
+    if user.email_verified == 'no':
+        user.save_email_verified_status()
+        return redirect(url_for('.user_dashboard'))
+    else:
+        return 'The email is already verified.'
 
-    return redirect(url_for('.user_dashboard'))
+
+@user_blueprint.route('/hi/user-verify/<string:_id>')
+def activation_email_hindi(_id):
+
+    user = User.get_user_object(_id=_id)
+    if user.email_verified == 'no':
+        user.save_email_verified_status()
+        return redirect(url_for('.user_dashboard_hindi'))
+    else:
+        # return 'ईमेल पहले से ही सत्यापित है।'
+        gs = goslate.Goslate()
+        message = gs.translate('The email is already verified', 'hi')
+        return message
+

@@ -39,7 +39,7 @@ class Database:
         connection.close()
 
     @staticmethod
-    def find_user(email):
+    def find_user_email(email):
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
@@ -57,6 +57,30 @@ class Database:
                 'dob': row[6],
                 '_id': row[0],
                 'email_verified' : row[7]
+            }
+            return user_data_dictionary
+        else:
+            return None
+
+    @staticmethod
+    def find_user_id(_id):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * FROM users WHERE _id = ?"
+        result = cursor.execute(query, (_id,))
+        row = result.fetchone()
+
+        if row is not None:
+            user_data_dictionary = {
+                'email': row[1],
+                'password': row[2],
+                'name': row[3],
+                'phone_no': row[4],
+                'gender': row[5],
+                'dob': row[6],
+                '_id': row[0],
+                'email_verified': row[7]
             }
             return user_data_dictionary
         else:
