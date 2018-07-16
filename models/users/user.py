@@ -7,7 +7,8 @@ from models.users.constants import COLLECTION
 
 class User:
 
-    def __init__(self, email, password=None, name=None, phone_no=None, gender=None, dob=None, _id=None):
+    def __init__(self, email, password=None, name=None, phone_no=None, gender=None, dob=None, _id=None,
+                 email_verified='no'):
         self.email = email
         # As soon as the email is completed, the email gets registered to the database.
         #  If all other details are supplied, the status will be marked as registered otherwise unregistered
@@ -23,9 +24,19 @@ class User:
             self.status = 'registered'
         else:
             self.status = 'unregistered'
+        # By default, email will not be verified.
+        # It will be verified only when the user clicks on the activation link sent to the email
+        self.email_verified = email_verified
 
     def __repr__(self):
         return "<user {} with e-mail- {}>".format(self.name, self.email)
+
+    @classmethod
+    def get_user_object(cls, email):
+        user_data = Database.find_user(email)
+        user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
+                   user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
+        return user
 
     @staticmethod
     def is_login_valid(email, password):
@@ -43,6 +54,8 @@ class User:
         if not Utils.check_hashed_password(password, user_data['password']):
             # tell the user that the password is incorrect
             raise UserErrors.IncorrectPasswordError("Your password was wrong.")
+        if user_data['email_verified'] == 'yes':
+            raise UserErrors.EmailNotVerfiedError("Please verify your e-mail before accessing your dashboard.")
 
         return True
 
@@ -70,7 +83,8 @@ class User:
     #     Database.insert(COLLECTION, self.json())
 
     def save_to_database(self):
-        Database.insert_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender, self.dob)
+        Database.insert_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender,
+                             self.dob, self.email_verified)
 
     def json(self):
         return {
@@ -83,3 +97,6 @@ class User:
             'dob': self.dob,
             'status': self.status
         }
+
+    def save_email_verified_status(self):
+        Database.verify_user(self.email)

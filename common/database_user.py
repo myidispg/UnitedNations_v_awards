@@ -28,12 +28,12 @@ class Database:
         return Database.DATABASE[collection].find_one(query)
 
     @staticmethod
-    def insert_user(_id, email, password, name, phone_no, gender, dob):
+    def insert_user(_id, email, password, name, phone_no, gender, dob, email_verified):
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "INSERT INTO users VALUES (?,?,?,?,?,?,?)"
-        cursor.execute(query, (_id, email, password, name, phone_no, gender, dob,))
+        query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)"
+        cursor.execute(query, (_id, email, password, name, phone_no, gender, dob, email_verified,))
 
         connection.commit()
         connection.close()
@@ -55,8 +55,20 @@ class Database:
                 'phone_no': row[4],
                 'gender': row[5],
                 'dob': row[6],
-                '_id': row[0]
+                '_id': row[0],
+                'email_verified' : row[7]
             }
             return user_data_dictionary
         else:
             return None
+
+    @staticmethod
+    def verify_user(email):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET email_verified=? where email=?"
+        cursor.execute(query, ('yes', email))
+
+        connection.commit()
+        connection.close()

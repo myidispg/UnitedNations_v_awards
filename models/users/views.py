@@ -1,8 +1,11 @@
 import goslate
 from flask import Blueprint, request, session, redirect, url_for, render_template
+from flask_mail import Mail, Message
 
+from common.database_user import Database
 from models.users.user import User
 import models.users.errors as UserErrors
+from app import mail
 
 user_blueprint = Blueprint('users', __name__)
 
@@ -24,6 +27,25 @@ def login_user():
     return render_template('forms/login.html')
 
 
+@user_blueprint.route('/hi/login', methods=['GET', 'POST'])
+def login_user():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        try:
+            if User.is_login_valid(email, password):
+                session['email'] = email
+                return redirect(url_for('.user_dashboard'))
+        except UserErrors.UserError as e:
+            gs = goslate.Goslate()
+            message = gs.translate(e.message, 'hi')
+            return message
+
+    # this return works if the request method is GET or the login credentials are invalid
+    return render_template('forms/login.html')
+
+
 @user_blueprint.route('register', methods=['GET', 'POST'])
 def register_user():
     if request.method == 'POST':
@@ -37,7 +59,15 @@ def register_user():
         try:
             if User.register_user(email, password, name, phone_no, gender, dob):
                 session['email'] = email
-                return redirect(url_for('.user_dashboard'))
+                user = User.get_user_object(email)
+                msg = Message('Verify your email',
+                              sender='myidispg@gmail.com',
+                              recipients=[email])
+                msg.body = 'Please verify your email by clicking on the following link- ' \
+                           'http://127.0.0.1:5000/users/user-verify/{}'.format(user._id)
+                mail.send(msg)
+                return 'Please check your inbox for verification of the email before accessing your dashboard'
+                # return redirect(url_for('.user_dashboard'))
         except UserErrors.UserError as e:
             return e.message
 
@@ -57,7 +87,17 @@ def register_user_hindi():
         try:
             if User.register_user(email, password, name, phone_no, gender, dob):
                 session['email'] = email
-                return redirect(url_for('.user_dashboard_hindi'))
+                user = User.get_user_object(email)
+                msg = Message('Verify your e-mail',
+                              sender='myidispg@gmail.com',
+                              recipients=[email])
+                msg.body('Please verify your email by clicking on the following link- '
+                         'http://127.0.0.1:5000/users/user-verify{}\n\n\n'
+                         'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें- '
+                         'http://127.0.0.1:5000/users/user-verify{}'.format(user._id, user._id))
+                mail.send(msg)
+                return 'Please check your inbox for verification of the email before accessing your dashboard'
+                # return redirect(url_for('.user_dashboard_hindi'))
         except UserErrors.UserError as e:
             gs = goslate.Goslate()
             message = gs.translate(e.message, 'hi')
@@ -77,3 +117,12 @@ def user_dashboard_hindi():
     email = session['email']
     return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
+
+@user_blueprint.route('user-verify/<string:_id>')
+def activation_email(_id):
+    email = session['email']
+    user = User.get_user_object(email)
+
+    user.save_email_verified_status()
+
+    return redirect(url_for('.user_dashboard'))

@@ -18,3 +18,6 @@ class UserAlreadyRegisteredError(UserError):
 class InvalidEmailError(UserError):
     pass
 
+
+class EmailNotVerfiedError(UserError):
+    pass
