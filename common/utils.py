@@ -7,7 +7,7 @@ class Utils:
 
     @staticmethod
     def email_is_valid(email):
-        email_address_matcher = re.compile('^[\w-]+@([\w-]+\.)+[\w]+$')
+        email_address_matcher = re.compile('^[\w\.\d]+@([\w-]+\.)+[\w]+$')
         return True if email_address_matcher.match(email) else False
 
     @staticmethod
