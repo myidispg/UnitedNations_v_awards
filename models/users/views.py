@@ -28,7 +28,7 @@ def login_user():
 
 
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
-def login_user():
+def login_user_hindi():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -96,7 +96,7 @@ def register_user_hindi():
                          'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें- '
                          'http://127.0.0.1:5000/users/user-verify{}'.format(user._id, user._id))
                 mail.send(msg)
-                return 'Please check your inbox for verification of the email before accessing your dashboard'
+                return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
                 # return redirect(url_for('.user_dashboard_hindi'))
         except UserErrors.UserError as e:
             gs = goslate.Goslate()

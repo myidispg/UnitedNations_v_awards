@@ -73,8 +73,8 @@ class User:
         user_data = Database.find_user(email)
         if user_data is not None:
             raise UserErrors.UserAlreadyRegisteredError('This email is already registered with us.')
-        if not Utils.email_is_valid(email):
-            raise UserErrors.InvalidEmailError('The email is not of a valid format')
+        # if not Utils.email_is_valid(email):
+        #     raise UserErrors.InvalidEmailError('The email is not of a valid format')
 
         User(email, Utils.hash_password(password), name, phone_no, gender, dob).save_to_database()
         return True
