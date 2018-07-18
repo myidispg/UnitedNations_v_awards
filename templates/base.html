@@ -120,7 +120,7 @@
                 <div class="modal_form">
                     <form action="{{ url_for("users.login_user") }}" method="POST">
                         <input type="email" id="email_login" name="email_login" placeholder="Email">
-                        <input type="password" id="password" name="password" placeholder="Password">
+                        <input type="password" id="password_login" name="password_login" placeholder="Password">
                         <input type="submit" value="login">
                     </form>
                 </div>
@@ -133,8 +133,8 @@
 
                 <div class="modal_form">
                     <form action="{{ url_for("users.login_user_hindi") }}" method="POST">
-                        <input type="email" placeholder="ईमेल">
-                        <input type="password" placeholder="पासवर्ड">
+                        <input type="email_login_hindi" id="email_login_hindi" name="email_login_hindi" placeholder="ईमेल">
+                        <input type="password" id="password_login_hindi" name="password_login_hindi" placeholder="पासवर्ड">
                         <input type="submit" value="लॉग इन">
                     </form>
                 </div>

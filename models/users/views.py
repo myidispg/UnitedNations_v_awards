@@ -13,8 +13,8 @@ user_blueprint = Blueprint('users', __name__)
 @user_blueprint.route('/login', methods=['GET', 'POST'])
 def login_user():
     if request.method == 'POST':
-        email = request.form['email_hindi']
-        password = request.form['password']
+        email = request.form['email_login']
+        password = request.form['password_login']
 
         try:
             if User.is_login_valid(email, password):
@@ -30,8 +30,8 @@ def login_user():
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
 def login_user_hindi():
     if request.method == 'POST':
-        email = request.form['email_hindi']
-        password = request.form['password']
+        email = request.form['email_login_hindi']
+        password = request.form['password_login_hindi']
 
         try:
             if User.is_login_valid(email, password):
