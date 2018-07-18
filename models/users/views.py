@@ -24,7 +24,7 @@ def login_user():
             return e.message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('forms/login.html')
+    return render_template('base.html', language=0)
 
 
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
@@ -43,17 +43,19 @@ def login_user_hindi():
             return message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('forms/login.html')
+    return render_template('base.html', language=1)
 
 
 @user_blueprint.route('register', methods=['GET', 'POST'])
 def register_user():
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form.get('password')
+        password = request.form.get('new_password')
         name = request.form.get('name')
         phone_no = request.form.get('phone_no')
-        gender = request.form.get('gender')
+        male_gender = request.form.get('gender_male')
+        female_gender = request.form.get('gender_female')
+        gender = 'M' if female_gender is None else 'F'
         dob = request.form.get('dob')
 
         try:
@@ -63,26 +65,30 @@ def register_user():
                 msg = Message('Verify your email',
                               sender='myidispg@gmail.com',
                               recipients=[email])
-                msg.body = 'Please verify your email by clicking on the following link- ' \
-                           'http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id)
+                msg.body = 'Please verify your email by clicking on the following link-' \
+                           ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
+                           'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
+                           ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
                 mail.send(msg)
                 return 'Please check your inbox for verification of the email before accessing your dashboard'
                 # return redirect(url_for('.user_dashboard'))
         except UserErrors.UserError as e:
             return e.message
 
-    return render_template('forms/register.html')
+    return render_template('base.html', language=0)
 
 
 @user_blueprint.route('/hi/register', methods=['GET', 'POST'])
 def register_user_hindi():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form.get('password')
-        name = request.form.get('name')
-        phone_no = request.form.get('phone_no')
-        gender = request.form.get('gender')
-        dob = request.form.get('dob')
+        email = request.form['email_hindi']
+        password = request.form.get('new_password_hindi')
+        name = request.form.get('name_hindi')
+        phone_no = request.form.get('phone_no_hindi')
+        male_gender = request.form.get('gender_male_hindi')
+        female_gender = request.form.get('gender_female_hindi')
+        gender = 'M' if female_gender is None else 'F'
+        dob = request.form.get('dob_hindi')
 
         try:
             if User.register_user(email, password, name, phone_no, gender, dob):
@@ -91,10 +97,6 @@ def register_user_hindi():
                 msg = Message('Verify your e-mail',
                               sender='myidispg@gmail.com',
                               recipients=[email])
-                # msg.body('Please verify your email by clicking on the following link- ' \
-                #          'http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
-                #          'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें- ' \
-                #          'http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id))
                 msg.body = 'Please verify your email by clicking on the following link-' \
                            ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
                            'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
@@ -107,7 +109,7 @@ def register_user_hindi():
             message = gs.translate(e.message, 'hi')
             return message
 
-    return render_template('forms/register.html')
+    return render_template('base.html', language=1)
 
 
 @user_blueprint.route('user-dashboard')

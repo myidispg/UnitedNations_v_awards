@@ -65,7 +65,7 @@ class User:
         if not Utils.check_hashed_password(password, user_data['password']):
             # tell the user that the password is incorrect
             raise UserErrors.IncorrectPasswordError("Your password was wrong.")
-        if user_data['email_verified'] == 'yes':
+        if user_data['email_verified'] != 'yes':
             raise UserErrors.EmailNotVerfiedError("Please verify your e-mail before accessing your dashboard.")
 
         return True

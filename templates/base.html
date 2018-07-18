@@ -2,7 +2,7 @@
 
     Author :Mohammad Arman
 
-    *****read befor you edit*******
+    *****read before you edit*******
 
     7 line spacing between two different section
     5 line spacing between the content and section
@@ -17,11 +17,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>V-Awards_inda</title>
 
 
     <!-- normalizing_file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/normalize.css') }}">
 
 
     <!-- grid_file -->
@@ -53,85 +53,99 @@
 
 <body>
 
-<!-- ============custom nav start================== -->
-
-
-<!-- hamburger_button_start -->
-<span class="toggle-button">
-        <div class="menu-bar menu-bar-top"></div>
-        <div class="menu-bar menu-bar-middle"></div>
-        <div class="menu-bar menu-bar-bottom"></div>
-    </span>
-<!-- hamburger_button_end -->
-
-
-<!-- menue_items_start -->
-<div class="menu-wrap">
-    <div class="menu-sidebar">
-        <ul class="menu">
-            <li>
-                <a href="#home">Home</a>
-            </li>
-            <li class="menu-item-has-children">
-                <a href="#about_unv">About</a>
-                <span class="sidebar-menu-arrow"></span>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="#about_unv">UNV</a>
-                    </li>
-                    <li>
-                        <a href="#about_unv_awards">UNV AWARDS</a>
-                    </li>
-
-                </ul>
-            </li>
-            <li>
-                <a href="#get_inspired">Get Inspired</a>
-            </li>
-            <li class="menu-item-has-children">
-                <a href="">Apply</a>
-                <span class="sidebar-menu-arrow"></span>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="#">Waiting</a>
-                    </li>
-                    <li>
-                        <a href="#">Waiting</a>
-                    </li>
-                    <li>
-                        <a href="#">Waiting</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Waiting</a>
-            </li>
-            <li>
-                <a href="#">Get In Touch</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<!-- menue_items_end -->
-
-
-<!-- ============custom_nav_end================== -->
-
-
 <!-- =============header_start========================== -->
 
 
 <header id="home">
-    <a href="#">
-        <img src="{{ url_for('static', filename='resources/css/imgs/logos/unv-india-blue.png') }}" alt="unv india logo">
-    </a>
+
+    <nav>
+        <div class="row">
+            <!-- `````````````logo_start`````````` -->
+
+            <!-- `````````````logo_end`````````` -->
+            <ul class="main_navigation">
+                {% if language == 0 %}
+                    <li>
+                        <a href="#about_unv">about</a>
+                    </li>
+
+                    <li>
+                        <a href="#get_inspired">Get Inspired</a>
+                    </li>
+                    <li>
+                        <a href="#frequently_asked_q">faq</a>
+                    </li>
+                    <li>
+                        <button id="modal_btn" class="log_in_button">login</button>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="#about_unv">बारे में</a>
+                    </li>
+
+                    <li>
+                        <a href="#get_inspired">प्रेरित हुआ</a>
+                    </li>
+                    <li>
+                        <a href="#frequently_asked_q">सामान्य प्रश्न</a>
+                    </li>
+                    <li>
+                        <button id="modal_btn" class="log_in_button">लॉग इन करें</button>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- for login modal_start -->
+    <div id="simple_modal" class="modal">
+
+        <div class="modal_content">
+            <span class="close_Btn">&times;</span>
+            <br>
+            {% if language == 0 %}
+                <div class="modal_header">
+
+                    <h2>login</h2>
+
+                </div>
+
+                <div class="modal_form">
+                    <form action="{{ url_for("users.login_user") }}" method="POST">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <input type="submit" value="login">
+                    </form>
+                </div>
+            {% else %}
+                <div class="modal_header">
+
+                    <h2>लॉग इन</h2>
+
+                </div>
+
+                <div class="modal_form">
+                    <form action="{{ url_for("users.login_user_hindi") }}" method="POST">
+                        <input type="email" placeholder="ईमेल">
+                        <input type="password" placeholder="पासवर्ड">
+                        <input type="submit" value="लॉग इन">
+                    </form>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!-- for login modal_end -->
+
+
     <div class="text_box">
         <h1>v- awards</h1>
         {% if language == 0 %}
-            <a href="#" class="btn btn-white">Apply now</a>
+            <a href="#register-form" class="btn btn-white">Apply now</a>
             <a href="{{ url_for('home_hindi') }}" class="btn btn-white">हिंदी में देखें</a>
         {% else %}
-            <a href="#" class="btn btn-white">अप्लाई करें</a>
+            <a href="#register-form" class="btn btn-white">अप्लाई करें</a>
             <a href="{{ url_for('home_english') }}" class="btn btn-white">Change to english</a>
         {% endif %}
     </div>
@@ -146,16 +160,18 @@
 
 <section class="sec1" id="about_unv">
     <div class="row">
-        <h1>about unv</h1>
-        <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="">
+        <h1>about unv india</h1>
+        <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="" class="js--wp--2">
         <p class="js--wp--1">The United Nations Volunteers (UNV) programme contributes to peace and development through
             volunteerism worldwide.
-            We work with partners to integrate qualified, highly motivated and well supported UN Volunteers into
-            development
-            programming and promote the value and global recognition of volunteerism. UNV is active in around 130
-            countries
-            every year. With Field Presences in over 80 countries, UNV is represented worldwide. UNV is administered
-            by the United Nations Development Programme (UNDP) and reports to the UNDP Executive Board.</p>
+            Volunteerism is a basic expression of human relationship. It is about people’s need to participate in their
+            societies and to feel that they matter to others. Social relationships intrinsic to volunteer work are
+            critical
+            to individual and community well-being. We work with partners to integrate qualified, highly motivated and
+            well supported UN Volunteers into development programming and promote the value and global recognition of
+            volunteerism. UNV is active in around 130 countries every year. With Field Presences in over 80 countries,
+            UNV is represented worldwide. UNV is administered by the United Nations Development Programme (UNDP) and
+            reports to the UNDP Executive Board.</p>
 
     </div>
 
@@ -223,7 +239,11 @@
             pariatur
             odit, expedita temporibus beatae sequi dolores dignissimos. Nihil corporis deserunt facere consequatur
             adipisci,
-            accusamus debitis cum expedita tenetur?
+            accusamus debitis cum expedita tenetur? Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+            inventore
+            obcaecati pariatur dicta voluptates aspernatur delectus dignissimos vitae doloribus nemo impedit saepe,
+            harum
+            asperiores excepturi assumenda dolore! Quas, quis ullam?
         </p>
     </div>
 </section>
@@ -235,11 +255,143 @@
 <!-- =============section_4_applyNow_form_start============= -->
 
 
-<!-- =============section_4_applyNow_form_end============= -->
+<section class="sec4" id="apply_now">
+    <div class="row">
+        <h1>apply now</h1>
+    </div>
+    {% if language == 0 %}
+        <div class="row">
+            <form id="register-form" action="{{ url_for("users.register_user") }}" method="post">
+                <div class="col span-1-of-2">
+                    <label for="name"> full name</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="text" name="name" id="name" placeholder="Your full name" required>
+                </div>
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="email">email</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="email" name="email" id="email" placeholder="your email-id" required>
+                </div>
+                <!--  -->
 
-<section class="sec4">
-    {% block application_form %}
-    {% endblock %}
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="phone_no">Mobile Number</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="number" name="phone_no" id="phone_no" placeholder="mobile number" required>
+                </div>
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="dob">date of birth</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="date" name="dob" id="dob" placeholder="D.O.B" required>
+                </div>
+
+
+                <div class="col span-1-of-2">
+                    <label for="gender">gender</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="checkbox" name="gender" id="gender_male"> male
+                    <input type="checkbox" name="gender" id="gender_female"> female
+                </div>
+
+
+                <div class="col span-1-of-2">
+                    <label for="new_password">password</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="password" name="new_password" id="new_password"
+                           placeholder="enter your new password" required>
+                    <br>
+                    <input type="password" name="confirm_password" id="confirm_password"
+                           placeholder="confirm your password"
+                           required>
+                </div>
+
+
+                <div class="col span-2-of-2">
+                    <!-- apply_button_start -->
+                    <button type="submit" class="btn_register" id="register-submit-button">Apply now</button>
+                    {#                <a href="#" class="btn_register">apply now</a>#}
+                    <!-- apply_button_end -->
+                </div>
+                <!-- apply_button_start -->
+            </form>
+        </div>
+    {% else %}
+        <div class="row">
+            <form id="register-form" action="{{ url_for("users.register_user_hindi") }}" method="post">
+                <div class="col span-1-of-2">
+                    <label for="name_hindi"> पूरा नाम</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="text" name="name_hindi" id="name_hindi" placeholder="आपका पूरा नाम" required>
+                </div>
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="email_hindi">ई-मेल</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="email" name="email_hindi" id="email_hindi" placeholder="आपका ई-मेल" required>
+                </div>
+                <!--  -->
+
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="phone_no_hindi">मोबाइल नंबर</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="number" name="phone_no_hindi" id="phone_no_hindi" placeholder="मोबाइल नंबर" required>
+                </div>
+                <!--  -->
+                <div class="col span-1-of-2">
+                    <label for="dob_hindi">जन्म की तारीख</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="date" name="dob_hindi" id="dob_hindi" placeholder="जन्म की तारीख" required>
+                </div>
+
+
+                <div class="col span-1-of-2">
+                    <label for="gender_hindi">लिंग</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="checkbox" name="gender_hindi" id="gender_male_hindi"> नर
+                    <input type="checkbox" name="gender_hindi" id="gender_female_hindi"> महिला
+                </div>
+
+
+                <div class="col span-1-of-2">
+                    <label for="new_password_hindi">पासवर्ड</label>
+                </div>
+                <div class="col span-2-of-2">
+                    <input type="password" name="new_password_hindi" id="new_password_hindi"
+                           placeholder="अपना पासवर्ड डालें" required>
+                    <br>
+                    <input type="password" name="confirm_password_hindi" id="confirm_password_hindi"
+                           placeholder="अपने पासवर्ड की पुष्टि करें"
+                           required>
+                </div>
+
+
+                <div class="col span-2-of-2">
+                    <!-- apply_button_start -->
+                    <button type="submit" class="btn_register" id="register-submit-button">अप्लाई करें</button>
+                    {#                <a href="#" class="btn_register">apply now</a>#}
+                    <!-- apply_button_end -->
+                </div>
+                <!-- apply_button_start -->
+            </form>
+        </div>
+    {% endif %}
+    <!-- =============section_4_applyNow_form_end============= -->
+
 </section>
 
 <!-- ===============script_start============================= -->

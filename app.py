@@ -4,6 +4,7 @@ from flask_mail import Mail
 from common.database_user import Database
 import common.language as language
 import create_tables
+import temp
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -15,7 +16,7 @@ app.config.update(
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
     MAIL_USERNAME='myidispg@gmail.com',
-    MAIL_PASSWORD='PG@gmail1'
+    MAIL_PASSWORD=temp.PASSWORD
 )
 mail = Mail(app)
 
@@ -28,12 +29,12 @@ def init_db():
 
 @app.route('/')
 def home_english():
-    return render_template('forms/register.html', language=0)
+    return render_template('base.html', language=0)
 
 
 @app.route('/hi/')
 def home_hindi():
-    return render_template('forms/register.html', language=1)
+    return render_template('base.html', language=1)
 
 
 from models.users.views import user_blueprint

@@ -22,17 +22,27 @@ $(document).ready(function() {
 	$(".js--wp--1").waypoint(function(direction) {
 
 		if(direction == 'down'){
-		  $(".js--wp--1").addClass('animated fadeIn');
+		  $(".js--wp--1").addClass('animated fadeInLeft');
 		}else if(direction == 'up'){
-		  $(".js--wp--1").addClass('animated fadeIn');
+		  $(".js--wp--1").addClass('animated fadeInLeft');
 		}
 	  },{
-		  offset:"82%"
+		  offset:"80%"
 	  }
 	);
 
 
+  $(".js--wp--2").waypoint(function(direction) {
 
+		if(direction == 'down'){
+		  $(".js--wp--2").addClass('animated fadeInRight');
+		}else if(direction == 'up'){
+		  $(".js--wp--2").addClass('animated fadeInRight');
+		}
+	  },{
+		  offset:"50%"
+	  }
+	);
 
 
 
@@ -91,7 +101,37 @@ $(document).ready(function() {
 });
 
 
+// ======================modal button configuration=======
+
+// get modal
+var modal = document.getElementById('simple_modal');
+// get modal button
+var modalBtn = document.getElementById('modal_btn');
+// get close button
+var closebtn = document.getElementsByClassName('close_Btn')[0];
 
 
+// click event to open modal
+modalBtn.addEventListener('click',openModal);
+//click event to close modal
+closebtn.addEventListener('click',closeModal);
+// click outside
+window.addEventListener('click',click_outside);
 
+// openModal function
+function openModal(){
+  modal.style.display = 'block';
+}
+
+//closeModal function
+function closeModal(){
+  modal.style.display = 'none';
+}
+
+//closeModal function
+function click_outside(e){
+  if(e.target == modal){
+  modal.style.display = 'none';
+  }
+}
 
