@@ -59,7 +59,7 @@
 <header id="home">
 
     <nav>
-        <div class="row">
+        <div class="">
             <!-- `````````````logo_start`````````` -->
 
             <!-- `````````````logo_end`````````` -->
@@ -76,6 +76,9 @@
                         <a href="#frequently_asked_q">faq</a>
                     </li>
                     <li>
+                    <button class="log_in_button logHin">हिंदी में देखें</button>
+                    </li>
+                    <li>
                         <button id="modal_btn" class="log_in_button">login</button>
                     </li>
                 {% else %}
@@ -88,6 +91,9 @@
                     </li>
                     <li>
                         <a href="#frequently_asked_q">सामान्य प्रश्न</a>
+                    </li>
+                    <li>
+                    <button class="log_in_button logHin">English</button>
                     </li>
                     <li>
                         <button id="modal_btn" class="log_in_button">लॉग इन करें</button>
@@ -113,7 +119,7 @@
 
                 <div class="modal_form">
                     <form action="{{ url_for("users.login_user") }}" method="POST">
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="email" id="email_login" name="email_login" placeholder="Email">
                         <input type="password" id="password" name="password" placeholder="Password">
                         <input type="submit" value="login">
                     </form>
@@ -140,13 +146,11 @@
 
 
     <div class="text_box">
-        <h1>v- awards</h1>
+        <h1>v - awards</h1>
         {% if language == 0 %}
             <a href="#register-form" class="btn btn-white">Apply now</a>
-            <a href="{{ url_for('home_hindi') }}" class="btn btn-white">हिंदी में देखें</a>
         {% else %}
             <a href="#register-form" class="btn btn-white">अप्लाई करें</a>
-            <a href="{{ url_for('home_english') }}" class="btn btn-white">Change to english</a>
         {% endif %}
     </div>
 
@@ -260,7 +264,7 @@
         <h1>apply now</h1>
     </div>
     {% if language == 0 %}
-        <div class="row">
+        <div class="row sec4rw">
             <form id="register-form" action="{{ url_for("users.register_user") }}" method="post">
                 <div class="col span-1-of-2">
                     <label for="name"> full name</label>
@@ -317,7 +321,7 @@
 
                 <div class="col span-2-of-2">
                     <!-- apply_button_start -->
-                    <button type="submit" class="btn_register" id="register-submit-button">Apply now</button>
+                    <button type="submit" class="btn_register" id="register-submit-button">Submit</button>
                     {#                <a href="#" class="btn_register">apply now</a>#}
                     <!-- apply_button_end -->
                 </div>
@@ -325,7 +329,7 @@
             </form>
         </div>
     {% else %}
-        <div class="row">
+        <div class="row sec4rw">
             <form id="register-form" action="{{ url_for("users.register_user_hindi") }}" method="post">
                 <div class="col span-1-of-2">
                     <label for="name_hindi"> पूरा नाम</label>
@@ -382,7 +386,7 @@
 
                 <div class="col span-2-of-2">
                     <!-- apply_button_start -->
-                    <button type="submit" class="btn_register" id="register-submit-button">अप्लाई करें</button>
+                    <button type="submit" class="btn_register" id="register-submit-button">जमा करें</button>
                     {#                <a href="#" class="btn_register">apply now</a>#}
                     <!-- apply_button_end -->
                 </div>
