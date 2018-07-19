@@ -7,10 +7,54 @@ DATABASE_URI = 'database/database.db'
 connection = sqlite3.connect(DATABASE_URI)
 cursor = connection.cursor()
 
-query = "CREATE TABLE IF NOT EXISTS users (_id text, email text, password text, name text, phone_no text, " \
-        "gender text, dob text, email_verified text)"
+query_personal_info = "CREATE TABLE IF NOT EXISTS users (_id text, email text, password text, name text," \
+                      " phone_no text, " \
+                      "gender text, dob text, email_verified text)"
 
-cursor.execute(query)
+# tables for 1st form
+
+query_language_table = "CREATE TABLE IF NOT EXISTS language (_id text, language text, understand text, " \
+                       "speak text, read_write text)"
+
+query_education = "CREATE TABLE IF NOT EXISTS education (_id text, course text, institution text, " \
+                  "board_university text)"
+
+query_about = "CREATE TABLE IF NOT EXISTS about (_id text, about_you text, why_volunteer text, " \
+              "communities_associated text, motivation text)"
+
+# query_references = "CREATE TABLE IF NOT EXISTS references (_id text, first_second text, full_name text," \
+#                    " address text, tel_no text, email text, occupation text, relation text)"
+
+query_reference = "CREATE TABLE IF NOT EXISTS reference (_id text, first_second text, " \
+                   "full_name text, address text, tel_no text, email text, occupation text, relation text)"
+
+# Tables for 2nd form
+
+query_volunteering_experience = "CREATE TABLE IF NOT EXISTS volunteering_experience (_id text, " \
+                                "voluteered_as text, organisation_name text, intended_impact text," \
+                                " assignment_details text, period_engagement text, " \
+                                "frequency_engagement text, hours_volunteering text)"
+
+
+query_volunteering_outcome = "CREATE TABLE IF NOT EXISTS volunteering_outcome (_id text, " \
+                             "volunteering_outcome text, outcome_community text, impact text, " \
+                             "innovation_initiative text, experience_impact text)"
+
+query_volunteering_organisation = "CREATE TABLE IF NOT EXISTS volunteering_organisation (_id text," \
+                                  " name text, address text, contact_person text, phone text, " \
+                                  "mobile text, email text)"
+
+# another table for the videos and photos of the volunteer
+
+cursor.execute(query_personal_info)
+cursor.execute(query_language_table)
+cursor.execute(query_education)
+cursor.execute(query_about)
+cursor.execute(query_reference)
+cursor.execute(query_volunteering_experience)
+cursor.execute(query_volunteering_outcome)
+cursor.execute(query_volunteering_organisation)
+
 
 connection.commit()
 connection.close()

@@ -8,7 +8,8 @@ from models.users.constants import COLLECTION
 class User:
 
     def __init__(self, email, password=None, name=None, phone_no=None, gender=None, dob=None, _id=None,
-                 email_verified='no'):
+                 email_verified='no', current_address=None, permanent_address=None, tel_no=None,
+                 nationality=None, disability=None, source_award=None, photo_path=None):
         self.email = email
         # As soon as the email is completed, the email gets registered to the database.
         #  If all other details are supplied, the status will be marked as registered otherwise unregistered
@@ -20,13 +21,16 @@ class User:
         #  _id will be given a unique hexcode id if the user is a new registartion.
         # If the user already exists, the already generated ID will be used
         self._id = uuid.uuid4().hex if _id is None else _id
-        if password and name and phone_no and gender and dob:
-            self.status = 'registered'
-        else:
-            self.status = 'unregistered'
         # By default, email will not be verified.
         # It will be verified only when the user clicks on the activation link sent to the email
         self.email_verified = email_verified
+        self.current_address = current_address
+        self.permanent_address = permanent_address
+        self.tel_no = tel_no
+        self.nationality = nationality
+        self.disability = disability
+        self.source_award = source_award
+        self.photo_path = photo_path
 
     def __repr__(self):
         return "<user {} with e-mail- {}>".format(self.name, self.email)
