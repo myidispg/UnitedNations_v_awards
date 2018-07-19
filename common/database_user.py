@@ -27,13 +27,28 @@ class Database:
     def find_one(collection, query):
         return Database.DATABASE[collection].find_one(query)
 
+    # This method is used for the email registration purpose. So, no details like address are required
+    # @staticmethod
+    # def insert_user(_id, email, password, name, phone_no, gender, dob, email_verified,):
+    #     connection = sqlite3.connect(DATABASE_URI)
+    #     cursor = connection.cursor()
+    #
+    #     query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)"
+    #     cursor.execute(query, (_id, email, password, name, phone_no, gender, dob, email_verified,))
+    #
+    #     connection.commit()
+    #     connection.close()
+
     @staticmethod
-    def insert_user(_id, email, password, name, phone_no, gender, dob, email_verified):
+    def insert_user(_id, email, password, name, phone_no, gender, dob, email_verified, current_address,
+                    permanent_address, tel_no, nationality, disability, source_awards, photo_path):
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)"
-        cursor.execute(query, (_id, email, password, name, phone_no, gender, dob, email_verified,))
+        query = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        cursor.execute(query, (_id, email, password, name, phone_no, gender, dob, email_verified,
+                               current_address, permanent_address, tel_no, nationality, disability,
+                               source_awards, photo_path,))
 
         connection.commit()
         connection.close()
@@ -56,7 +71,14 @@ class Database:
                 'gender': row[5],
                 'dob': row[6],
                 '_id': row[0],
-                'email_verified' : row[7]
+                'email_verified': row[7],
+                'current_address': row[8],
+                'permanent_address': row[9],
+                'tel_no': row[10],
+                'nationality': row[11],
+                'disability': row[12],
+                'source_awards': row[13],
+                'photo_path': row[14]
             }
             return user_data_dictionary
         else:
@@ -80,7 +102,14 @@ class Database:
                 'gender': row[5],
                 'dob': row[6],
                 '_id': row[0],
-                'email_verified': row[7]
+                'email_verified': row[7],
+                'current_address': row[8],
+                'permanent_address': row[9],
+                'tel_no': row[10],
+                'nationality': row[11],
+                'disability': row[12],
+                'source_awards': row[13],
+                'photo_path': row[14]
             }
             return user_data_dictionary
         else:

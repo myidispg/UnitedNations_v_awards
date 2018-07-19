@@ -46,11 +46,17 @@ class User:
         if email is not None:
             user_data = Database.find_user_email(email)
             user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
-                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
+                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'],
+                       user_data['current_address'], user_data['permanent_address'], user_data['tel_no'],
+                       user_data['nationality'], user_data['disability'], user_data['source_awards'],
+                       user_data['photo_path'])
         else:
             user_data = Database.find_user_id(_id)
             user = cls(user_data['email'], user_data['password'], user_data['name'], user_data['phone_no'],
-                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'])
+                       user_data['gender'], user_data['dob'], user_data['_id'], user_data['email_verified'],
+                       user_data['current_address'], user_data['permanent_address'], user_data['tel_no'],
+                       user_data['nationality'], user_data['disability'], user_data['source_awards'],
+                       user_data['photo_path'])
         return user
 
     @staticmethod
@@ -99,7 +105,9 @@ class User:
 
     def save_to_database(self):
         Database.insert_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender,
-                             self.dob, self.email_verified)
+                             self.dob, self.email_verified, self.current_address, self.permanent_address,
+                             self.tel_no, self.nationality, self.disability, self.source_award,
+                             self.photo_path)
 
     def json(self):
         return {
@@ -110,7 +118,14 @@ class User:
             'phone_no': self.phone_no,
             'gender': self.gender,
             'dob': self.dob,
-            'status': self.status
+            'email_verified': self.email_verified,
+            'current_address': self.current_address,
+            'permanent_address': self.permanent_address,
+            'tel_no': self.tel_no,
+            'nationality': self.nationality,
+            'disability': self.disability,
+            'source_awards': self.source_award,
+            'photo_path': self.photo_path
         }
 
     def save_email_verified_status(self):
