@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-solid.css') }}">
 
     <!-- script file -->
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
@@ -76,7 +76,8 @@
                         <a href="#frequently_asked_q">faq</a>
                     </li>
                     <li>
-                    <button class="log_in_button logHin">हिंदी में देखें</button>
+                        <button class="log_in_button logHin"><a href="{{ url_for("home_hindi") }}">हिंदी में देखें</a>
+                        </button>
                     </li>
                     <li>
                         <button id="modal_btn" class="log_in_button">login</button>
@@ -93,10 +94,11 @@
                         <a href="#frequently_asked_q">सामान्य प्रश्न</a>
                     </li>
                     <li>
-                    <button class="log_in_button logHin">English</button>
+                        <button class="log_in_button logHin"><a href="{{ url_for('home_english') }}">English</a>
+                        </button>
                     </li>
                     <li>
-                        <button id="modal_btn" class="log_in_button">लॉग इन करें</button>
+                        <button id="modal_btn" class="log_in_button"> लॉग इन करें</button>
                     </li>
                 {% endif %}
             </ul>
@@ -133,8 +135,9 @@
 
                 <div class="modal_form">
                     <form action="{{ url_for("users.login_user_hindi") }}" method="POST">
-                        <input type="email_login_hindi" id="email_login_hindi" name="email_login_hindi" placeholder="ईमेल">
-                        <input type="password" id="password_login_hindi" name="password_login_hindi" placeholder="पासवर्ड">
+                        <input type="email" id="email_login_hindi" name="email_login_hindi" placeholder="ईमेल">
+                        <input type="password" id="password_login_hindi" name="password_login_hindi"
+                               placeholder="पासवर्ड">
                         <input type="submit" value="लॉग इन">
                     </form>
                 </div>
@@ -317,7 +320,8 @@
                            placeholder="confirm your password"
                            required>
                 </div>
-
+                <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                {{ recaptcha }}
 
                 <div class="col span-2-of-2">
                     <!-- apply_button_start -->
@@ -382,8 +386,9 @@
                            placeholder="अपने पासवर्ड की पुष्टि करें"
                            required>
                 </div>
-
-
+                {#                <div class="g-recaptcha" data-sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say"></div>#}
+                <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                {{ recaptcha }}
                 <div class="col span-2-of-2">
                     <!-- apply_button_start -->
                     <button type="submit" class="btn_register" id="register-submit-button">जमा करें</button>

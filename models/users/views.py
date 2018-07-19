@@ -3,10 +3,10 @@ from flask import Blueprint, request, session, redirect, url_for, render_templat
 from flask_mail import Mail, Message
 
 from common.database_user import Database
+from common.utils import Utils
 from models.users.user import User
 import models.users.errors as UserErrors
 from app import mail
-
 user_blueprint = Blueprint('users', __name__)
 
 
@@ -57,21 +57,25 @@ def register_user():
         female_gender = request.form.get('gender_female')
         gender = 'M' if female_gender is None else 'F'
         dob = request.form.get('dob')
+        captcha_response = request.form.get('g-recaptcha-response')
 
         try:
-            if User.register_user(email, password, name, phone_no, gender, dob):
-                session['email'] = email
-                user = User.get_user_object(email)
-                msg = Message('Verify your email',
-                              sender='myidispg@gmail.com',
-                              recipients=[email])
-                msg.body = 'Please verify your email by clicking on the following link-' \
-                           ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
-                           'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
-                           ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
-                mail.send(msg)
-                return 'Please check your inbox for verification of the email before accessing your dashboard'
-                # return redirect(url_for('.user_dashboard'))
+            if Utils.is_human(captcha_response):
+                if User.register_user(email, password, name, phone_no, gender, dob):
+                    session['email'] = email
+                    user = User.get_user_object(email)
+                    msg = Message('Verify your email',
+                                  sender='myidispg@gmail.com',
+                                  recipients=[email])
+                    msg.body = 'Please verify your email by clicking on the following link-' \
+                               ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
+                               'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
+                               ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
+                    mail.send(msg)
+                    return 'Please check your inbox for verification of the email before accessing your dashboard'
+                    # return redirect(url_for('.user_dashboard'))
+            else:
+                return "Please verify the captcha"
         except UserErrors.UserError as e:
             return e.message
 
@@ -89,21 +93,27 @@ def register_user_hindi():
         female_gender = request.form.get('gender_female_hindi')
         gender = 'M' if female_gender is None else 'F'
         dob = request.form.get('dob_hindi')
+        captcha_response = request.form.get('g-recaptcha-response')
 
         try:
-            if User.register_user(email, password, name, phone_no, gender, dob):
-                session['email'] = email
-                user = User.get_user_object(email)
-                msg = Message('Verify your e-mail',
-                              sender='myidispg@gmail.com',
-                              recipients=[email])
-                msg.body = 'Please verify your email by clicking on the following link-' \
-                           ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
-                           'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
-                           ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
-                mail.send(msg)
-                return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
-                # return redirect(url_for('.user_dashboard_hindi'))
+            if Utils.is_human(captcha_response):
+                if User.register_user(email, password, name, phone_no, gender, dob):
+                    session['email'] = email
+                    user = User.get_user_object(email)
+                    msg = Message('Verify your e-mail',
+                                  sender='myidispg@gmail.com',
+                                  recipients=[email])
+                    msg.body = 'Please verify your email by clicking on the following link-' \
+                               ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
+                               'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
+                               ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
+                    mail.send(msg)
+                    return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
+                    # return redirect(url_for('.user_dashboard_hindi'))
+            else:
+                gs = goslate.Goslate()
+                message = gs.translate("Please verify the captcha", 'hi')
+                return message
         except UserErrors.UserError as e:
             gs = goslate.Goslate()
             message = gs.translate(e.message, 'hi')
@@ -126,7 +136,6 @@ def user_dashboard_hindi():
 
 @user_blueprint.route('user-verify/<string:_id>')
 def activation_email(_id):
-
     user = User.get_user_object(_id=_id)
     if user.email_verified == 'no':
         user.save_email_verified_status()
@@ -137,7 +146,6 @@ def activation_email(_id):
 
 @user_blueprint.route('/hi/user-verify/<string:_id>')
 def activation_email_hindi(_id):
-
     user = User.get_user_object(_id=_id)
     if user.email_verified == 'no':
         user.save_email_verified_status()
@@ -147,4 +155,3 @@ def activation_email_hindi(_id):
         gs = goslate.Goslate()
         message = gs.translate('The email is already verified', 'hi')
         return message
-
