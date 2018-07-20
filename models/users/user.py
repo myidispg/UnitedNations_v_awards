@@ -9,7 +9,7 @@ class User:
 
     def __init__(self, email, password=None, name=None, phone_no=None, gender=None, dob=None, _id=None,
                  email_verified='no', current_address=None, permanent_address=None, tel_no=None,
-                 nationality=None, disability=None, source_award=None, photo_path=None):
+                 nationality=None, disability=None, source_awards=None, photo_path=None):
         self.email = email
         # As soon as the email is completed, the email gets registered to the database.
         #  If all other details are supplied, the status will be marked as registered otherwise unregistered
@@ -29,7 +29,7 @@ class User:
         self.tel_no = tel_no
         self.nationality = nationality
         self.disability = disability
-        self.source_award = source_award
+        self.source_awards = source_awards
         self.photo_path = photo_path
 
     def __repr__(self):
@@ -106,7 +106,7 @@ class User:
     def save_to_database(self):
         Database.insert_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender,
                              self.dob, self.email_verified, self.current_address, self.permanent_address,
-                             self.tel_no, self.nationality, self.disability, self.source_award,
+                             self.tel_no, self.nationality, self.disability, self.source_awards,
                              self.photo_path)
 
     def json(self):
@@ -124,7 +124,7 @@ class User:
             'tel_no': self.tel_no,
             'nationality': self.nationality,
             'disability': self.disability,
-            'source_awards': self.source_award,
+            'source_awards': self.source_awards,
             'photo_path': self.photo_path
         }
 

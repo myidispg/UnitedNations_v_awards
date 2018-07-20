@@ -18,8 +18,18 @@ class About:
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "INSERT INTO about values(?,?,?,?,?)"
-        cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated, self.motivation,))
+        query_find_by_id = "SELECT * FROM about WHERE _id=?"
+        result = cursor.execute(query_find_by_id, (self._id,))
+        if result is not None:
+            query = "INSERT INTO about values(?,?,?,?,?)"
+            cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated,
+                                   self.motivation,))
+        else:
+            query = "UPDATE about " \
+                    "SET about_you = ?, why_volunteer = ?, communities_associated = ?, motivation = ? " \
+                    "WHERE _id = ?"
+            cursor.execute(query, (self.about_you, self.why_volunteer, self.communities_associated,
+                                   self.motivation, self._id,))
 
         connection.commit()
         connection.close()
