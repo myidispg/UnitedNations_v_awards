@@ -7,11 +7,11 @@ __author__ = 'myidispg'
 
 class Education:
 
-    def __init__(self, _id, course, from_date, to_date, institution, board_university):
+    def __init__(self, _id, course, from_date, till_date, institution, board_university):
         self._id = _id
         self.course = course
         self.from_date = from_date
-        self.to_date = to_date
+        self.till_date = till_date
         self.institution = institution
         self.board_university = board_university
 
@@ -28,13 +28,13 @@ class Education:
 
         if result is  None:
             query = "INSERT INTO education values(?,?,?,?,?,?,)"
-            cursor.execute(query, (self._id, self.course, self.from_date, self.to_date, self.institution,
+            cursor.execute(query, (self._id, self.course, self.from_date, self.till_date, self.institution,
                                    self.board_university,))
         else:
             query = "UPDATE about " \
-                    "SET course = ?,from_date=?, to_date=?, institution = ?, board_university = ? " \
+                    "SET course = ?,from_date=?, till_date=?, institution = ?, board_university = ? " \
                     "WHERE _id = ?"
-            cursor.execute(query, (self.course, self.from_date, self.to_date,
+            cursor.execute(query, (self.course, self.from_date, self.till_date,
                                    self.institution, self.board_university, self._id,))
 
         connection.commit()

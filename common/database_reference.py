@@ -24,10 +24,11 @@ class Reference:
         """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
-        query_find_by_id = "SELECT * FROM about WHERE _id=?"
-
+        query_find_by_id = "SELECT * FROM reference WHERE _id=?"
         result = cursor.execute(query_find_by_id, (self._id,))
-        if result is None:
+        row = result.fetchone()
+
+        if row is None:
             query = "INSERT INTO reference values(?,?,?,?,?,?,?,?)"
             cursor.execute(query, (self._id, self.first_second, self.full_name, self.address, self.tel_no,
                                    self.email, self.occupation, self.relation,))

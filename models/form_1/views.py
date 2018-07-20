@@ -1,13 +1,14 @@
 from flask import Blueprint, request
 
+from models.form_1.form_1 import Form1
 from models.users.user import User
 
 __author__ = 'myidispg'
 
-view_blueprint = Blueprint('user_form_1', __name__)
+form1_blueprint = Blueprint('user_form_1', __name__)
 
 
-@view_blueprint.route('/save_form', methods=['POST'])
+@form1_blueprint.route('/save_form', methods=['POST'])
 def save_form_1():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -38,24 +39,31 @@ def save_form_1():
 
         references = {
             'first': {
-                'full_name': '',
-                'address': '',
-                'tel_no': '',
-                'email': '',
-                'occupation': '',
-                'relation': ''
+                'full_name': request.form.get('first_name'),
+                'address': request.form.get('first_address'),
+                'tel_no': request.form.get('first_tel_no'),
+                'email': request.form.get('first_email'),
+                'occupation': request.form.get('first_occupation'),
+                'relation': request.form.get('first_relation')
             },
             'second': {
-                'full_name': '',
-                'address': '',
-                'tel_no': '',
-                'email': '',
-                'occupation': '',
-                'relation': ''
+                'full_name': request.form.get('second_name'),
+                'address': request.form.get('second_address'),
+                'tel_no': request.form.get('second_tel_no'),
+                'email': request.form.get('second_email'),
+                'occupation': request.form.get('second_occupation'),
+                'relation': request.form.get('second_relation')
             }
         }
 
-        user = User(email, name=name, phone_no=mobile_no, gender=gender, dob=dob,
-                    current_address=current_address, permanent_address=permanent_address,
-                    tel_no=tel_no, nationality=nationality, disability=disability, source_awards=source_awards)
-        user.save_to_database()
+        about_you = request.form.get('about_you')
+        why_volunteer = request.form.get('why_volunteer')
+        communities_associated = request.form.get('communities_associated')
+        motivation = request.form.get('motivation')
+
+        # None is for education which will be filled in later
+        form_1 = Form1(name, dob, current_address, permanent_address, tel_no, mobile_no, email,
+                       nationality, gender, disability, source_awards, languages, None,
+                       about_you, why_volunteer, communities_associated, motivation, references)
+        form_1.save_form_to_db()
+        return 'form 1 has been saved successfully'

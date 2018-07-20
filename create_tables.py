@@ -18,7 +18,7 @@ query_language_table = "CREATE TABLE IF NOT EXISTS language (_id text, language 
                        "speak text, read_write text, PRIMARY KEY('_id'))"
 
 query_education = "CREATE TABLE IF NOT EXISTS education (_id text, course text, from_date text," \
-                  " to_date text, institution text, " \
+                  " till_date text, institution text, " \
                   "board_university text, PRIMARY KEY('_id'))"
 
 query_about = "CREATE TABLE IF NOT EXISTS about (_id text, about_you text, why_volunteer text, " \

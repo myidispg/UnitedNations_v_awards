@@ -24,7 +24,9 @@ class About:
 
         query_find_by_id = "SELECT * FROM about WHERE _id=?"
         result = cursor.execute(query_find_by_id, (self._id,))
-        if result is None:
+        row = result.fetchone()
+
+        if row is None:
             query = "INSERT INTO about values(?,?,?,?,?)"
             cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated,
                                    self.motivation,))

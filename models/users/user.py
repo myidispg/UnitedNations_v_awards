@@ -110,8 +110,8 @@ class User:
                              self.photo_path)
 
     def update_database(self):
-        Database.update_user(self._id, self.email, self.password, self.name, self.phone_no, self.gender,
-                             self.dob, self.email_verified, self.current_address, self.permanent_address,
+        Database.update_user(self._id, self.email, self.name, self.phone_no, self.gender,
+                             self.dob, self.current_address, self.permanent_address,
                              self.tel_no, self.nationality, self.disability, self.source_awards,
                              self.photo_path)
 

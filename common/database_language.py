@@ -21,9 +21,11 @@ class Language:
         """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
-        query_find_by_id = "SELECT * FROM about WHERE _id=?"
+        query_find_by_id = "SELECT * FROM language WHERE _id=?"
         result = cursor.execute(query_find_by_id, (self._id,))
-        if result is None:
+        row = result.fetchone()
+
+        if row is None:
             query = "INSERT INTO language values(?,?,?,?,?)"
             cursor.execute(query, (self._id, self.language, self.understand, self.speak, self.read_write,))
         else:

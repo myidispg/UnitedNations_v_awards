@@ -1,4 +1,6 @@
 from common.database_about import About
+from common.database_language import Language
+from common.database_reference import Reference
 from models.users.user import User
 
 __author__ = 'myidispg'
@@ -10,7 +12,7 @@ class Form1:
                  mobile_no=None, email=None, nationality=None, gender=None, disability=None,
                  source_awards=None, languages=None, education=None, about_you=None,
                  why_volunteer=None, communities_associated=None, motivation=None, references=None):
-        user = User().get_user_object(email=email)
+        user = User.get_user_object(email=email)
         self._id = user._id
         self.name = name
         self.dob = dob
@@ -32,6 +34,11 @@ class Form1:
         self.references = references
 
     def save_form_to_db(self):
+        """
+        A Form1 object is initialized in the views file. All the necessary data is supplied to the
+        necessary objects and the data is inserted into required tables.
+        :return: nothing
+        """
         user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
                     email_verified='yes', _id=self._id, current_address=self.current_address,
                     permanent_address=self.permanent_address, tel_no=self.tel_no,
@@ -40,4 +47,24 @@ class Form1:
 
         about = About(self._id, self.about_you, self.why_volunteer, self.communities_associated, self.motivation)
         about.insert_data()
+
+        for each_language in self.languages:
+            language = Language(self._id, each_language,
+                                self.languages[each_language]['understand'],
+                                self.languages[each_language]['speak'],
+                                self.languages[each_language]['read_write'])
+            language.insert_data()
+
+        for each_reference in self.references:
+            reference = Reference(self._id, str(each_reference),
+                                  self.references[each_reference]['full_name'],
+                                  self.references[each_reference]['address'],
+                                  self.references[each_reference]['tel_no'],
+                                  self.references[each_reference]['email'],
+                                  self.references[each_reference]['occupation'],
+                                  self.references[each_reference]['relation'])
+            reference.insert_data()
+
+
+
 
