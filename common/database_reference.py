@@ -24,21 +24,21 @@ class Reference:
         """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
-        query_find_by_id = "SELECT * FROM reference WHERE _id=?"
-        result = cursor.execute(query_find_by_id, (self._id,))
-        row = result.fetchone()
+        query_find_by_id = "SELECT first_second FROM reference WHERE _id=? and first_second=?"
+        result = cursor.execute(query_find_by_id, (self._id, self.first_second,))
+        rows = result.fetchone()
 
-        if row is None:
-            query = "INSERT INTO reference values(?,?,?,?,?,?,?,?)"
-            cursor.execute(query, (self._id, self.first_second, self.full_name, self.address, self.tel_no,
-                                   self.email, self.occupation, self.relation,))
-        else:
+        if rows is not None:
             query = "UPDATE reference SET " \
                     "first_second = ?, full_name = ?, address = ?, tel_no = ?, email = ?, occupation = ?," \
                     " relation = ?" \
-                    "WHERE _id = ?"
+                    "WHERE _id = ? AND  first_second = ? "
             cursor.execute(query, (self.first_second, self.full_name, self.address, self.tel_no,
-                                   self.email, self.occupation, self.relation, self._id,))
+                                   self.email, self.occupation, self.relation, self._id, self.first_second,))
+        else:
+            query = "INSERT INTO reference values(?,?,?,?,?,?,?,?)"
+            cursor.execute(query, (self._id, self.first_second, self.full_name, self.address, self.tel_no,
+                                   self.email, self.occupation, self.relation,))
 
         connection.commit()
         connection.close()

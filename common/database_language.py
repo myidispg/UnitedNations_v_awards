@@ -21,33 +21,36 @@ class Language:
         """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
-        query_find_by_id = "SELECT * FROM language WHERE _id=?"
-        result = cursor.execute(query_find_by_id, (self._id,))
-        row = result.fetchone()
+        query_find_by_id = "SELECT * FROM language WHERE _id=? and language = ?"
+        result = cursor.execute(query_find_by_id, (self._id, self.language))
+        rows = result.fetchone()
 
-        if row is None:
-            query = "INSERT INTO language values(?,?,?,?,?)"
-            cursor.execute(query, (self._id, self.language, self.understand, self.speak, self.read_write,))
-        else:
+        if rows is not None:
             query = "UPDATE language " \
                     "SET language = ?, understand = ?, speak = ?, read_write = ?" \
-                    "WHERE _id = ?"
-            cursor.execute(query, (self.language, self.understand, self.speak, self.read_write, self._id))
+                    "WHERE _id = ? and language=?"
+            cursor.execute(query,
+                           (self.language, self.understand, self.speak, self.read_write, self._id,
+                            self.language,))
+        else:
+            query = "INSERT INTO language values(?,?,?,?,?)"
+            cursor.execute(query, (self._id, self.language, self.understand, self.speak, self.read_write,))
 
         connection.commit()
         connection.close()
 
-    @classmethod
-    def get_by_id(cls, _id):
-        connection = sqlite3.connect(DATABASE_URI)
-        cursor = connection.cursor()
 
-        query = 'SELECT * FROM language WHERE _id=?'
-        result = cursor.execute(query, (_id,))
+@classmethod
+def get_by_id(cls, _id):
+    connection = sqlite3.connect(DATABASE_URI)
+    cursor = connection.cursor()
 
-        row = result.fetchone()
+    query = 'SELECT * FROM language WHERE _id=?'
+    result = cursor.execute(query, (_id,))
 
-        language = cls(row[0], row[1], row[2], row[3], row[4])
-        connection.close()
+    row = result.fetchone()
 
-        return language
+    language = cls(row[0], row[1], row[2], row[3], row[4])
+    connection.close()
+
+    return language
