@@ -23,6 +23,38 @@ def save_form_1():
         source_awards = request.form.get('source_awards')
         # remember to add an ability for saving a photo later on
 
+        languages = {
+            'hindi': {
+                'understand': 'yes',
+                'speak': 'yes',
+                'read_write': 'yes'
+            },
+            'english': {
+                'understand': 'yes',
+                'speak': 'yes',
+                'read_write': 'yes'
+            }
+        }
+
+        references = {
+            'first': {
+                'full_name': '',
+                'address': '',
+                'tel_no': '',
+                'email': '',
+                'occupation': '',
+                'relation': ''
+            },
+            'second': {
+                'full_name': '',
+                'address': '',
+                'tel_no': '',
+                'email': '',
+                'occupation': '',
+                'relation': ''
+            }
+        }
+
         user = User(email, name=name, phone_no=mobile_no, gender=gender, dob=dob,
                     current_address=current_address, permanent_address=permanent_address,
                     tel_no=tel_no, nationality=nationality, disability=disability, source_awards=source_awards)

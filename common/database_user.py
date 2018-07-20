@@ -62,7 +62,7 @@ class Database:
                 "email=?, password=?, name=?, phone_no=?, gender=?, dob=?, current_address=?, permanent_address=?," \
                 " tel_no=?, nationality=?, disability=?, source_awards=?, photo_path=?" \
                 "WHERE _id = ?"
-        cursor.execute(query, (email, password, name, phone_no, gender, dob, email_verified, current_address,
+        cursor.execute(query, (email, password, name, phone_no, gender, dob, current_address,
                                permanent_address, tel_no, nationality, disability, source_awards, photo_path,
                                _id,))
 

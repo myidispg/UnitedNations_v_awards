@@ -33,10 +33,11 @@ class Form1:
 
     def save_form_to_db(self):
         user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
-                    _id=self._id, current_address=self.current_address,
+                    email_verified='yes', _id=self._id, current_address=self.current_address,
                     permanent_address=self.permanent_address, tel_no=self.tel_no,
                     nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
-        user.save_to_database()
+        user.update_database()
 
         about = About(self._id, self.about_you, self.why_volunteer, self.communities_associated, self.motivation)
         about.insert_data()
+
