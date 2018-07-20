@@ -6,7 +6,6 @@ from create_tables import DATABASE_URI
 
 
 class Database:
-
     # URI = 'mongodb://127.0.0.1:27017'
     DATABASE = None
 
@@ -49,6 +48,23 @@ class Database:
         cursor.execute(query, (_id, email, password, name, phone_no, gender, dob, email_verified,
                                current_address, permanent_address, tel_no, nationality, disability,
                                source_awards, photo_path,))
+
+        connection.commit()
+        connection.close()
+
+    @staticmethod
+    def update_user(_id, email, password, name, phone_no, gender, dob, email_verified, current_address,
+                    permanent_address, tel_no, nationality, disability, source_awards, photo_path):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET" \
+                "email=?, password=?, name=?, phone_no=?, gender=?, dob=?, current_address=?, permanent_address=?," \
+                " tel_no=?, nationality=?, disability=?, source_awards=?, photo_path=?" \
+                "WHERE _id = ?"
+        cursor.execute(query, (email, password, name, phone_no, gender, dob, email_verified, current_address,
+                               permanent_address, tel_no, nationality, disability, source_awards, photo_path,
+                               _id,))
 
         connection.commit()
         connection.close()

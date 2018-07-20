@@ -15,12 +15,16 @@ class About:
         self.motivation = motivation
 
     def insert_data(self):
+        """
+        If a row with the user id already exists, then it updates the row, otherwise inserts the data
+        :return: Nothing to return
+        """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
         query_find_by_id = "SELECT * FROM about WHERE _id=?"
         result = cursor.execute(query_find_by_id, (self._id,))
-        if result is not None:
+        if result is None:
             query = "INSERT INTO about values(?,?,?,?,?)"
             cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated,
                                    self.motivation,))

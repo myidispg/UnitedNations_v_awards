@@ -14,11 +14,24 @@ class Education:
         self.board_university = board_university
 
     def insert_data(self):
+        """
+        If a row with the user id already exists, then it updates the row, otherwise inserts the data
+        :return: Nothing to return
+        """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "INSERT INTO education values(?,?,?,?,)"
-        cursor.execute(query, (self._id, self.course, self.institution, self.board_university,))
+        query_find_by_id = "SELECT * FROM about WHERE _id=?"
+        result = cursor.execute(query_find_by_id, (self._id,))
+
+        if result is  None:
+            query = "INSERT INTO education values(?,?,?,?,)"
+            cursor.execute(query, (self._id, self.course, self.institution, self.board_university,))
+        else:
+            query = "UPDATE about " \
+                    "SET course = ?, institution = ?, board_university = ? " \
+                    "WHERE _id = ?"
+            cursor.execute(query, (self.course, self.institution, self.board_university, self._id,))
 
         connection.commit()
         connection.close()
