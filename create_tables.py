@@ -10,7 +10,7 @@ cursor = connection.cursor()
 query_personal_info = "CREATE TABLE IF NOT EXISTS users (_id text, email text, password text, " \
                       "name text, phone_no text, gender text, dob text, email_verified text, " \
                       "current_address text, permanent _address text, tel_no text, nationality text," \
-                      " disabilituy text, source_awards text, photo_path text)"
+                      " disability text, source_awards text, photo_path text)"
 
 # tables for 1st form
 
