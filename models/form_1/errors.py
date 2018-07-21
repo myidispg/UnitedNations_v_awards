@@ -8,3 +8,7 @@ class Form1Error(Exception):
 
 class Form1InsertionError(Form1Error):
     pass
+
+
+class Form1AlreadySubmitted(Form1Error):
+    pass
