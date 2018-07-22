@@ -24,17 +24,17 @@ class VolunteeringOutcome:
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query_find_by_id = "SELECT * from volunteering_organisation where _id = ?"
+        query_find_by_id = "SELECT * from volunteering_outcome where _id = ?"
         result = cursor.execute(query_find_by_id, (self._id,))
         row = result.fetchone()
 
         if row is None:
-            query = "INSERT INTO volunteering_experience values (?,?,?,?,?,?)"
+            query = "INSERT INTO volunteering_outcome values (?,?,?,?,?,?)"
 
             cursor.execute(query, (self._id, self.volunteering_outcome, self.outcome_community,
                                    self.impact, self.innovation_initiative, self.experience_impact,))
         else:
-            query = "UPDATE volunteering_experience " \
+            query = "UPDATE volunteering_outcome " \
                     "SET volunteering_outcome=?, outcome_community=?, impact=?, innovation_initiative=?," \
                     " experience_impact=?" \
                     "WHERE _id=?"
@@ -49,7 +49,7 @@ class VolunteeringOutcome:
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "SELECT * FROM volunteering_experience WHERE _id = ?"
+        query = "SELECT * FROM volunteering_outcome WHERE _id = ?"
         result = cursor.execute(query, (_id,))
 
         row = result.fetchone()

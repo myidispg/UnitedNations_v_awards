@@ -74,7 +74,7 @@ class VolunteeringExperience:
 
         row = result.fetchone()
 
-        status = row[7]
+        status = row[7] if row is not None else 'nothing'
         connection.close()
 
         return status

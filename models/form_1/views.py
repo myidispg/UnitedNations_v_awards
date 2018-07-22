@@ -6,7 +6,7 @@ import models.form_1.errors as Form1Errors
 
 __author__ = 'myidispg'
 
-form1_blueprint = Blueprint('user_form_1', __name__)
+form1_blueprint = Blueprint('form1', __name__)
 
 
 @form1_blueprint.route('/save_form', methods=['POST'])

@@ -40,9 +40,11 @@ def home_hindi():
 
 from models.users.views import user_blueprint
 from models.form_1.views import form1_blueprint
+from models.form_2.views import form2_blueprint
 
 app.register_blueprint(user_blueprint, url_prefix='/users')
-app.register_blueprint(form1_blueprint, url_prefix='/users/form1/')
+app.register_blueprint(form1_blueprint, url_prefix='/users/form1')
+app.register_blueprint(form2_blueprint, url_prefix='/users/form2')
 
 if __name__ == "__main__":
     app.run(Debug=True)

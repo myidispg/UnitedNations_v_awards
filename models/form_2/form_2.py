@@ -12,7 +12,7 @@ class Form2:
                  frequency_engagement, hours_volunteering, organisation_name, organisation_address,
                  organisation_contact_person, organisation_phone, organisation_mobile, organisation_email,
                  volunteering_outcome, outcome_community, impact, innovation_initiative,
-                 experience_impact, form_2_status):
+                 experience_impact, form_2_status=None):
         # The user's email has to be supplied to get the unique id of the user
         user = User.get_user_object(email=email)
         self._id = user._id
@@ -44,7 +44,7 @@ class Form2:
         volunteering_experience = VolunteeringExperience(self._id, self.volunteered_as,
                                                          self.intended_impact, self.assignment_details,
                                                          self.period_engagement, self.frequency_engagement,
-                                                         self.hours_volunteering)
+                                                         self.hours_volunteering, self.form_2_status)
         if volunteering_experience.get_form_status_by_id(self._id) == 'submit':
             raise Form2Errors.Form2AlreadySubmitted('Form 2 is submitted and cannot be updated.')
         else:
@@ -62,4 +62,3 @@ class Form2:
                                                        self.outcome_community, self.impact,
                                                        self.innovation_initiative, self.experience_impact)
             volunteering_outcome.insert_data()
-            

@@ -29,12 +29,12 @@ class VolunteeringOrganisation:
         row = result.fetchone()
 
         if row is None:
-            query = "INSERT INTO volunteering_experience values (?,?,?,?,?,?,?)"
+            query = "INSERT INTO volunteering_organisation values (?,?,?,?,?,?,?)"
 
             cursor.execute(query, (self._id, self.name, self.address, self.contact_person, self.phone,
                                    self.mobile, self.email,))
         else:
-            query = "UPDATE volunteering_experience " \
+            query = "UPDATE volunteering_organisation " \
                     "SET name=?, address=?, contact_person=?, phone=?," \
                     " mobile=?, email=?" \
                     "WHERE _id=?"
@@ -49,7 +49,7 @@ class VolunteeringOrganisation:
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "SELECT * FROM volunteering_experience WHERE _id = ?"
+        query = "SELECT * FROM volunteering_organisation WHERE _id = ?"
         result = cursor.execute(query, (_id,))
 
         row = result.fetchone()
