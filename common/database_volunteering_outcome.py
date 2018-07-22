@@ -5,7 +5,7 @@ from create_tables import DATABASE_URI
 __author__ = 'myidispg'
 
 
-class VolunteeringOrganisation:
+class VolunteeringOutcome:
 
     def __init__(self, _id, volunteering_outcome, outcome_community, impact, innovation_initiative,
                  experience_impact):

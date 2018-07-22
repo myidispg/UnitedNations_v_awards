@@ -40,13 +40,15 @@ class Form1:
         """
         A Form1 object is initialized in the views file. All the necessary data is supplied to the
         necessary objects and the data is inserted into required tables.
+        About class has a variable to check whether the form is saved or submitted.
+        If the form is submitted, no further changes are allowed.
         :return: nothing
         """
-        user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
-                    email_verified='yes', _id=self._id, current_address=self.current_address,
-                    permanent_address=self.permanent_address, tel_no=self.tel_no,
-                    nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
-        user.update_database()
+        # user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
+        #             email_verified='yes', _id=self._id, current_address=self.current_address,
+        #             permanent_address=self.permanent_address, tel_no=self.tel_no,
+        #             nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
+        # user.update_database()
 
         about = About(self._id, self.about_you, self.why_volunteer, self.communities_associated, self.motivation,
                       self.form_1_status)
@@ -54,6 +56,11 @@ class Form1:
             raise Form1Errors.Form1AlreadySubmitted('Form 1 is submitted and cannot be updated.')
         else:
             about.insert_data()
+            user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
+                        email_verified='yes', _id=self._id, current_address=self.current_address,
+                        permanent_address=self.permanent_address, tel_no=self.tel_no,
+                        nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
+            user.update_database()
 
             for each_language in self.languages:
                 language = Language(self._id, each_language,

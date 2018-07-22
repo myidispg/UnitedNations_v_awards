@@ -30,7 +30,7 @@ class About:
         if row is None:
             query = "INSERT INTO about values(?,?,?,?,?,?)"
             cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated,
-                                   self.motivation,self.form_1_status))
+                                   self.motivation, self.form_1_status))
         else:
             query = "UPDATE about " \
                     "SET about_you = ?, why_volunteer = ?, communities_associated = ?, motivation = ?," \
