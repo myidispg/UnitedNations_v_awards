@@ -14,6 +14,7 @@ class About:
         self.communities_associated = communities_associated
         self.motivation = motivation
         self.form_1_status = form_1_status
+        self.reminder_status = 'not_reminded'
 
     def insert_data(self):
         """
@@ -28,9 +29,9 @@ class About:
         row = result.fetchone()
 
         if row is None:
-            query = "INSERT INTO about values(?,?,?,?,?,?)"
+            query = "INSERT INTO about values(?,?,?,?,?,?,?)"
             cursor.execute(query, (self._id, self.about_you, self.why_volunteer, self.communities_associated,
-                                   self.motivation, self.form_1_status))
+                                   self.motivation, self.form_1_status, self.reminder_status))
         else:
             query = "UPDATE about " \
                     "SET about_you = ?, why_volunteer = ?, communities_associated = ?, motivation = ?," \
@@ -59,6 +60,11 @@ class About:
 
     @staticmethod
     def get_form_status_by_id(_id):
+        """
+        this method only returns the form_status of the user as opposed to a whole object.
+        :param _id: the id of the user whose status has to be searched
+        :return: form_status
+        """
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
@@ -67,18 +73,19 @@ class About:
 
         row = result.fetchone()
 
-        status = row[5]
         connection.close()
-
-        return status
+        if row is None:
+            return 'no_status'
+        else:
+            return row[5]
 
     @staticmethod
     def get_all_saved():
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query = "SELECT _id FROM about WHERE form_1_status = ?"
-        result = cursor.execute(query, ('saved',))
+        query = "SELECT _id FROM about WHERE form_1_status = ? and reminder_status = ?"
+        result = cursor.execute(query, ('saved', 'not_reminded'))
 
         rows = result.fetchall()
         id_list = []
@@ -89,6 +96,19 @@ class About:
 
         connection.close()
         return id_list
+
+    @staticmethod
+    def update_reminder_status(_id, status):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE about SET " \
+                "reminder_status = ?" \
+                "WHERE _id = ?"
+        cursor.execute(query, (status, _id))
+
+        connection.commit()
+        connection.close()
 
 
 

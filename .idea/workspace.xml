@@ -2,39 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21439703-72dd-448d-9537-b48c297b1e53" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/email_alerts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/database_about.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/database_about.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/database_education.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/database_education.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_tables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/form_1/form_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/form_1/form_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/form_1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/form_1/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/users/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/users/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/resources/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/resources/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/resources/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/resources/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/css/animate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/css/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/css/grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/css/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/css/normalize.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-brands.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-brands.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-brands.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-brands.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-regular.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-regular.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-regular.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-regular.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-solid.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-solid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fa-solid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fa-solid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fontawesome-all.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fontawesome-all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fontawesome-all.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fontawesome-all.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fontawesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fontawesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/css/fontawesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/css/fontawesome.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/fonts/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/support/js/jquery.waypoints.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/support/js/jquery.waypoints.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,15 +20,15 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/v_awards_2018$create_tables.coverage" NAME="create_tables Coverage Results" MODIFIED="1531630837059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/v_awards_2018$v_awards_2018.coverage" NAME="v-awards-2018 Coverage Results" MODIFIED="1532414559439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/v_awards_2018$v_awards_2018.coverage" NAME="v-awards-2018 Coverage Results" MODIFIED="1532426543893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="19" />
+            <state relative-caret-position="216">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -61,32 +36,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <file leaf-file-name="email_alerts.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/email_alerts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="224">
+              <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#16#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database_user.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/database_user.py">
+      <file leaf-file-name="database_about.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/database_about.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="-128">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
@@ -94,10 +60,22 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/form_1/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="122" column="64" selection-start-line="122" selection-start-column="64" selection-end-line="122" selection-end-column="64" />
+            <state relative-caret-position="289">
+              <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form_1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/form_1/form_1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,19 +142,20 @@
         <option value="$PROJECT_DIR$/common/database_volunteering_outcome.py" />
         <option value="$PROJECT_DIR$/models/form_2/views.py" />
         <option value="$PROJECT_DIR$/models/form_1/form_1.py" />
-        <option value="$PROJECT_DIR$/create_tables.py" />
         <option value="$PROJECT_DIR$/common/database_education.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/static/resources/css/main.css" />
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/models/users/user.py" />
-        <option value="$PROJECT_DIR$/models/users/views.py" />
         <option value="$PROJECT_DIR$/models/form_1/views.py" />
         <option value="$PROJECT_DIR$/templates/user_dash_apply2.html" />
-        <option value="$PROJECT_DIR$/common/database_about.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/models/users/views.py" />
         <option value="$PROJECT_DIR$/common/utils.py" />
+        <option value="$PROJECT_DIR$/create_tables.py" />
+        <option value="$PROJECT_DIR$/common/database_about.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/email_alerts.py" />
       </list>
     </option>
   </component>
@@ -213,6 +192,17 @@
               <item name="v-awards-2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="v-awards-2018" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v-awards-2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v-awards-2018" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v-awards-2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v-awards-2018" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,9 +306,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32933104" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32933104" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.32933104" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.32933104" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49914238" visible="true" weight="0.30711043" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49914238" visible="true" weight="0.30711043" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -379,23 +369,30 @@
           <option name="timeStamp" value="222" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/common/utils.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="257" />
+          <url>file://$PROJECT_DIR$/models/form_1/form_1.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="269" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="258" />
+          <url>file://$PROJECT_DIR$/models/form_1/form_1.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="270" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/common/database_about.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="274" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/common/database_about.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="275" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="259" />
+      <option name="time" value="276" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/language.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/forms/register.html" />
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -581,23 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/form_1/form_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/create_tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/database_language.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -626,38 +606,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/users/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="136" column="4" selection-start-line="136" selection-start-column="4" selection-end-line="136" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/resources/css/user_dashapply2.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/users/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2065">
-          <caret line="127" column="52" selection-start-line="127" selection-start-column="52" selection-end-line="127" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/form_1/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="122" column="64" selection-start-line="122" selection-start-column="64" selection-end-line="122" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user_dash_apply2.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -687,37 +637,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/database_about.py">
+    <entry file="file://$PROJECT_DIR$/common/database_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="136">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/models/users/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="382">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/database_user.py">
+    <entry file="file://$PROJECT_DIR$/create_tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="425">
+          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/form_1/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/form_1/form_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/database_about.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_alerts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

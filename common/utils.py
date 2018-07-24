@@ -5,6 +5,9 @@ import requests
 from passlib.hash import pbkdf2_sha512
 
 from common.database_about import About
+from common.database_user import Database
+from app import mail
+from flask_mail import Message
 
 
 class Utils:
@@ -36,14 +39,19 @@ class Utils:
         return pbkdf2_sha512.verify(password, hashed_password)
 
     @staticmethod
-    def email_alerts():
-        about = About(None, None, None, None, None, None)
+    def is_human(captcha_response):
+        """
+        Recaptcha validation method
+        Validating recaptcha response from google server
+        Returns True captcha test passed for submitted form else returns False.
 
-        id_list = about.get_all_saved()
+        """
+        secret = "6LfKAGUUAAAAAAQ3J0KZuL9NYdfgTDFtHP3HcsOq"
+        payload = {'response': captcha_response, 'secret': secret}
+        response = requests.post("https://www.google.com/recaptcha/api/siteverify", payload)
+        response_text = json.loads(response.text)
+        return response_text['success']
 
-        for each_id in id_list:
 
-
-        return list
 
 

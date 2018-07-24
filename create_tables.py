@@ -22,7 +22,8 @@ query_education = "CREATE TABLE IF NOT EXISTS education (_id text, course text, 
                   "board_university text)"
 
 query_about = "CREATE TABLE IF NOT EXISTS about (_id text, about_you text, why_volunteer text, " \
-              "communities_associated text, motivation text, form_1_status text,PRIMARY KEY('_id'))"
+              "communities_associated text, motivation text, form_1_status text," \
+              "reminder_status text, PRIMARY KEY('_id'))"
 
 # query_references = "CREATE TABLE IF NOT EXISTS references (_id text, first_second text, full_name text," \
 #                    " address text, tel_no text, email text, occupation text, relation text)"

@@ -1,15 +1,13 @@
 import os
 
-import requests
-from flask import Flask, render_template, url_for, json
+from flask import Flask, render_template, url_for
 from flask_mail import Mail
-import sched, time
 from datetime import date, datetime
-from apscheduler.schedulers.background import BlockingScheduler
+import threading
 
 import create_tables
 import temp
-from common.utils import Utils
+from email_alerts import EmailAlerts
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -33,31 +31,25 @@ def init_db():
     create_tables
 
 
-@app.before_request
+@app.route('/send_email_alerts/email_alerts')
 def email_alerts():
-    if datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
-        list = Utils.email_alerts()
-        print(list)
+    # if the datetime is greater than datetime set for email alerts,
+    #  this function will proceed otherwise pass
+    if datetime(2018, 7, 25, 0, 0, ) > datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
+        EmailAlerts.email_alerts(mail, 'reminder_1')
+    elif datetime(2018, 7, 28, 0, 0, ) > datetime.now() > datetime(2018, 7, 28, 12, 9, 0):
+        EmailAlerts.email_alerts(mail, 'reminder_2')
     else:
         pass
 
-
-def is_human(captcha_response):
-    """
-    Recaptcha validation method
-    Validating recaptcha response from google server
-    Returns True captcha test passed for submitted form else returns False.
-
-    """
-    secret = "6LfKAGUUAAAAAAQ3J0KZuL9NYdfgTDFtHP3HcsOq"
-    payload = {'response': captcha_response, 'secret': secret}
-    response = requests.post("https://www.google.com/recaptcha/api/siteverify", payload)
-    response_text = json.loads(response.text)
-    return response_text['success']
+    return 'emails sent'
 
 
 @app.route('/')
 def home_english():
+    # thread = threading.Thread(target=email_alerts, args=())
+    # thread.daemon = True
+    # thread.start()
     return render_template('base.html', language=0, sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say")
 
 
@@ -75,8 +67,6 @@ app.register_blueprint(form1_blueprint, url_prefix='/users/form1')
 app.register_blueprint(form2_blueprint, url_prefix='/users/form2')
 
 if __name__ == "__main__":
-    # app.jinja_env.auto_reload = True
-    # app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(Debug=True)
 
 

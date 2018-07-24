@@ -1,6 +1,6 @@
 import goslate
 from flask import Blueprint, request, session, redirect, url_for, render_template
-from flask_mail import Mail, Message
+from flask_mail import Message
 
 from common.database_user import Database
 from common.utils import Utils
