@@ -17,6 +17,7 @@ class VolunteeringExperience:
         self.frequency_engagement = frequency_engagement
         self.hours_volunteering = hours_volunteering
         self.form_2_status = form_2_status
+        self.reminder_status = 'not_reminded'
 
     def insert_data(self):
         """
@@ -31,12 +32,12 @@ class VolunteeringExperience:
         row = result.fetchone()
 
         if row is None:
-            query = "INSERT INTO volunteering_experience values (?,?,?,?,?,?,?,?)"
+            query = "INSERT INTO volunteering_experience values (?,?,?,?,?,?,?,?,?)"
 
             cursor.execute(query, (self._id, self.volunteered_as, self.intended_impact,
                                    self.assignment_details, self.period_engagement,
                                    self.frequency_engagement, self.hours_volunteering,
-                                   self.form_2_status))
+                                   self.form_2_status, self.reminder_status))
         else:
             query = "UPDATE volunteering_experience " \
                     "SET volunteered_as=?, intended_impact=?, assignment_details=?, period_engagement=?," \
@@ -74,10 +75,41 @@ class VolunteeringExperience:
 
         row = result.fetchone()
 
-        status = row[7] if row is not None else 'nothing'
         connection.close()
 
-        return status
+        if row is None:
+            return 'no_status'
+        else:
+            return row[7]
 
+    @staticmethod
+    def get_all_saved():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
 
+        query = "SELECT _id FROM volunteering_experience WHERE form_2_status = ? and reminder_status = ?"
+        result = cursor.execute(query, ('saved', 'not_reminded'))
 
+        rows = result.fetchall()
+        id_list = []
+
+        for each_row in rows:
+            _id = list(each_row)
+            id_list.append(_id[0])
+
+        connection.close()
+        return id_list
+
+    @staticmethod
+    def update_reminder_status(_id, status):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE volunteering_experience SET " \
+                "reminder_status = ? " \
+                "WHERE _id = ?"
+
+        cursor.execute(query, (status, _id,))
+
+        connection.commit()
+        connection.close()

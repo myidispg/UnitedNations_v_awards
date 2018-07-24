@@ -37,7 +37,8 @@ query_reference = "CREATE TABLE IF NOT EXISTS reference (_id text, first_second 
 query_volunteering_experience = "CREATE TABLE IF NOT EXISTS volunteering_experience (_id text, " \
                                 "volunteered_as text, intended_impact text," \
                                 " assignment_details text, period_engagement text, " \
-                                "frequency_engagement text, hours_volunteering text, PRIMARY KEY('_id'))"
+                                "frequency_engagement text, hours_volunteering text," \
+                                " form_2_status text, reminder_status text, PRIMARY KEY('_id'))"
 
 
 query_volunteering_outcome = "CREATE TABLE IF NOT EXISTS volunteering_outcome (_id text, " \

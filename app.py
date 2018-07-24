@@ -31,14 +31,28 @@ def init_db():
     create_tables
 
 
-@app.route('/send_email_alerts/email_alerts')
-def email_alerts():
+@app.route('/send_email_alerts/email_alerts/form_1')
+def email_alerts_form_1():
     # if the datetime is greater than datetime set for email alerts,
     #  this function will proceed otherwise pass
     if datetime(2018, 7, 25, 0, 0, ) > datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
-        EmailAlerts.email_alerts(mail, 'reminder_1')
+        EmailAlerts.email_alerts_form_1(mail, 'reminder_1')
     elif datetime(2018, 7, 28, 0, 0, ) > datetime.now() > datetime(2018, 7, 28, 12, 9, 0):
-        EmailAlerts.email_alerts(mail, 'reminder_2')
+        EmailAlerts.email_alerts_form_1(mail, 'reminder_2')
+    else:
+        pass
+
+    return 'emails sent'
+
+
+@app.route('/send_email_alerts/email_alerts/form_2')
+def email_alerts_form_2():
+    # if the datetime is greater than datetime set for email alerts,
+    #  this function will proceed otherwise pass
+    if datetime(2018, 7, 25, 0, 0, ) > datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
+        EmailAlerts.email_alerts_form_2(mail, 'reminder_1')
+    elif datetime(2018, 7, 28, 0, 0, ) > datetime.now() > datetime(2018, 7, 28, 12, 9, 0):
+        EmailAlerts.email_alerts_form_2(mail, 'reminder_2')
     else:
         pass
 
