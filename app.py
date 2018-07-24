@@ -2,8 +2,7 @@ import os
 
 from flask import Flask, render_template, url_for
 from flask_mail import Mail
-from datetime import date, datetime
-import threading
+from datetime import datetime
 
 import create_tables
 import temp
