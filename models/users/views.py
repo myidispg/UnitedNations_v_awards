@@ -7,6 +7,7 @@ from common.utils import Utils
 from models.users.user import User
 import models.users.errors as UserErrors
 from app import mail
+
 user_blueprint = Blueprint('users', __name__)
 
 
@@ -120,6 +121,36 @@ def register_user_hindi():
             return message
 
     return render_template('base.html', language=1)
+
+
+@user_blueprint.route('forgot_password', methods=['POST'])
+def forgot_password_email():
+    email = request.form.get('email')
+
+    user = User.get_user_object(email=email)
+
+    msg = Message('Password change request',
+                  sender='myidispg@gmail.com',
+                  recipients=[email])
+    msg.body = "Please click on the following link to change your password- " \
+               "http://127.0.0.1:5000/users/change_password/{}".format(user._id)
+    mail.send(msg)
+    return "Please check your inbox for the password reset link."
+
+
+@user_blueprint.route('/change_password/<string:_id>', methods=['POST', 'GET'])
+def forgot_password(_id):
+    if request.method == 'POST':
+        new_password = request.form.get('new_password')
+
+        hashed_password = Utils.hash_password(new_password)
+
+        User.change_password(hashed_password, _id)
+        user = User.get_user_object(_id=_id)
+        session['email'] = user.email
+        return redirect(url_for('.forgot_password', _id=_id))
+
+    return render_template('user_dash_apply2.html')
 
 
 @user_blueprint.route('user-dashboard')

@@ -141,3 +141,14 @@ class Database:
 
         connection.commit()
         connection.close()
+
+    @staticmethod
+    def change_password(password, _id):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET password = ? where _id = ?"
+        cursor.execute(query, (password, _id,))
+
+        connection.commit()
+        connection.close()

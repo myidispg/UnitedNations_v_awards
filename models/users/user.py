@@ -136,3 +136,7 @@ class User:
 
     def save_email_verified_status(self):
         Database.verify_user(self.email)
+
+    @staticmethod
+    def change_password(password, _id):
+        Database.change_password(password, _id)
