@@ -26,6 +26,15 @@ def save_form_1():
         source_awards = request.form.get('source_awards')
         # remember to add an ability for saving a photo later on
 
+        education = {}
+        for i in range(1, 5):
+            education[request.form.get('course_' + str(i))] = {
+                'from': request.form.get('from_' + str(i)),
+                'till': request.form.get('till_' + str(i)),
+                'school': request.form.get('school_' + str(i)),
+                'board': request.form.get('board_' + str(i)),
+            }
+
         languages = {
             'hindi': {
                 'understand': 'no',
@@ -68,7 +77,7 @@ def save_form_1():
         # If the form is final, then add the last parameter to Form constructor as 'submit'
         try:
             form_1 = Form1(name, dob, current_address, permanent_address, tel_no, mobile_no, email,
-                           nationality, gender, disability, source_awards, languages, None,
+                           nationality, gender, disability, source_awards, languages, education,
                            about_you, why_volunteer, communities_associated, motivation, references)
             form_1.save_form_to_db()
             return 'form 1 has been saved successfully'
@@ -93,16 +102,25 @@ def submit_form_1():
         source_awards = request.form.get('source_awards')
         # remember to add an ability for saving a photo later on
 
+        education = {}
+        for i in range(1, 5):
+            education[request.form.get('course_' + str(i))] = {
+                'from': request.form.get('from_' + str(i)),
+                'till': request.form.get('till_' + str(i)),
+                'school': request.form.get('school_' + str(i)),
+                'board': request.form.get('board_' + str(i)),
+            }
+
         languages = {
             'hindi': {
-                'understand': 'no',
-                'speak': 'no',
-                'read_write': 'no'
+                'understand': 'yes' if request.form.get('hindi_understand') is not None else 'no',
+                'speak': 'yes' if request.form.get('hindi_speak') is not None else 'no',
+                'read_write': 'yes' if request.form.get('hindi_read_write') is not None else 'no'
             },
             'english': {
-                'understand': 'yes',
-                'speak': 'yes',
-                'read_write': 'yes'
+                'understand': 'yes' if request.form.get('english_understand') is not None else 'no',
+                'speak': 'yes' if request.form.get('english_speak') is not None else 'no',
+                'read_write': 'yes' if request.form.get('english_read_write') is not None else 'no'
             }
         }
 
@@ -135,7 +153,7 @@ def submit_form_1():
         # If the form is final, then add the last parameter to Form constructor as 'submit'
         try:
             form_1 = Form1(name, dob, current_address, permanent_address, tel_no, mobile_no, email,
-                           nationality, gender, disability, source_awards, languages, None,
+                           nationality, gender, disability, source_awards, languages, education,
                            about_you, why_volunteer, communities_associated, motivation, references,
                            form_1_status='submit')
             form_1.save_form_to_db()

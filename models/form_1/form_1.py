@@ -1,4 +1,5 @@
 from common.database_about import About
+from common.database_education import Education
 from common.database_language import Language
 from common.database_reference import Reference
 from models.users.user import User
@@ -56,6 +57,15 @@ class Form1:
             raise Form1Errors.Form1AlreadySubmitted('Form 1 is submitted and cannot be updated.')
         else:
             about.insert_data()
+            for each_education in self.education:
+                print(each_education)
+                education = Education(self._id, each_education,
+                                      self.education[each_education]['from'],
+                                      self.education[each_education]['till'],
+                                      self.education[each_education]['school'],
+                                      self.education[each_education]['board']
+                                      )
+                education.insert_data()
             user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
                         email_verified='yes', _id=self._id, current_address=self.current_address,
                         permanent_address=self.permanent_address, tel_no=self.tel_no,

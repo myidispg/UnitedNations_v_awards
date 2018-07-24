@@ -23,19 +23,21 @@ class Education:
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
-        query_find_by_id = "SELECT * FROM about WHERE _id=?"
-        result = cursor.execute(query_find_by_id, (self._id,))
+        query_find_by_id = "SELECT * FROM education WHERE _id=? and course=?"
+        result = cursor.execute(query_find_by_id, (self._id,self.course,))
+        rows = result.fetchone()
 
-        if result is  None:
-            query = "INSERT INTO education values(?,?,?,?,?,?,)"
-            cursor.execute(query, (self._id, self.course, self.from_date, self.till_date, self.institution,
-                                   self.board_university,))
-        else:
-            query = "UPDATE about " \
-                    "SET course = ?,from_date=?, till_date=?, institution = ?, board_university = ? " \
+        if rows is not None:
+            query = "UPDATE education " \
+                    "SET course = ?, from_date=?, till_date=?, institution = ?, board_university = ? " \
                     "WHERE _id = ?"
             cursor.execute(query, (self.course, self.from_date, self.till_date,
                                    self.institution, self.board_university, self._id,))
+
+        else:
+            query = "INSERT INTO education values(?,?,?,?,?,?)"
+            cursor.execute(query, (self._id, self.course, self.from_date, self.till_date, self.institution,
+                                   self.board_university,))
 
         connection.commit()
         connection.close()

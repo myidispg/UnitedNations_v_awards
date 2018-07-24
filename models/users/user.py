@@ -115,24 +115,24 @@ class User:
                              self.tel_no, self.nationality, self.disability, self.source_awards,
                              self.photo_path)
 
-        def json(self):
-            return {
-                '_id': self._id,
-                'email': self.email,
-                "password": self.password,
-                'name': self.name,
-                'phone_no': self.phone_no,
-                'gender': self.gender,
-                'dob': self.dob,
-                'email_verified': self.email_verified,
-                'current_address': self.current_address,
-                'permanent_address': self.permanent_address,
-                'tel_no': self.tel_no,
-                'nationality': self.nationality,
-                'disability': self.disability,
-                'source_awards': self.source_awards,
-                'photo_path': self.photo_path
-            }
+    def json(self):
+        return {
+            '_id': self._id,
+            'email': self.email,
+            "password": self.password,
+            'name': self.name,
+            'phone_no': self.phone_no,
+            'gender': self.gender,
+            'dob': self.dob,
+            'email_verified': self.email_verified,
+            'current_address': self.current_address,
+            'permanent_address': self.permanent_address,
+            'tel_no': self.tel_no,
+            'nationality': self.nationality,
+            'disability': self.disability,
+            'source_awards': self.source_awards,
+            'photo_path': self.photo_path
+        }
 
-        def save_email_verified_status(self):
-            Database.verify_user(self.email)
+    def save_email_verified_status(self):
+        Database.verify_user(self.email)

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome,V-awrads</title>
+
+    <!-- style sheet link -->
+    <link rel="stylesheet" href="support/css/onepage-scroll.css">
+    <link rel="stylesheet" href="support/css/grid.css">
+
+    <link rel="stylesheet" href="resources/css/user_dashapply2.css">
+
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:300,400,500" rel="stylesheet">
+
+
+    <!-- jquery link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="support/js/jquery.onepage-scroll.js"></script>
+
+    <!-- <script>
+            $(document).ready(function(){
+            $(".main").onepage_scroll({
+              sectionContainer: "section",
+              responsiveFallback: 600,
+              loop: true
+            });
+              });
+
+          </script> -->
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- user_dash_pg1_start -->
+        <section>
+
+            <div class="row">
+                <div class="usr_pg_1_propic">
+                    <img class="profile-pic" />
+                    <div class="upload-button">Upload Image</div>
+                    <input class="file-upload" type="file" accept="image/*" />
+                </div>
+            </div>
+
+        </section>
+        <!-- user_dash_pg1_end -->
+
+    <h1>Welcome to your dashboard {{ email }}</h1>
+
+
+
+        <!-- user_dash_pg2_start -->
+        <section class="sec2">
+            <!-- main heading -->
+            <div class="row lan_alignment">
+                <h1>Let's know you better</h1>
+            </div>
+
+
+            <!-- education_Qualification -->
+            <div>
+                <div class="row lan_alignment1">
+
+                    <h2>Education and Training</h2>
+                    <p>(start with most recent qualification) </p>
+                </div>
+
+
+                <div class="row table_align">
+                    <div class="col span-1-of-4">
+                        <h2>course</h2>
+                        <div>
+
+                            <div class="col span-1-of-1">
+                                    <input type="text" name="course_1" placeholder="course name">
+                            </div>
+                            <div class="col span-1-of-1">
+                                    <input type="text" name="course_2" placeholder="course name">
+                            </div>
+                            <div class="col span-1-of-1">
+                                    <input type="text" name="course_3" placeholder="course name">
+                            </div>
+                            <div class="col span-1-of-1">
+                                    <input type="text" name="course_4" placeholder="course name">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col span-1-of-4">
+                        <h2 class="h2_time">time period</h2>
+                        <div class="date_input">
+                            <div class="col span-1-of-2">
+                                <input type="date" name="from_1" placeholder="from">
+                            </div>
+                            <div class="col span-1-of-2">
+                                <input type="date" name="till_1" placeholder="to">
+                            </div>
+                        </div>
+                        <div class="date_input">
+                                <div class="col span-1-of-2">
+                                    <input type="date" name="from_2" placeholder="from">
+                                </div>
+                                <div class="col span-1-of-2">
+                                    <input type="date" name="till_2" placeholder="to">
+                                </div>
+                            </div>
+                            <div class="date_input">
+                                    <div class="col span-1-of-2">
+                                        <input type="date" name="from_3" placeholder="from">
+                                    </div>
+                                    <div class="col span-1-of-2">
+                                        <input type="date" name="till_3" placeholder="to">
+                                    </div>
+                                </div>
+                                <div class="date_input">
+                                        <div class="col span-1-of-2">
+                                            <input type="date" name='from_4' placeholder="from">
+                                        </div>
+                                        <div class="col span-1-of-2">
+                                            <input type="date" name="till_4" placeholder="to">
+                                        </div>
+                                    </div>
+
+
+                    </div>
+                    <div class="col span-1-of-4">
+                        <h2>school/Institution</h2>
+                        <div>
+
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="school_1" placeholder="course name">
+                                </div> <br>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="school_2" placeholder="course name">
+                                </div> <br>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="school_3" placeholder="course name">
+                                </div>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="school_4" placeholder="course name">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col span-1-of-4">
+                        <h2>Board/university</h2>
+                        <div>
+
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="board_1" placeholder="course name">
+                                </div>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="board_2" placeholder="course name">
+                                </div>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="board_3" placeholder="course name">
+                                </div>
+                                <div class="col span-1-of-1">
+                                        <input type="text" name="board_4" placeholder="course name">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- lannguage_questionaire -->
+                <!-- <div class="row table_align">
+                    <table>
+                        <tr>
+                            <th>Course
+                            </th>
+                            <th colspan="3">Time Period</th>
+                            <th>School / Institution </th>
+                            <th>Board /University
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" placeholder="Course name"></td>
+                            <td><input type="date"></td>
+                            <td>to</td>
+                            <td><input type="date"></td>
+                            <td>
+                                <input type="text" name="institution name" id="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="name">
+                            </td>
+                        </tr>
+
+                        <tr>
+                                <td><input type="text" placeholder="Course name"></td>
+                                <td><input type="date"></td>
+                                <td>to</td>
+                                <td><input type="date"></td>
+                                <td>
+                                    <input type="text" name="institution name" id="">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="name">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                    <td><input type="text" placeholder="Course name"></td>
+                                    <td><input type="date"></td>
+                                    <td>to</td>
+                                    <td><input type="date"></td>
+                                    <td>
+                                        <input type="text" name="institution name" id="">
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="name">
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                        <td><input type="text" placeholder="Course name"></td>
+                                        <td><input type="date"></td>
+                                        <td>to</td>
+                                        <td><input type="date"></td>
+                                        <td>
+                                            <input type="text" name="institution name" id="">
+                                        </td>
+                                        <td>
+                                            <input type="text" placeholder="name">
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                            <td><input type="text" placeholder="Course name"></td>
+                                            <td><input type="date"></td>
+                                            <td>to</td>
+                                            <td><input type="date"></td>
+                                            <td>
+                                                <input type="text" name="institution name" id="">
+                                            </td>
+                                            <td>
+                                                <input type="text" placeholder="name">
+                                            </td>
+                                        </tr>
+
+
+
+                    </table>
+                </div>
+            </div> -->
+
+
+                <div>
+                    <div class="row lan_alignment">
+
+                        <h2>Language skills</h2>
+                        <br>
+                        <p> Please indicate level of proficiency by selecting accurate response</p>
+                    </div>
+                    <!-- lannguage_questionaire -->
+                    <div class="row table_align">
+                        <table>
+                            <tr>
+                                <th>LANGUAGES</th>
+                                <th>Understand</th>
+                                <th>speak</th>
+                                <th>read/write</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Hindi
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_understand"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_speak"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_read_write"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>English</td>
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_understand"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_speak"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_read_write"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>thi si</h1>
+            <!-- user_dash_pg3_start -->
+        </section>
+        </div>
+
+
+
+
+
+
+
+        <!-- scripts -->
+        <script src="resources/js/scrip_user_dash.js"></script>
+</body>
+
+</html>

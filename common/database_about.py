@@ -58,7 +58,7 @@ class About:
         return about
 
     @staticmethod
-    def get_form_status_by_id( _id):
+    def get_form_status_by_id(_id):
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
@@ -71,3 +71,24 @@ class About:
         connection.close()
 
         return status
+
+    @staticmethod
+    def get_all_saved():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT _id FROM about WHERE form_1_status = ?"
+        result = cursor.execute(query, ('saved',))
+
+        rows = result.fetchall()
+        id_list = []
+
+        for each_row in rows:
+            _id = list(each_row)
+            id_list.append(_id[0])
+
+        connection.close()
+        return id_list
+
+
+

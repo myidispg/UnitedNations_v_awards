@@ -125,13 +125,15 @@ def register_user_hindi():
 @user_blueprint.route('user-dashboard')
 def user_dashboard():
     email = session['email']
-    return "Welcome to your dashboard {}!".format(email)
+    return render_template('user_dash_apply2.html', email=email)
+    # return "Welcome to your dashboard {}!".format(email)
 
 
 @user_blueprint.route('/hi/user-dashboard')
 def user_dashboard_hindi():
     email = session['email']
-    return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
+    return render_template('user_dash_apply2.html', email=email)
+    # return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
 
 @user_blueprint.route('user-verify/<string:_id>')
