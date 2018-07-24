@@ -7,6 +7,7 @@ import threading
 
 import create_tables
 import temp
+from temp import *
 from email_alerts import EmailAlerts
 
 app = Flask(__name__)
@@ -33,11 +34,19 @@ def init_db():
 
 @app.route('/send_email_alerts/email_alerts/form_1')
 def email_alerts_form_1():
-    # if the datetime is greater than datetime set for email alerts,
-    #  this function will proceed otherwise pass
-    if datetime(2018, 7, 25, 0, 0, ) > datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
+    # if date is greater than reminder date but less than one day added to the reminder date,
+    #  the function will proceed.
+    if datetime(form_1_reminder_1_year, form_1_reminder_1_month, form_1_reminder_1_day + 1,
+                form_1_reminder_1_hour, form_1_reminder_1_minute, form_1_reminder_1_seconds) > \
+            datetime.now() > \
+            datetime(form_1_reminder_1_year, form_1_reminder_1_month, form_1_reminder_1_day,
+                     form_1_reminder_1_hour, form_1_reminder_1_minute, form_1_reminder_1_seconds):
         EmailAlerts.email_alerts_form_1(mail, 'reminder_1')
-    elif datetime(2018, 7, 28, 0, 0, ) > datetime.now() > datetime(2018, 7, 28, 12, 9, 0):
+    elif datetime(form_1_reminder_2_year, form_1_reminder_2_month, form_1_reminder_2_day + 1,
+                  form_1_reminder_2_hour, form_1_reminder_2_minute, form_1_reminder_2_seconds) > \
+            datetime.now() > \
+            datetime(form_1_reminder_2_year, form_1_reminder_2_month, form_1_reminder_2_day,
+                     form_1_reminder_2_hour, form_1_reminder_2_minute, form_1_reminder_2_seconds):
         EmailAlerts.email_alerts_form_1(mail, 'reminder_2')
     else:
         pass
@@ -47,11 +56,19 @@ def email_alerts_form_1():
 
 @app.route('/send_email_alerts/email_alerts/form_2')
 def email_alerts_form_2():
-    # if the datetime is greater than datetime set for email alerts,
-    #  this function will proceed otherwise pass
-    if datetime(2018, 7, 25, 0, 0, ) > datetime.now() > datetime(2018, 7, 24, 12, 9, 0):
+    # if date is greater than reminder date but less than one day added to the reminder date,
+    # the function will proceed.
+    if datetime(form_2_reminder_1_year, form_2_reminder_1_month, form_2_reminder_1_day + 1,
+                form_2_reminder_1_hour, form_2_reminder_1_minute, form_2_reminder_1_seconds) > \
+            datetime.now() > \
+            datetime(form_2_reminder_1_year, form_2_reminder_1_month, form_2_reminder_1_day,
+                     form_2_reminder_1_hour, form_2_reminder_1_minute, form_2_reminder_2_seconds):
         EmailAlerts.email_alerts_form_2(mail, 'reminder_1')
-    elif datetime(2018, 7, 28, 0, 0, ) > datetime.now() > datetime(2018, 7, 28, 12, 9, 0):
+    elif datetime(form_2_reminder_2_year, form_2_reminder_2_month, form_2_reminder_2_day + 1,
+                  form_2_reminder_2_hour, form_2_reminder_2_minute, form_2_reminder_2_seconds) > \
+            datetime.now() > \
+            datetime(form_2_reminder_2_year, form_2_reminder_2_month, form_2_reminder_2_day,
+                     form_2_reminder_2_hour, form_2_reminder_2_minute, form_2_reminder_2_seconds):
         EmailAlerts.email_alerts_form_2(mail, 'reminder_2')
     else:
         pass
