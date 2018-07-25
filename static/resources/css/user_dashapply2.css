@@ -24,7 +24,7 @@ html {
 /*  */
 /* user_dash_pg1_start  */
 
-.usr_pg_1_propic {
+/* .usr_pg_1_propic {
   margin-top: 8%;
   margin-left: 42%;
 }
@@ -48,108 +48,97 @@ html {
   display: block;
   border-radius: 15px;
 }
-
+.square{
+ width: 200px;
+ height: 200px;
+  border-radius: 15px;
+  background-color: rgba(156, 141, 141, 0.425);
+  content: "";
+}
 .file-upload {
   display: none;
-}
+} */
 
 /* ===== sec2 ========= */
 .sec2 {
   /* font-size: 80%; */
-  font: Lato;
+  font-family: "Lato";
+  margin-top: 5%;
 }
-.sec2 .row h1 {
+.sec2  h1 {
   text-align: center;
+  font-weight: 400;
 }
+
+/* language */
 
 .lan_alignment {
   /* float: right; */
   display: block;
-  margin-top: 3%;
   margin-bottom: none;
-  margin-left: auto;
-  margin-right: auto;
+  width: 40%;
+  margin: 3% 8%;
+  /* font-family: "Lato"; */
 }
 
-.lan_alignment1 {
-  /* float: right; */
-  display: block;
-  margin-top: none;
-  margin-bottom: none;
-  margin-left: auto;
-  margin-right: auto;
+.lan_alignment h2{
+font-weight: 400;
+letter-spacing: 2px;
+/* margin-bottom: %; */
+}
+.lan_alignment p{
+  margin-bottom: 3%;
+  letter-spacing: 1px;
 }
 
 .table_align {
-  margin: 1% auto;
-}
-
-.sec2 .span-1-of-4 {
-  display: inline-block;
-  width: 24%;
-}
-
-.sec2 .span-1-of-4:nth-child(1)
- {
-  width: 10%;
-}
-
-.sec2 .span-1-of-4:nth-child(2)
-{
-    width: 25%;
-}
-
-.date_input{
-    display:block;
-}
-/* input[type='date']{
-    display: inline-block;
-} */
-.h2_time{
-    margin-left: 12%;
-}
-
-input[type='text']{
-    height: 150%;
-    margin-top:15px;
+  margin: 0% auto;
 }
 
 table,
 th,
-td {
-  /* padding: 5px 30px;
-    padding-left: none; */
+ {
   padding-right: 30px;
-  /* padding-top: 20px; */
   padding-bottom: 20px;
   font-size: 85%;
-}
 
-th{
-    text-align: center;
-}
-
-
-table,
-th,
-td:nth-child(1) {
-  padding: none;
 }
 
 th {
-  letter-spacing: 3px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing:2px;
+  font-size: 95%;
+}
+
+/* table,
+th,
+td:nth-child(1) {
+  padding: none;
+} */
+
+th {
+  /* letter-spacing: 1px; */
   text-transform: uppercase;
   font-weight: 500;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 tr {
-  margin: 3% auto;
+  margin: 35% 10%;
+
 }
 
 td {
   /* margin:15%; */
   font: Lato;
   font-weight: 300;
+  margin-top: 2%;
+  font-size: 90%;
+  padding-bottom: 30px;
+  padding-right: 10px;
+  text-align: center;
 }
 
 /* for custom check box */
@@ -167,6 +156,7 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   outline: none;
   transition: 0.5s;
+  padding-top: 3%;
 }
 
 input[type="checkbox"]:before {
@@ -193,4 +183,138 @@ input.no_check:checked[type="checkbox"]:before {
   width: 10px;
   border-color: red;
   transform: rotate(45deg);
+}
+
+/* ============== */
+
+.edu{
+  margin: 1% 8%;
+}
+
+.edu_head{
+  margin:0 8%;
+}
+
+.edu_head h2{
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.edu_head p{
+  letter-spacing: 1px;
+  font-weight: 200;
+}
+
+.span-1-of-4 h1{
+text-align: center;
+font-weight: 700;
+text-transform: uppercase;
+font-size: 90%;
+letter-spacing: 1px;
+}
+
+.span-1-of-4:nth-child(1),
+.span-1-of-4:nth-child(2)
+{
+ width: 20%;
+}
+
+.span-1-of-4:nth-child(4){
+margin-left: 3%;
+}
+
+
+.input_course{
+  margin: 0 22%;
+}
+
+
+input[type="text"]{
+  /* text-align: center; */
+  margin-bottom: 2%;
+  margin-top: 5%;
+  padding: 5% 2%;
+  border-width: 0 0 2px;
+  border-bottom: 2px solid blue;
+  font-size: 70%;
+  border-radius: 5px;
+}
+
+.input_time table tr{
+  margin: 0 0;
+}
+
+.input_time td{
+  margin: 0 0;
+  padding-bottom: 4%;
+  width: 150%;
+}
+
+
+
+
+input[type="date"]{
+  margin-top: 7%;
+  border-width: 0 0 2px;
+  border-bottom: 2px solid blue;
+text-align: center;
+width: 95%;
+
+}
+
+.modal_form input[type='text']:focus,
+.modal_form input[type='date']:focus{
+  /* width: 60%; */
+  border-color:transparent;
+
+}
+
+.ins_align input[type="text"]{
+  margin-top: 3%;
+}
+
+
+
+
+/* ====================*/
+.tab {
+  overflow: hidden;
+ border: none;
+  background-color:transparent;
+  font-size: 110%;
+  transform: translate(40%,0);
+  border-radius: 5px;
+  margin-top: 1%;
+  width: 20%;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  color: white;
+  background-color: #3498db;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin-left: 2%;
+  font-size: 65%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #19679b;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color:#25a898;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+ border: none;
 }
