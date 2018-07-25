@@ -110,5 +110,30 @@ class About:
         connection.commit()
         connection.close()
 
+    @staticmethod
+    def get_all():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * from about WHERE form_1_status=?"
+        result = cursor.execute(query, ('submit', ))
+
+        rows = result.fetchall()
+
+        list = []
+
+        for row in rows:
+            dictionary = {
+                'id': row[0],
+                'about': row[1],
+                'why_volunteer': row[2],
+                'communities_associated': row[3],
+                'motivation': row[4]
+            }
+            list.append(dictionary)
+
+        connection.close()
+        return list
+
 
 

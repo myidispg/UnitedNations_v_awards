@@ -152,3 +152,34 @@ class Database:
 
         connection.commit()
         connection.close()
+
+    @staticmethod
+    def get_all():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * FROM users WHERE email_verified = ?"
+        result = cursor.execute(query, ('yes',))
+
+        rows = result.fetchall()
+
+        user_list = []
+        for row in rows:
+            dictionary = {
+                'id': row[0],
+                'email': row[1],
+                'name': row[3],
+                'mobile': row[4],
+                'tel_no': row[10],
+                'gender': row[5],
+                'dob': row[6],
+                'current_address': row[8],
+                'permanent_address': row[9],
+                'nationality': row[11],
+                'disability': row[12]
+            }
+            user_list.append(dictionary)
+
+        connection.close()
+        return user_list
+

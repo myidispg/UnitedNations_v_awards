@@ -56,3 +56,29 @@ class Education:
         connection.close()
 
         return education
+
+    @staticmethod
+    def get_all():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * from education"
+        result = cursor.execute(query)
+
+        rows = result.fetchall()
+
+        list = []
+
+        for row in rows:
+            dictionary = {
+                'id': row[0],
+                'course': row[1],
+                'from_date': row[2],
+                'till_date': row[3],
+                'institution': row[4],
+                'board': row[5]
+            }
+            list.append(dictionary)
+
+        connection.close()
+        return list

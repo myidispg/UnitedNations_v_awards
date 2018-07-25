@@ -6,6 +6,7 @@ from datetime import datetime
 
 import create_tables
 import temp
+from models.admin.views import admin_blueprint, get_mail
 from temp import *
 from email_alerts import EmailAlerts
 
@@ -29,6 +30,7 @@ mail = Mail(app)
 def init_db():
     # Database.initialize()
     create_tables
+    get_mail(mail)
 
 
 @app.route('/send_email_alerts/email_alerts/form_1')
@@ -95,6 +97,8 @@ from models.form_2.views import form2_blueprint
 app.register_blueprint(user_blueprint, url_prefix='/users')
 app.register_blueprint(form1_blueprint, url_prefix='/users/form1')
 app.register_blueprint(form2_blueprint, url_prefix='/users/form2')
+app.register_blueprint(admin_blueprint, url_prefix='/admin')
+
 
 if __name__ == "__main__":
     app.run(Debug=True)

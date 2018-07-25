@@ -39,18 +39,40 @@ class Language:
         connection.commit()
         connection.close()
 
+    @classmethod
+    def get_by_id(cls, _id):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
 
-@classmethod
-def get_by_id(cls, _id):
-    connection = sqlite3.connect(DATABASE_URI)
-    cursor = connection.cursor()
+        query = 'SELECT * FROM language WHERE _id=?'
+        result = cursor.execute(query, (_id,))
 
-    query = 'SELECT * FROM language WHERE _id=?'
-    result = cursor.execute(query, (_id,))
+        row = result.fetchone()
 
-    row = result.fetchone()
+        language = cls(row[0], row[1], row[2], row[3], row[4])
+        connection.close()
 
-    language = cls(row[0], row[1], row[2], row[3], row[4])
-    connection.close()
+        return language
 
-    return language
+    @staticmethod
+    def get_all():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * from language"
+        result = cursor.execute(query)
+
+        rows = result.fetchall()
+
+        list = []
+
+        for row in rows:
+            dictionary = {
+                "id": row[0],
+                'language': row[1],
+                'understand': row[2]
+            }
+            list.append(dictionary)
+
+        connection.close()
+        return list

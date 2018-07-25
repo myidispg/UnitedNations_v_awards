@@ -57,3 +57,30 @@ class Reference:
         connection.close()
 
         return reference
+
+    @staticmethod
+    def get_all():
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "SELECT * from reference"
+        result = cursor.execute(query)
+
+        rows = result.fetchall()
+
+        list = []
+
+        for row in rows:
+            dictionary = {
+                'id': row[0],
+                'name': row[2],
+                'address': row[3],
+                'tel_no': row[4],
+                'email': row[5],
+                'occupation': row[6],
+                'relation': row[7]
+            }
+            list.append(dictionary)
+
+        connection.close()
+        return list

@@ -4,10 +4,6 @@ import re
 import requests
 from passlib.hash import pbkdf2_sha512
 
-from common.database_about import About
-from common.database_user import Database
-from app import mail
-from flask_mail import Message
 
 
 class Utils:
@@ -52,6 +48,6 @@ class Utils:
         response_text = json.loads(response.text)
         return response_text['success']
 
-
-
-
+    @staticmethod
+    def search_list_dictionaries(key, value, list_of_dictionaries):
+        return [element for element in list_of_dictionaries if element[key] == value]

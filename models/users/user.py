@@ -140,3 +140,8 @@ class User:
     @staticmethod
     def change_password(password, _id):
         Database.change_password(password, _id)
+
+    @staticmethod
+    def get_all_users():
+        list = Database.get_all()
+        return list
