@@ -35,6 +35,8 @@
     <!-- style_sheet_link -->
     <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/main.css') }}">
 
+    {#    <link rel="stylesheet" href="{{ url_for("static", filename="resources/css/main.css?q=1280549780") }}"#}
+    {#          type='text/css' media='screen' charset="utf-8" >#}
     <link rel="stylesheet" href="/static/resources/css/main.css?q=1280549780"
           type="text/css" media="screen" charset="utf-8"/>
 
@@ -323,7 +325,9 @@
                            placeholder="confirm your password"
                            required>
                 </div>
-                <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                <div class="recaptcha-div">
+                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                </div>
 
                 <div class="col span-2-of-2">
                     <!-- apply_button_start -->
