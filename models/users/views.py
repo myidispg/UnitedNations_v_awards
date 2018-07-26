@@ -25,7 +25,7 @@ def login_user():
             return e.message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('base.html', language=0)
+    return render_template('user_dash_apply2.html', language=0)
 
 
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
@@ -44,7 +44,7 @@ def login_user_hindi():
             return message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('base.html', language=1)
+    return render_template('user_dash_apply2.html', language=1)
 
 
 @user_blueprint.route('register', methods=['GET', 'POST'])
@@ -73,10 +73,15 @@ def register_user():
                                'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
                                ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
                     mail.send(msg)
-                    return 'Please check your inbox for verification of the email before accessing your dashboard'
+                    # return 'Please check your inbox for verification of the email before accessing your dashboard'
+                    return render_template('general.html',
+                                           heading='Email verification required',
+                                           message='Please check your inbox for verification '
+                                                   'of the email before accessing your dashboard')
                     # return redirect(url_for('.user_dashboard'))
             else:
-                return "Please verify the captcha"
+                return render_template('general.html',
+                                       heading='Please go back and verify the captcha')
         except UserErrors.UserError as e:
             return e.message
 
@@ -109,12 +114,17 @@ def register_user_hindi():
                                'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
                                ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
                     mail.send(msg)
-                    return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
+                    # return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
+                    return render_template('general.html',
+                                           heading='ईमेल सत्यापन आवश्यक है',
+                                           message='अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के '
+                                                   'लिए कृपया अपना इनबॉक्स जांचें')
                     # return redirect(url_for('.user_dashboard_hindi'))
             else:
                 gs = goslate.Goslate()
-                message = gs.translate("Please verify the captcha", 'hi')
-                return message
+                message = gs.translate("Please go back and verify the captcha.", 'hi')
+                return render_template('general.html',
+                                       heading=message)
         except UserErrors.UserError as e:
             gs = goslate.Goslate()
             message = gs.translate(e.message, 'hi')
@@ -156,14 +166,16 @@ def forgot_password(_id):
 @user_blueprint.route('user-dashboard')
 def user_dashboard():
     email = session['email']
-    return render_template('user_dash_apply2.html', email=email)
+    user_name = User.get_user_object(email=email).name
+    return render_template('user_dash_apply2.html', name=user_name)
     # return "Welcome to your dashboard {}!".format(email)
 
 
 @user_blueprint.route('/hi/user-dashboard')
 def user_dashboard_hindi():
     email = session['email']
-    return render_template('user_dash_apply2.html', email=email)
+    user_name = User.get_user_object(email=email).name
+    return render_template('user_dash_apply2.html', name=user_name)
     # return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
 
@@ -174,7 +186,9 @@ def activation_email(_id):
         user.save_email_verified_status()
         return redirect(url_for('.user_dashboard'))
     else:
-        return 'The email is already verified.'
+        return render_template('general.html', heading='Email already verified',
+                               message='Looks like the email is already verified.'
+                                       ' Please login to continue.')
 
 
 @user_blueprint.route('/hi/user-verify/<string:_id>')
@@ -186,5 +200,5 @@ def activation_email_hindi(_id):
     else:
         # return 'ईमेल पहले से ही सत्यापित है।'
         gs = goslate.Goslate()
-        message = gs.translate('The email is already verified', 'hi')
-        return message
+        message = gs.translate('Looks like the email is already verified. Please login to continue.', 'hi')
+        return render_template('general.html', heading='ईमेल पहले ही सत्यापित है', message=message)

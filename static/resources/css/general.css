@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+.row{
+    width: 90%;
+    margin: 0 5%;
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+/* logo styling */
+.logo_v {
+  height: 100px;
+  width: 100px;
+  background-color: rgba(119, 119, 230, 0.329);
+  margin: 1% 1%;
+  display: inline-block;
+}
+
+/* .h1_contain{
+    width: 10%;
+} */
+
+.sec1 {
+  height: 100vh;
+  width: auto;
+  /* background-color: rgba(236, 234, 231, 0.555); */
+  background-attachment: fixed;
+}
+
+.sec1 h1 {
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-left: 40%;
+  margin-bottom: 2%;
+  width: auto;
+
+}
+
+.sec1 p{
+    text-align: justify;
+    margin-top: 4%;
+}
+
+
+footer{
+    height: 5%;
+    background-color:  #3498db;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer h1{
+    font-weight: 400;
+    font-size: 125%;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+footer ul{
+    list-style: none;
+    margin-bottom:1%;
+    cursor: pointer;
+  }
+
+
+  footer li{
+    display: inline-block;
+    color: white;
+    padding: 8px;
+  }
+
+  .footer_div_style{
+    text-align: center;
+  }
+
+  .foot_a_style{
+    color: rgb(255, 253, 253);
+    transition: all 0.3s;
+  }
