@@ -154,11 +154,13 @@
 
 
     <div class="text_box">
-        <h1>v - awards</h1>
+        <div class="img_textbox">
+           <img src="../static/resources/css/imgs/logos/main.png" style="height: 350px;width: 350px" alt="">
+        </div>
         {% if language == 0 %}
             <a href="{{ url_for('users.register_user') }}" class="btn btn_white">Apply now</a>
         {% else %}
-            <a href="{{ url_for('users.register_user') }}" class="btn btn_white">अप्लाई करें</a>
+            <a href="{{ url_for('users.register_user_hindi') }}" class="btn btn_white">अप्लाई करें</a>
         {% endif %}
     </div>
 
@@ -172,18 +174,43 @@
 
 <section class="sec1" id="about_unv">
     <div class="row">
-        <h1>about unv india</h1>
-        <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="" class="js--wp--2">
-        <p class="js--wp--1">The United Nations Volunteers (UNV) programme contributes to peace and development through
-            volunteerism worldwide.
-            Volunteerism is a basic expression of human relationship. It is about people’s need to participate in their
-            societies and to feel that they matter to others. Social relationships intrinsic to volunteer work are
-            critical
-            to individual and community well-being. We work with partners to integrate qualified, highly motivated and
-            well supported UN Volunteers into development programming and promote the value and global recognition of
-            volunteerism. UNV is active in around 130 countries every year. With Field Presences in over 80 countries,
-            UNV is represented worldwide. UNV is administered by the United Nations Development Programme (UNDP) and
-            reports to the UNDP Executive Board.</p>
+        {% if language == 0 %}
+            <h1>about unv india</h1>
+            <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="" class="js--wp--2">
+            <p class="js--wp--1">The United Nations Volunteers (UNV) programme contributes to peace and development
+                through
+                volunteerism worldwide.
+                Volunteerism is a basic expression of human relationship. It is about people’s need to participate in
+                their
+                societies and to feel that they matter to others. Social relationships intrinsic to volunteer work are
+                critical
+                to individual and community well-being. We work with partners to integrate qualified, highly motivated
+                and
+                well supported UN Volunteers into development programming and promote the value and global recognition
+                of
+                volunteerism. UNV is active in around 130 countries every year. With Field Presences in over 80
+                countries,
+                UNV is represented worldwide. UNV is administered by the United Nations Development Programme (UNDP) and
+                reports to the UNDP Executive Board.</p>
+        {% elif language ==1 %}
+            <h1>यूएनवी इंडिया के बारे में</h1>
+            <img src="{{ url_for('static', filename='resources/css/imgs/idea-1.jpg') }}" alt="" class="js--wp--2">
+            <p class="js--wp--1">संयुक्त राष्ट्र स्वयंसेवक (यूएनवी) कार्यक्रम दुनिया भर में स्वयंसेवीवाद के माध्यम से
+                शांति और
+                विकास में योगदान देता है। स्वयंसेवीवाद मानव संबंधों की मूल अभिव्यक्ति है। यह लोगों को अपने समाज में भाग
+                लेने
+                की आवश्यकता है और यह महसूस करने के लिए कि वे दूसरों के लिए महत्वपूर्ण हैं। स्वयंसेवी कार्य के लिए आंतरिक
+                सामाजिक संबंध व्यक्तिगत और सामुदायिक कल्याण के लिए महत्वपूर्ण हैं। हम भागीदारों के साथ काम कर रहे
+                प्रोग्रामिंग
+                में योग्य, अत्यधिक प्रेरित और अच्छी तरह से समर्थित संयुक्त राष्ट्र स्वयंसेवकों को एकीकृत करने और
+                स्वयंसेवीवाद
+                के मूल्य और वैश्विक मान्यता को बढ़ावा देने के लिए भागीदारों के साथ काम करते हैं। यूएनवी हर साल करीब 130
+                देशों में सक्रिय है। 80 से अधिक देशों में फील्ड प्रेज़ेंस के साथ, यूएनवी दुनिया भर में प्रतिनिधित्व किया
+                जाता है।
+                यूएनवी को संयुक्त राष्ट्र विकास कार्यक्रम (यूएनडीपी) द्वारा प्रशासित किया जाता है और यूएनडीपी कार्यकारी
+                बोर्ड
+                को रिपोर्ट करता है।</p>
+        {% endif %}
 
     </div>
 
@@ -196,32 +223,77 @@
 <!-- =============section_2_about_unv awards_start============ -->
 <section class="sec2" id="about_unv_awards">
     <div class="row">
-        <h1>UNV awards</h1>
-        <p>Volunteerism is an important, and increasingly popular, mechanism for young people to bring about positive
-            change
-            in society, and it is becoming more and more relevant as a mechanism to engage young people in human
-            development.
-            Volunteers are constantly contributing and positively influencing India’s social development. It has been
-            highlighted that promoting volunteerism by rewarding and recognizing volunteer’s efforts towards creating
-            a conducive environment is looked as one of the crucial elements towards encouraging people to volunteer.
-            Efforts have been promoted both by Government agencies and private institution to channelize the effort of
-            volunteering by celebrating, rewarding and promoting volunteerism and volunteers in India. This framework
-            would help a host coordinating agency or a consortium to take forward institution of an award and its
-            implementation.
-            <br> There is a felt need to promote culture of youth volunteering in the country and therefore it’s all the
-            more important to reward young people inspiring social change. Long term goal is to: Motivate100 young
-            persons
-            (aged between 18 – 29 years) per annum to achieve excellence in the field of national development or social
-            service in the long term. In this process also inspire incubation of state- level awards with at least 10
-            states creating a platform for celebrating 10 young leaders each. Encourage young people to develop a sense
-            of responsibility to the community and thus to improve their own personal potential as active citizens
-            Create
-            a culture of youth volunteering in the country through rewarding young leaders inspiring social change As
-            a pilot it is proposed to institute one national award with 12 awardees to begin with but the long-term
-            vision
-            is that all states adopt this model and run state wise programmes too. The long-term goal is to have a
-            cohort
-            of 100 awardees nationally eventually with states having 10 awardees each.</p>
+        {% if language == 0 %}
+            <h1>UNV awards</h1>
+            <p>Volunteerism is an important, and increasingly popular, mechanism for young people to bring about
+                positive
+                change
+                in society, and it is becoming more and more relevant as a mechanism to engage young people in human
+                development.
+                Volunteers are constantly contributing and positively influencing India’s social development. It has
+                been
+                highlighted that promoting volunteerism by rewarding and recognizing volunteer’s efforts towards
+                creating
+                a conducive environment is looked as one of the crucial elements towards encouraging people to
+                volunteer.
+                Efforts have been promoted both by Government agencies and private institution to channelize the effort
+                of
+                volunteering by celebrating, rewarding and promoting volunteerism and volunteers in India. This
+                framework
+                would help a host coordinating agency or a consortium to take forward institution of an award and its
+                implementation.
+                <br> There is a felt need to promote culture of youth volunteering in the country and therefore it’s all
+                the
+                more important to reward young people inspiring social change. Long term goal is to: Motivate100 young
+                persons
+                (aged between 18 – 29 years) per annum to achieve excellence in the field of national development or
+                social
+                service in the long term. In this process also inspire incubation of state- level awards with at least
+                10
+                states creating a platform for celebrating 10 young leaders each. Encourage young people to develop a
+                sense
+                of responsibility to the community and thus to improve their own personal potential as active citizens
+                Create
+                a culture of youth volunteering in the country through rewarding young leaders inspiring social change
+                As
+                a pilot it is proposed to institute one national award with 12 awardees to begin with but the long-term
+                vision
+                is that all states adopt this model and run state wise programmes too. The long-term goal is to have a
+                cohort
+                of 100 awardees nationally eventually with states having 10 awardees each.</p>
+        {% elif language == 1 %}
+            <h1>यूएनवी पुरस्कार</h1>
+            <p>स्वयंसेवीवाद युवाओं के लिए समाज में सकारात्मक परिवर्तन लाने के लिए एक महत्वपूर्ण, और तेजी से लोकप्रिय,
+                तंत्र है,
+                और यह मानव विकास में युवा लोगों को शामिल करने के लिए एक तंत्र के रूप में अधिक से अधिक प्रासंगिक हो रहा
+                है। स्वयंसेवकों का लगातार योगदान और सकारात्मक रूप से भारत के सामाजिक विकास को प्रभावित कर रहे हैं। यह
+                हाइलाइट किया गया है कि एक अनुकूल माहौल बनाने के लिए स्वयंसेवक के प्रयासों को पुरस्कृत करने और पहचानने
+                के द्वारा स्वयंसेवीवाद को बढ़ावा देना लोगों को स्वयंसेवक को प्रोत्साहित करने के लिए महत्वपूर्ण तत्वों
+                में से एक के रूप में देखा जाता है। भारत में स्वयंसेवीवाद और स्वयंसेवकों का जश्न मनाने, पुरस्कृत करने और
+                प्रचार करके स्वयंसेवकों के प्रयास को प्रसारित करने के लिए सरकारी एजेंसियों और निजी संस्थान दोनों द्वारा
+                प्रयासों को बढ़ावा दिया गया है। यह ढांचा एक मेजबान समन्वयक एजेंसी या एक संघ की अगुवाई करने के लिए एक
+                पुरस्कार और उसके कार्यान्वयन को आगे बढ़ाने में मदद करेगा।
+                देश में युवाओं की स्वयंसेवी संस्कृति की संस्कृति को बढ़ावा देने की एक जरूरी जरूरत है और इसलिए सामाजिक
+                परिवर्तन को प्रेरित
+                करने वाले युवा लोगों को पुरस्कृत करना और भी महत्वपूर्ण है। दीर्घकालिक लक्ष्य है: लंबी अवधि में राष्ट्रीय
+                विकास या
+                सामाजिक सेवा के क्षेत्र में उत्कृष्टता प्राप्त करने के लिए प्रति वर्ष 100 युवा व्यक्तियों (18 से 2 9
+                वर्ष के आयु वर्ग)
+                को प्रेरित करें। इस प्रक्रिया में कम से कम 10 राज्यों के साथ 10-युवा नेताओं का जश्न मनाने के लिए मंच
+                तैयार करने
+                के साथ-साथ राज्य स्तर के पुरस्कारों का ऊष्मायन भी प्रेरित किया जाता है। युवाओं को समुदाय के लिए
+                ज़िम्मेदारी
+                विकसित करने के लिए प्रोत्साहित करें और इस प्रकार सक्रिय नागरिकों के रूप में अपनी व्यक्तिगत क्षमता में
+                सुधार
+                करने के लिए सामाजिक परिवर्तन को प्रेरित करने वाले युवा नेताओं को पुरस्कृत करने वाले युवा नेताओं के
+                माध्यम
+                से देश में स्वयंसेवी युवाओं की संस्कृति बनाएं। एक पायलट के रूप में इसे एक राष्ट्रीय पुरस्कार स्थापित
+                करने का
+                प्रस्ताव है 12 पुरस्कार विजेताओं के साथ शुरू होने के साथ ही दीर्घकालिक दृष्टि यह है कि सभी राज्य इस मॉडल
+                को अपनाते हैं और राज्यवार कार्यक्रम भी चलाते हैं। दीर्घकालिक लक्ष्य राष्ट्रीय स्तर पर 100 पुरस्कार
+                विजेताओं के
+                साथ है, जिसमें राज्यों के साथ 10 पुरस्कार विजेता हैं।</p>
+        {% endif %}
     </div>
 </section>
 
@@ -234,11 +306,36 @@
 
 <section class="sec3" id="get_inspired">
     <div class="row">
-        <h1>
-            Get Inspired
-        </h1>
-        <!-- images and testimonials -->
-        <p>
+        {% if language == 0 %}
+            <h1>
+                Get Inspired
+            </h1>
+            <!-- images and testimonials -->
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nulla illo repudiandae ipsum. Omnis
+                inventore pariatur
+                dolorem voluptatem animi labore tenetur eos quidem esse autem eligendi perspiciatis quaerat, quae
+                consequatur!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam natus repellat blanditiis officiis
+                pariatur
+                dignissimos doloremque sit at delectus assumenda maxime atque, unde laudantium corporis necessitatibus
+                exercitationem
+                sunt asperiores accusantium. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cumque eaque
+                pariatur
+                odit, expedita temporibus beatae sequi dolores dignissimos. Nihil corporis deserunt facere consequatur
+                adipisci,
+                accusamus debitis cum expedita tenetur? Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                inventore
+                obcaecati pariatur dicta voluptates aspernatur delectus dignissimos vitae doloribus nemo impedit saepe,
+                harum
+                asperiores excepturi assumenda dolore! Quas, quis ullam?
+            </p>
+        {% else %}
+            <h1>
+                प्रेरित हुआ
+            </h1>
+            <!-- images and testimonials -->
+            <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nulla illo repudiandae ipsum. Omnis
             inventore pariatur
             dolorem voluptatem animi labore tenetur eos quidem esse autem eligendi perspiciatis quaerat, quae
@@ -256,7 +353,7 @@
             obcaecati pariatur dicta voluptates aspernatur delectus dignissimos vitae doloribus nemo impedit saepe,
             harum
             asperiores excepturi assumenda dolore! Quas, quis ullam?
-        </p>
+        {% endif %}
     </div>
 </section>
 
@@ -264,151 +361,14 @@
 <!-- =============section_3_get_inspired_end============= -->
 
 
-<!-- =============section_4_applyNow_form_start============= -->
-
-
-{#<section class="sec4" id="apply_now">#}
-{#    <div class="row">#}
-{#        <h1>apply now</h1>#}
-{#    </div>#}
-{#    {% if language == 0 %}#}
-{#        <div class="row sec4rw">#}
-{#            <form id="register-form" action="{{ url_for("users.register_user") }}" method="post">#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="name"> full name</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="text" name="name" id="name" placeholder="Your full name" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="email">email</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="email" name="email" id="email" placeholder="your email-id" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{##}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="phone_no">Mobile Number</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="number" name="phone_no" id="phone_no" placeholder="mobile number" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="dob">date of birth</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="date" name="dob" id="dob" placeholder="D.O.B" required>#}
-{#                </div>#}
-{##}
-{##}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="gender">gender</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="checkbox" name="gender" id="gender_male"> male#}
-{#                    <input type="checkbox" name="gender" id="gender_female"> female#}
-{#                </div>#}
-{##}
-{##}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="new_password">password</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="password" name="new_password" id="new_password"#}
-{#                           placeholder="enter your new password" required>#}
-{#                    <br>#}
-{#                    <input type="password" name="confirm_password" id="confirm_password"#}
-{#                           placeholder="confirm your password"#}
-{#                           required>#}
-{#                </div>#}
-                <div class="recaptcha-div">
-                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
-                </div>
-{##}
-{#                <div class="col span-2-of-2">#}
-{#                    <!-- apply_button_start -->#}
-{#                    <button type="submit" class="btn_register" id="register-submit-button">Submit</button>#}
-{#                    <!-- apply_button_end -->#}
-{#                </div>#}
-{#                <!-- apply_button_start -->#}
-{#            </form>#}
-{#        </div>#}
-{#    {% else %}#}
-{#        <div class="row sec4rw">#}
-{#            <form id="register-form" action="{{ url_for("users.register_user_hindi") }}" method="post">#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="name_hindi"> पूरा नाम</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="text" name="name_hindi" id="name_hindi" placeholder="आपका पूरा नाम" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="email_hindi">ई-मेल</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="email" name="email_hindi" id="email_hindi" placeholder="आपका ई-मेल" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{##}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="phone_no_hindi">मोबाइल नंबर</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="number" name="phone_no_hindi" id="phone_no_hindi" placeholder="मोबाइल नंबर" required>#}
-{#                </div>#}
-{#                <!--  -->#}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="dob_hindi">जन्म की तारीख</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="date" name="dob_hindi" id="dob_hindi" placeholder="जन्म की तारीख" required>#}
-{#                </div>#}
-{##}
-{##}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="gender_hindi">लिंग</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="checkbox" name="gender_hindi" id="gender_male_hindi"> नर#}
-{#                    <input type="checkbox" name="gender_hindi" id="gender_female_hindi"> महिला#}
-{#                </div>#}
-{##}
-{##}
-{#                <div class="col span-1-of-2">#}
-{#                    <label for="new_password_hindi">पासवर्ड</label>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <input type="password" name="new_password_hindi" id="new_password_hindi"#}
-{#                           placeholder="अपना पासवर्ड डालें" required>#}
-{#                    <br>#}
-{#                    <input type="password" name="confirm_password_hindi" id="confirm_password_hindi"#}
-{#                           placeholder="अपने पासवर्ड की पुष्टि करें"#}
-{#                           required>#}
-{#                </div>#}
-{#                <div class="recaptcha-div">#}
-{#                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>#}
-{#                </div>#}
-{#                <div class="col span-2-of-2">#}
-{#                    <!-- apply_button_start -->#}
-{#                    <button type="submit" class="btn_register" id="register-submit-button">जमा करें</button>#}
-{#                    <!-- apply_button_end -->#}
-{#                </div>#}
-{#                <!-- apply_button_start -->#}
-{#            </form>#}
-{#        </div>#}
-{#    {% endif %}#}
-<!-- =============section_4_applyNow_form_end============= -->
-
 <!-- ====================partners_logos====================== -->
 <section class="sec4">
     <div class="row">
-        <h1>Our Partners</h1>
+        {% if language == 0 %}
+            <h1>Our Partners</h1>
+        {% else %}
+            <h1>हमारे सहयोगी</h1>
+        {% endif %}
     </div>
 
     <div class="row">
@@ -451,7 +411,11 @@
 <!-- =============footer_start============= -->
 <footer>
     <div class="row">
-        <h1>Connect with us</h1>
+        {% if language == 0 %}
+            <h1>Connect with us</h1>
+        {% else %}
+            <h1>हमसे जुडे</h1>
+        {% endif %}
     </div>
 
     <div class="row footer_div_style">

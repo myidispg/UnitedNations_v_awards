@@ -128,6 +128,13 @@ header {
   text-align: center;
 }
 
+
+.img_textbox{
+
+  margin-top: 7%;
+  height: 300px;
+}
+
 .text_box h1 {
   font-weight: 500;
   text-transform: uppercase;
@@ -140,6 +147,9 @@ header {
   font-family: "Lato", sans-serif;
   cursor: pointer;
 }
+
+
+
 
 header h1:after {
   display: block;
@@ -178,7 +188,7 @@ header h1:after {
   /* background-color:#515175; */
   background-color:rgb(235, 229, 229);
   color:#002f49;
-  margin-top: 40px;
+  margin-top: 10px;
   letter-spacing: 2px;
   word-spacing: 4px;
   font-weight: 400;

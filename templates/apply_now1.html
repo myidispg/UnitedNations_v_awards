@@ -48,51 +48,101 @@
     <!--logo_end -->
 
     <div class="row">
-        <div class="text_greeting">
-            <h1>Hi! let's get started</h1>
-        </div>
+        {% if language == 0 %}
+            <div class="text_greeting">
+                <h1>Hi! let's get started</h1>
+            </div>
+        {% elif language == 1 %}
+            <div class="text_greeting">
+                <h1>नमस्ते! आएँ शुरू करें</h1>
+            </div>
+        {% endif %}
 
-        <div class="row ">
-            <div class="col span-1-of-2">
-                <div class="eligibility_style">
+        {% if language == 0 %}
+            <div class="row ">
+                <div class="col span-1-of-2">
+                    <div class="eligibility_style">
 
-                    <h1>Eligibility </h1>
-                    <p>
-                    <div class="criteria">
-                        <label class="sign">*</label> You must be a citizen of India;
+                        <h1>Eligibility </h1>
+                        <p>
+                        <div class="criteria">
+                            <label class="sign">*</label> You must be a citizen of India;
+                        </div>
+                        <div class="criteria">
+                            <label class="sign">*</label> You must be between 18-29 years;
+                        </div>
+                        <div class="criteria">
+                            <label class="sign">*</label> You must have volunteered for minimum of 150 hours in a
+                            volunteering project spread
+                            over the past one year
+                        </div>
+
+
+                        <div class="criteria">
+                            <label class="sign">*</label> Your actions have included a meaningful engagement with
+                            communities.
+                        </div>
+
+                        </p>
                     </div>
-                    <div class="criteria">
-                        <label class="sign">*</label> You must be between 18-29 years;
-                    </div>
-                    <div class="criteria">
-                        <label class="sign">*</label> You must have volunteered for minimum of 150 hours in a
-                        volunteering project spread
-                        over the past one year
-                    </div>
+                </div>
 
-
-                    <div class="criteria">
-                        <label class="sign">*</label> Your actions have included a meaningful engagement with
-                        communities.
+                <div class="col span-1-of-2">
+                    <div>
+                        <img src="resources/css/imgs/back/backgrounds/background-2.jpg"
+                             style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
+                             alt="">
+                        <img src="{{ url_for('static', filename='resources/css/imgs/back/backgrounds/background-2.jpg') }}"
+                             style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
+                             alt="">
                     </div>
-
-                    </p>
                 </div>
             </div>
+        {% elif language == 1 %}
+            <div class="row ">
+                <div class="col span-1-of-2">
+                    <div class="eligibility_style">
 
-            <div class="col span-1-of-2">
-                <div>
-                    <img src="resources/css/imgs/back/backgrounds/background-2.jpg"
-                         style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
-                         alt="">
+                        <h1>पात्रता </h1>
+                        <p>
+                        <div class="criteria">
+                            <label class="sign">*</label> आपको भारत का नागरिक होना चाहिए;
+                        </div>
+                        <div class="criteria">
+                            <label class="sign">*</label> आप 18-29 साल के बीच होना चाहिए;
+                        </div>
+                        <div class="criteria">
+                            <label class="sign">*</label> आपने पिछले एक साल में एक स्वयंसेवी परियोजना में कम से कम 150
+                            घंटे के लिए स्वयंसेवा किया होगा
+                        </div>
+
+
+                        <div class="criteria">
+                            <label class="sign">*</label> आपके कार्यों में समुदायों के साथ सार्थक जुड़ाव शामिल है।
+                        </div>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col span-1-of-2">
+                    <div>
+                        <img src="resources/css/imgs/back/backgrounds/background-2.jpg"
+                             style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
+                             alt="">
+                        <img src="{{ url_for('static', filename='resources/css/imgs/back/backgrounds/background-2.jpg') }}"
+                             style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
+                             alt="">
+                    </div>
                 </div>
             </div>
+        {% endif %}
+    </div>
 
-        </div>
 
-
-        <div class="row">
-            <div class="before_move">
+    <div class="row">
+        <div class="before_move">
+            {% if language == 0 %}
                 <div>
                     <h2>Before we move ahead </h2>
                 </div>
@@ -100,29 +150,35 @@
                 <div>
                     <p>
                     <div>
-                        1. Please make sure that you have read the eligibility criteria and other details of the award
+                        1. Please make sure that you have read the eligibility criteria and other details of the
+                        award
                         call out letter / introductory
                         note. Applications not following the guidelines or / and with incomplete information may
                         be liable for disqualification from further processing.
                     </div>
 
                     <div>
-                        <br> 2. Award is a not competition. Our wish is to recognize the work done by many young people.
-                        The purpose of the selection process is to make sure that there is a match in profiles, values
+                        <br> 2. Award is a not competition. Our wish is to recognize the work done by many young
+                        people.
+                        The purpose of the selection process is to make sure that there is a match in profiles,
+                        values
                         and expectations between the applicants and Award. The selection panel bases any selection
                         on an overall assessment, and may make exceptions to the criteria if it serves the larger
                         purpose of the programme.
                     </div>
 
                     <div>
-                        <br> 3. We really want to know who you are and what your work is. So please be frank and open.
+                        <br> 3. We really want to know who you are and what your work is. So please be frank and
+                        open.
                     </div>
                     <div>
-                        <br> 4. This journey intends to support youth led initiatives as well as youth leaders who are
+                        <br> 4. This journey intends to support youth led initiatives as well as youth leaders who
+                        are
                         addressing aspects of volunteering in any theme.
                     </div>
                     <div>
-                        <br> 5. Submission of application form doesn’t guarantee the approval of the same and Approval
+                        <br> 5. Submission of application form doesn’t guarantee the approval of the same and
+                        Approval
                         of application doesn’t guarantee funding support.
                     </div>
                     <div>
@@ -134,65 +190,225 @@
                     </div>
                     </p>
                 </div>
-            </div>
+            {% elif language == 1 %}
+                <div>
+                    <h2>इससे पहले कि हम आगे बढ़ें </h2>
+                </div>
 
+                <div>
+                    <p>
+                    <div>
+                        1. कृपया सुनिश्चित करें कि आपने योग्यता मानदंड और पुरस्कार कॉल आउट पत्र / प्रारंभिक नोट
+                        के अन्य विवरण पढ़े हैं। आवेदन दिशानिर्देशों का पालन नहीं करते हैं और / और अपूर्ण जानकारी के
+                        साथ आगे की प्रक्रिया से अयोग्यता के लिए उत्तरदायी हो सकते हैं।
+                    </div>
+
+                    <div>
+                        <br> पुरस्कार एक प्रतिस्पर्धा नहीं है। हमारी इच्छा कई युवा लोगों द्वारा किए गए कार्यों को
+                        पहचानना है। चयन प्रक्रिया का उद्देश्य यह सुनिश्चित करना है कि आवेदकों और पुरस्कारों के
+                        बीच प्रोफाइल, मूल्यों और अपेक्षाओं में एक मैच है। चयन पैनल समग्र मूल्यांकन पर किसी भी
+                        चयन का आधार बनाता है, और यदि यह कार्यक्रम के बड़े उद्देश्य को पूरा करता है तो मानदंडों
+                        के अपवाद कर सकता है।
+                    </div>
+
+                    <div>
+                        <br> 3. हम वास्तव में जानना चाहते हैं कि आप कौन हैं और आपका काम क्या है।
+                        तो कृपया स्पष्ट और खुले रहें।
+                    </div>
+                    <div>
+                        <br> 4. यह यात्रा युवाओं की अगुआई वाली पहलुओं के साथ-साथ युवा नेताओं का समर्थन
+                        करने का इरादा रखती है जो किसी भी विषय में स्वयंसेवकों के पहलुओं को संबोधित कर रहे हैं।
+                    </div>
+                    <div>
+                        <br> 5. आवेदन पत्र जमा करने से इसकी मंजूरी की गारंटी नहीं मिलती है और आवेदन की
+                        स्वीकृति वित्त पोषण सहायता की गारंटी नहीं देती है।
+                    </div>
+                    <div>
+                        <br> 6. पुरस्कार टीम या परियोजना चयन पैनल, या किसी अन्य कदाचार के किसी भी सदस्य
+                        से संपर्क करने या प्रभावित करने के लिए कोई भी प्रयास, या झूठी सूचना जमा करने से आवेदन
+                        की अस्वीकृति हो जाएगी।
+                        <br>
+                    </div>
+                    </p>
+                </div>
+            {% endif %}
         </div>
 
-        <div class="sign_up">
+    </div>
+
+    <div class="sign_up row">
+        {% if language == 0 %}
             <h3>Sign Up</h3>
-        </div>
+        {% elif language == 1%}
+            <h3>साइन अप करें</h3>
+        {% endif %}
+    </div>
 
-        <div>
-            <div class="col span-1-of-2">
-                <div class="row">
+    <div class="row">
+        <div class="col span-1-of-2">
+            <div class="row">
+                {% if language == 0 %}
                     <form action="{{ url_for("users.register_user") }}" method="post">
                         <div>
-                            <p> Name:</p>
-                            <input name="name" type="text" placeholder="Full Name">
+                            <table>
+                                <tr>
+                                    <td>name</td>
+                                    <td><input name="name" type="text" placeholder="Full Name"></td>
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>Date Of Birth</td>
+                                    <td><input name="dob" type="date" placeholder="Please enter your email"></td>
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>E-mail</td>
+                                    <td><input name="email" type="email" placeholder="Please enter your email"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mobile Number</td>
+                                    <td><input name="phone_no" type="number" placeholder="Your mobile number"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>
+                                        Male:
+                                        <input type="checkbox" name="gender_male" id="">
+                                        Female:
+                                        <input type="checkbox" name="gender_female" id="">
+                                        Others:
+                                        <input type="checkbox" name="gender_other" id="">
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Password:</td>
+                                    <td><input name="new_password" type="password" placeholder="minimum 6 letters"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>confirm password</td>
+                                    <td><input type="password" placeholder="minimum 6 letters"></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div>
-                            <p>E-mail</p>
 
-                            <input name="email" type="email" placeholder="Please enter your email">
+                        <div class="recaptcha-div">
+                            <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
                         </div>
 
-                        <div>
-                            <p>Password:</p>
-                            <input name="new_password" type="password" placeholder="minimum 6 letters">
-                        </div>
-
-                        <div class="col span-1-of-2">
-                            <div>
-                                <p>Date Of Birth:</p>
-                                <!-- <br> -->
-                                <input name="dob" type="date" placeholder="DOB">
-                            </div>
-
-                            <div>
-                                <p>Mobile No.</p>
-                                <input name="phone_no" type="number" placeholder="Your mobile number">
-                            </div>
-                            <div>
-                                <p>Gender</p>
-
-                                <input type="checkbox" name="gender_male" id="">
-                                <input type="checkbox" name="gender_female" id="">
-                            </div>
-
-                            <div>
-                                <p> Confirm Password</p>
-
-                                <input type="password" placeholder="minimum 6 letters">
-                            </div>
-                            <div class="recaptcha-div">
-                                <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
-                            </div>
-
-                            <button type="submit">Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
-                </div>
+                {% elif language == 1 %}
+                    <form action="{{ url_for("users.register_user_hindi") }}" method="post">
+                        {#                        <div>#}
+                        {#                            <p> पूरा नाम:</p>#}
+                        {#                            <input name="name_hindi" type="text" placeholder="आपका पूरा नाम">#}
+                        {#                        </div>#}
+                        {#                        <div>#}
+                        {#                            <p>ई-मेल</p>#}
+                        {##}
+                        {#                            <input name="email_hindi" type="email" placeholder="आपका ई-मेल">#}
+                        {#                        </div>#}
+                        {##}
+                        {#                        <div>#}
+                        {#                            <p>पासवर्ड:</p>#}
+                        {#                            <input name="new_password_hindi" type="password" placeholder="न्यूनतम 6 अक्षर">#}
+                        {#                        </div>#}
+                        {##}
+                        {#                        <div class="col span-1-of-2">#}
+                        {#                            <div>#}
+                        {#                                <p>जन्म की तारीख:</p>#}
+                        {#                                <!-- <br> -->#}
+                        {#                                <input name="dob_hindi" type="date" placeholder="जन्म की तारीख">#}
+                        {#                            </div>#}
+                        {##}
+                        {#                            <div>#}
+                        {#                                <p>मोबाइल नंबर</p>#}
+                        {#                                <input name="phone_no_hindi" type="number" placeholder="मोबाइल नंबर">#}
+                        {#                            </div>#}
+                        {#                            <div>#}
+                        {#                                <p>लिंग</p>#}
+                        {#                                नर: <input type="checkbox" name="gender_male_hindi" id="">#}
+                        {#                                महिला: <input type="checkbox" name="gender_female_hindi" id="">#}
+                        {#                                अन्य लिंग: <input type="checkbox" name="gender_other_hindi" id="">#}
+                        {#                            </div>#}
+                        {##}
+                        {#                            <div>#}
+                        {#                                <p> पासवर्ड की पुष्टि कीजिये</p>#}
+                        {##}
+                        {#                                <input type="password" placeholder="न्यूनतम 6 अक्षर">#}
+                        {#                            </div>#}
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>पूरा नाम:</td>
+                                    <td><input name="name" type="text" placeholder="आपका पूरा नाम"></td>
+                                </tr>
+
+                                <tr>
+
+
+                                    <td>जन्म की तारीख:</td>
+                                    <td><input name="dob" type="date" placeholder="जन्म की तारीख"></td>
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>ई-मेल</td>
+                                    <td><input name="email" type="email" placeholder="आपका ई-मेल"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>मोबाइल नंबर</td>
+                                    <td><input name="phone_no" type="number" placeholder="आपका मोबाइल नंबर"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>लिंग</td>
+                                    <td>
+                                        नर:
+                                        <input type="checkbox" name="gender_male" id="">
+                                        महिला:
+                                        <input type="checkbox" name="gender_female" id="">
+                                        अन्य लिंग:
+                                        <input type="checkbox" name="gender_other" id="">
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>पासवर्ड:</td>
+                                    <td><input name="new_password" type="password" placeholder="न्यूनतम 6 अक्षर"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>पासवर्ड की पुष्टि कीजिये</td>
+                                    <td><input type="password" placeholder="न्यूनतम 6 अक्षर"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="recaptcha-div">
+                            <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                        </div>
+
+                        <button type="submit">साइन अप करें</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
+    </div>
 </header>
 
 <footer>

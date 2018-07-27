@@ -56,7 +56,12 @@ def register_user():
         phone_no = request.form.get('phone_no')
         male_gender = request.form.get('gender_male')
         female_gender = request.form.get('gender_female')
-        gender = 'M' if female_gender is None else 'F'
+        other_gender = request.form.get('gender_other')
+        # gender = 'M' if female_gender is None else 'F'
+        if other_gender:
+            gender = 'O'
+        else:
+            gender = 'M' if female_gender is None else 'F'
         dob = request.form.get('dob')
         captcha_response = request.form.get('g-recaptcha-response')
 
@@ -83,7 +88,7 @@ def register_user():
                 return render_template('general.html',
                                        heading='Please go back and verify the captcha')
         except UserErrors.UserError as e:
-            return e.message
+            return render_template('general.html', message=e.message)
 
     return render_template('apply_now1.html', language=0, sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say")
 
@@ -97,7 +102,12 @@ def register_user_hindi():
         phone_no = request.form.get('phone_no_hindi')
         male_gender = request.form.get('gender_male_hindi')
         female_gender = request.form.get('gender_female_hindi')
-        gender = 'M' if female_gender is None else 'F'
+        other_gender = request.form.get('gender_other_hindi')
+        # gender = 'M' if female_gender is None else 'F'
+        if other_gender:
+            gender = 'O'
+        else:
+            gender = 'M' if female_gender is None else 'F'
         dob = request.form.get('dob_hindi')
         captcha_response = request.form.get('g-recaptcha-response')
 
