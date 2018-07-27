@@ -14,56 +14,211 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+.row {
+  /* page width */
+  width: 1140px;
+  /* margin of the width */
+  margin: 0 auto;
+}
+
+p{
+
+}
+
+
+/* ======================================== */
+/* custom_scroll_bar_start */
+/* ======================================== */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ======================================== */
+/*custom_scroll_bar_end */
+/* ======================================== */
+
+header .row h1{
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.text_greeting{
+  margin: 3% 0;
+}
+
+.eligibility_style h1{
+ font-family: "Montserrat", sans-serif;
+ font-size: 120%;
+}
+
+.eligibility_style p{
+  /* width: 52%; */
+  text-align:left;
+  line-height: 100%;
+}
+.criteria{
+  margin-bottom: 1%;
+  /* width: 50%; */
+}
+
+.sign{
+  color: red;
+}
+
+
+.before_move{
+  margin-top: 2%;
+}
+.before_move h2{
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 1%;
+}
+/* .img_inline{
+  display: inline-block;
+  width: 80%;
+} */
+
+
+.sign_up{
+  margin-top: 3%;
+}
+.sign_up h3{
+  font-weight:400;
+}
+
+
+.sign_up .span-1-of-2 .row p{
+  margin-top: 1%;
+}
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"]
+{
+  /* border: none; */
+  /* margin: 1% 0; */
+  border-width: 0 0 1px;
+  border-bottom: 1px solid #002f49;
+  /* margin-bottom: 1%; */
+  /* border-bottom: 1px; */
+}
+
+
+textarea{
+  border: 0.5px solid #002f49;
+  border-radius: 10px;
+  box-shadow: 0 3px 1px rgba(36, 35, 35, 0.719);
+  color: black;
+  padding: 1% 1%;
+  font-size: 10px;
+}
+
+
+
+button {
+  background-color: #25a898;
+  color: #f3f3f3;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 30px;
+  text-transform: uppercase;
+}
+
+button:link,
+button:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 60px;
+  display: inline-block;
+  border-radius: 200px;
+  transition: all 2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(36, 35, 35, 0.719);
+  background-color: rgba(0, 47, 73, 0.808);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
+  background-color: rgba(0, 47, 73, 0.808);
+}
+
+
+/* ======================================== */
+/*footer_start */
+/* ======================================== */
+
+footer{
+  width: 100%;
+  height:3%;;
+  background-color: #002f49;
+  color: white;
+}
+
+footer h1 {
+  text-align: center;
+  font-size: 110%;
+  font-weight: 400;
+  margin-bottom: 1%;
+}
+
+footer h1:after{
+width: 14%;
+}
 
 
 
 
-/* Style the form */
-#regForm {
-    background-color: #ffffff;
-    margin: 100px auto;
-    padding: 40px;
-    width: 30%;
-    min-width: 300px;
-  }
+footer ul{
+  list-style: none;
+  margin-bottom:1%;
+  cursor: pointer;
+}
 
-  /* Style the input fields */
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-  }
 
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
-    background-color: #ffdddd;
-  }
+footer li{
+  display: inline-block;
+  color: white;
+  padding: 8px;
+}
 
-  /* Hide all steps by default: */
-  .tab {
-    display: none;
-  }
+.footer_div_style{
+  text-align: center;
+}
 
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-  }
+.foot_a_style{
+  color: rgb(255, 253, 253);
+  transition: all 0.3s;
+}
 
-  /* Mark the active step: */
-  .step.active {
-    opacity: 1;
-  }
 
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
-    background-color: #4CAF50;
-  }
+
+/* ======================================== */
+/*footer_end */
+/* ======================================== */

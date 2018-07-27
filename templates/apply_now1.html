@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <!-- grid_file -->
+    <link rel="stylesheet" href="support/css/grid.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/grid.css') }}">
+
+    <!-- normalizing_file -->
+    <link rel="stylesheet" href="support/css/normalize.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/normalize.css') }}">
+
+    <!--animate_file -->
+    <link rel="stylesheet" href="support/css/animate.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/css/animate.css') }}">
+
+    <!-- stylesheet_link -->
+    <link rel="stylesheet" href="resources/css/apply_now.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/apply_now.css') }}">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:300,400,500" rel="stylesheet">
+
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="support/fonts/css/fa-brands.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-brands.css') }}">
+    <link rel="stylesheet" href="support/fonts/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="support/fonts/css/fa-regular.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-regular.css') }}">
+    <link rel="stylesheet" href="support/fonts/css/fa-solid.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support/fonts/css/fa-solid.css') }}">
+
+    <!-- google recaptcha script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+<header>
+    <!--logo_start -->
+
+    <!--logo_end -->
+
+    <div class="row">
+        <div class="text_greeting">
+            <h1>Hi! let's get started</h1>
+        </div>
+
+        <div class="row ">
+            <div class="col span-1-of-2">
+                <div class="eligibility_style">
+
+                    <h1>Eligibility </h1>
+                    <p>
+                    <div class="criteria">
+                        <label class="sign">*</label> You must be a citizen of India;
+                    </div>
+                    <div class="criteria">
+                        <label class="sign">*</label> You must be between 18-29 years;
+                    </div>
+                    <div class="criteria">
+                        <label class="sign">*</label> You must have volunteered for minimum of 150 hours in a
+                        volunteering project spread
+                        over the past one year
+                    </div>
+
+
+                    <div class="criteria">
+                        <label class="sign">*</label> Your actions have included a meaningful engagement with
+                        communities.
+                    </div>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="col span-1-of-2">
+                <div>
+                    <img src="resources/css/imgs/back/backgrounds/background-2.jpg"
+                         style="height: 300px; width: 300px;border-radius: 30px;padding: 2% 2%;"
+                         alt="">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="before_move">
+                <div>
+                    <h2>Before we move ahead </h2>
+                </div>
+
+                <div>
+                    <p>
+                    <div>
+                        1. Please make sure that you have read the eligibility criteria and other details of the award
+                        call out letter / introductory
+                        note. Applications not following the guidelines or / and with incomplete information may
+                        be liable for disqualification from further processing.
+                    </div>
+
+                    <div>
+                        <br> 2. Award is a not competition. Our wish is to recognize the work done by many young people.
+                        The purpose of the selection process is to make sure that there is a match in profiles, values
+                        and expectations between the applicants and Award. The selection panel bases any selection
+                        on an overall assessment, and may make exceptions to the criteria if it serves the larger
+                        purpose of the programme.
+                    </div>
+
+                    <div>
+                        <br> 3. We really want to know who you are and what your work is. So please be frank and open.
+                    </div>
+                    <div>
+                        <br> 4. This journey intends to support youth led initiatives as well as youth leaders who are
+                        addressing aspects of volunteering in any theme.
+                    </div>
+                    <div>
+                        <br> 5. Submission of application form doesn’t guarantee the approval of the same and Approval
+                        of application doesn’t guarantee funding support.
+                    </div>
+                    <div>
+                        <br> 6. Any effort to approach or influence any member of the award team or the project
+                        selection
+                        panel, or any other malpractice, or submission of false information will lead to rejection
+                        of the application.
+                        <br>
+                    </div>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sign_up">
+            <h3>Sign Up</h3>
+        </div>
+
+        <div>
+            <div class="col span-1-of-2">
+                <div class="row">
+                    <form action="{{ url_for("users.register_user") }}" method="post">
+                        <div>
+                            <p> Name:</p>
+                            <input name="name" type="text" placeholder="Full Name">
+                        </div>
+                        <div>
+                            <p>E-mail</p>
+
+                            <input name="email" type="email" placeholder="Please enter your email">
+                        </div>
+
+                        <div>
+                            <p>Password:</p>
+                            <input name="new_password" type="password" placeholder="minimum 6 letters">
+                        </div>
+
+                        <div class="col span-1-of-2">
+                            <div>
+                                <p>Date Of Birth:</p>
+                                <!-- <br> -->
+                                <input name="dob" type="date" placeholder="DOB">
+                            </div>
+
+                            <div>
+                                <p>Mobile No.</p>
+                                <input name="phone_no" type="number" placeholder="Your mobile number">
+                            </div>
+                            <div>
+                                <p>Gender</p>
+
+                                <input type="checkbox" name="gender_male" id="">
+                                <input type="checkbox" name="gender_female" id="">
+                            </div>
+
+                            <div>
+                                <p> Confirm Password</p>
+
+                                <input type="password" placeholder="minimum 6 letters">
+                            </div>
+                            <div class="recaptcha-div">
+                                <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                            </div>
+
+                            <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</header>
+
+<footer>
+    <div class="row">
+        <h1>Connect with us</h1>
+    </div>
+
+    <div class="row footer_div_style">
+        <ul>
+            <li><a class="foot_a_style" href="#"><i class="fab fa-facebook-square fa-2x "></i></a></li>
+            <li>
+                <a class="foot_a_style" href="#"><i class="fab fa-twitter-square fa-2x "></i></a>
+            </li>
+            <li>
+                <a class="foot_a_style" href="#"><i class="fab fa-instagram fa-2x "></i></a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="resources/js/apply_now.js"></script>
+<script src="{{ url_for('static', filename='resources/js/apply_now.js') }}"></script>
+</div>
+</body>
+
+</html>

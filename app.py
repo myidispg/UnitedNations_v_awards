@@ -82,7 +82,7 @@ def home_english():
     # thread = threading.Thread(target=email_alerts, args=())
     # thread.daemon = True
     # thread.start()
-    return render_template('base.html', language=0, sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say")
+    return render_template('base.html', language=0)
 
 
 @app.route('/hi/')

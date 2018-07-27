@@ -156,9 +156,9 @@
     <div class="text_box">
         <h1>v - awards</h1>
         {% if language == 0 %}
-            <a href="#register-form" class="btn btn_white">Apply now</a>
+            <a href="{{ url_for('users.register_user') }}" class="btn btn_white">Apply now</a>
         {% else %}
-            <a href="#register-form" class="btn btn_white">अप्लाई करें</a>
+            <a href="{{ url_for('users.register_user') }}" class="btn btn_white">अप्लाई करें</a>
         {% endif %}
     </div>
 
@@ -267,145 +267,206 @@
 <!-- =============section_4_applyNow_form_start============= -->
 
 
-<section class="sec4" id="apply_now">
+{#<section class="sec4" id="apply_now">#}
+{#    <div class="row">#}
+{#        <h1>apply now</h1>#}
+{#    </div>#}
+{#    {% if language == 0 %}#}
+{#        <div class="row sec4rw">#}
+{#            <form id="register-form" action="{{ url_for("users.register_user") }}" method="post">#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="name"> full name</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="text" name="name" id="name" placeholder="Your full name" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="email">email</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="email" name="email" id="email" placeholder="your email-id" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{##}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="phone_no">Mobile Number</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="number" name="phone_no" id="phone_no" placeholder="mobile number" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="dob">date of birth</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="date" name="dob" id="dob" placeholder="D.O.B" required>#}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="gender">gender</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="checkbox" name="gender" id="gender_male"> male#}
+{#                    <input type="checkbox" name="gender" id="gender_female"> female#}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="new_password">password</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="password" name="new_password" id="new_password"#}
+{#                           placeholder="enter your new password" required>#}
+{#                    <br>#}
+{#                    <input type="password" name="confirm_password" id="confirm_password"#}
+{#                           placeholder="confirm your password"#}
+{#                           required>#}
+{#                </div>#}
+                <div class="recaptcha-div">
+                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
+                </div>
+{##}
+{#                <div class="col span-2-of-2">#}
+{#                    <!-- apply_button_start -->#}
+{#                    <button type="submit" class="btn_register" id="register-submit-button">Submit</button>#}
+{#                    <!-- apply_button_end -->#}
+{#                </div>#}
+{#                <!-- apply_button_start -->#}
+{#            </form>#}
+{#        </div>#}
+{#    {% else %}#}
+{#        <div class="row sec4rw">#}
+{#            <form id="register-form" action="{{ url_for("users.register_user_hindi") }}" method="post">#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="name_hindi"> पूरा नाम</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="text" name="name_hindi" id="name_hindi" placeholder="आपका पूरा नाम" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="email_hindi">ई-मेल</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="email" name="email_hindi" id="email_hindi" placeholder="आपका ई-मेल" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{##}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="phone_no_hindi">मोबाइल नंबर</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="number" name="phone_no_hindi" id="phone_no_hindi" placeholder="मोबाइल नंबर" required>#}
+{#                </div>#}
+{#                <!--  -->#}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="dob_hindi">जन्म की तारीख</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="date" name="dob_hindi" id="dob_hindi" placeholder="जन्म की तारीख" required>#}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="gender_hindi">लिंग</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="checkbox" name="gender_hindi" id="gender_male_hindi"> नर#}
+{#                    <input type="checkbox" name="gender_hindi" id="gender_female_hindi"> महिला#}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="col span-1-of-2">#}
+{#                    <label for="new_password_hindi">पासवर्ड</label>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <input type="password" name="new_password_hindi" id="new_password_hindi"#}
+{#                           placeholder="अपना पासवर्ड डालें" required>#}
+{#                    <br>#}
+{#                    <input type="password" name="confirm_password_hindi" id="confirm_password_hindi"#}
+{#                           placeholder="अपने पासवर्ड की पुष्टि करें"#}
+{#                           required>#}
+{#                </div>#}
+{#                <div class="recaptcha-div">#}
+{#                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>#}
+{#                </div>#}
+{#                <div class="col span-2-of-2">#}
+{#                    <!-- apply_button_start -->#}
+{#                    <button type="submit" class="btn_register" id="register-submit-button">जमा करें</button>#}
+{#                    <!-- apply_button_end -->#}
+{#                </div>#}
+{#                <!-- apply_button_start -->#}
+{#            </form>#}
+{#        </div>#}
+{#    {% endif %}#}
+<!-- =============section_4_applyNow_form_end============= -->
+
+<!-- ====================partners_logos====================== -->
+<section class="sec4">
     <div class="row">
-        <h1>apply now</h1>
+        <h1>Our Partners</h1>
     </div>
-    {% if language == 0 %}
-        <div class="row sec4rw">
-            <form id="register-form" action="{{ url_for("users.register_user") }}" method="post">
-                <div class="col span-1-of-2">
-                    <label for="name"> full name</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="text" name="name" id="name" placeholder="Your full name" required>
-                </div>
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="email">email</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="email" name="email" id="email" placeholder="your email-id" required>
-                </div>
-                <!--  -->
 
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="phone_no">Mobile Number</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="number" name="phone_no" id="phone_no" placeholder="mobile number" required>
-                </div>
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="dob">date of birth</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="date" name="dob" id="dob" placeholder="D.O.B" required>
-                </div>
-
-
-                <div class="col span-1-of-2">
-                    <label for="gender">gender</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="checkbox" name="gender" id="gender_male"> male
-                    <input type="checkbox" name="gender" id="gender_female"> female
-                </div>
-
-
-                <div class="col span-1-of-2">
-                    <label for="new_password">password</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="password" name="new_password" id="new_password"
-                           placeholder="enter your new password" required>
-                    <br>
-                    <input type="password" name="confirm_password" id="confirm_password"
-                           placeholder="confirm your password"
-                           required>
-                </div>
-                <div class="recaptcha-div">
-                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
-                </div>
-
-                <div class="col span-2-of-2">
-                    <!-- apply_button_start -->
-                    <button type="submit" class="btn_register" id="register-submit-button">Submit</button>
-                    <!-- apply_button_end -->
-                </div>
-                <!-- apply_button_start -->
-            </form>
+    <div class="row">
+        <div class="col span-1-of-5 caption">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/1.png') }}">
         </div>
-    {% else %}
-        <div class="row sec4rw">
-            <form id="register-form" action="{{ url_for("users.register_user_hindi") }}" method="post">
-                <div class="col span-1-of-2">
-                    <label for="name_hindi"> पूरा नाम</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="text" name="name_hindi" id="name_hindi" placeholder="आपका पूरा नाम" required>
-                </div>
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="email_hindi">ई-मेल</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="email" name="email_hindi" id="email_hindi" placeholder="आपका ई-मेल" required>
-                </div>
-                <!--  -->
-
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="phone_no_hindi">मोबाइल नंबर</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="number" name="phone_no_hindi" id="phone_no_hindi" placeholder="मोबाइल नंबर" required>
-                </div>
-                <!--  -->
-                <div class="col span-1-of-2">
-                    <label for="dob_hindi">जन्म की तारीख</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="date" name="dob_hindi" id="dob_hindi" placeholder="जन्म की तारीख" required>
-                </div>
-
-
-                <div class="col span-1-of-2">
-                    <label for="gender_hindi">लिंग</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="checkbox" name="gender_hindi" id="gender_male_hindi"> नर
-                    <input type="checkbox" name="gender_hindi" id="gender_female_hindi"> महिला
-                </div>
-
-
-                <div class="col span-1-of-2">
-                    <label for="new_password_hindi">पासवर्ड</label>
-                </div>
-                <div class="col span-2-of-2">
-                    <input type="password" name="new_password_hindi" id="new_password_hindi"
-                           placeholder="अपना पासवर्ड डालें" required>
-                    <br>
-                    <input type="password" name="confirm_password_hindi" id="confirm_password_hindi"
-                           placeholder="अपने पासवर्ड की पुष्टि करें"
-                           required>
-                </div>
-                <div class="recaptcha-div">
-                    <div class="g-recaptcha" data-sitekey="{{ sitekey }}"></div>
-                </div>
-                <div class="col span-2-of-2">
-                    <!-- apply_button_start -->
-                    <button type="submit" class="btn_register" id="register-submit-button">जमा करें</button>
-                    <!-- apply_button_end -->
-                </div>
-                <!-- apply_button_start -->
-            </form>
+        <div class="col span-1-of-5">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/2.png') }}">
         </div>
-    {% endif %}
-    <!-- =============section_4_applyNow_form_end============= -->
+        <div class="col span-1-of-5">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/3.png') }}">
+        </div>
+        <div class="col span-1-of-5">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/4.png') }}">
+        </div>
+        <div class="col span-1-of-5">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/5.png') }}">
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col span-1-of-4">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/6.png') }}">
+        </div>
+        <div class="col span-1-of-4">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/7.png') }}">
+        </div>
+        <div class="col span-1-of-4">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/8.png') }}">
+        </div>
+        <div class="col span-1-of-4">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/9.png') }}">
+        </div>
+    </div>
 </section>
+
+
+<!-- ====================partners_logos====================== -->
+
+<!-- =============footer_start============= -->
+<footer>
+    <div class="row">
+        <h1>Connect with us</h1>
+    </div>
+
+    <div class="row footer_div_style">
+        <ul>
+            <li><a class="foot_a_style" href="#"><i class="fab fa-facebook-square fa-2x "></i></a></li>
+            <li>
+                <a class="foot_a_style" href="#"><i class="fab fa-twitter-square fa-2x "></i></a>
+            </li>
+            <li>
+                <a class="foot_a_style" href="#"><i class="fab fa-instagram fa-2x "></i></a>
+            </li>
+        </ul>
+    </div>
+</footer>
+<!-- =============footer_end============= -->
 
 <!-- ===============script_start============================= -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

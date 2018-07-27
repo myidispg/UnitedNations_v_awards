@@ -25,7 +25,7 @@ def login_user():
             return e.message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('user_dash_apply2.html', language=0)
+    return render_template('user_dash_board.html', language=0)
 
 
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
@@ -44,7 +44,7 @@ def login_user_hindi():
             return message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('user_dash_apply2.html', language=1)
+    return render_template('user_dash_board.html', language=1)
 
 
 @user_blueprint.route('register', methods=['GET', 'POST'])
@@ -85,7 +85,7 @@ def register_user():
         except UserErrors.UserError as e:
             return e.message
 
-    return render_template('base.html', language=0)
+    return render_template('apply_now1.html', language=0, sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say")
 
 
 @user_blueprint.route('/hi/register', methods=['GET', 'POST'])
@@ -130,7 +130,7 @@ def register_user_hindi():
             message = gs.translate(e.message, 'hi')
             return message
 
-    return render_template('base.html', language=1)
+    return render_template('apply_now1.html', language=1, sitekey="6LfKAGUUAAAAABDEXB8lTMBclklOSWtBorh70Say")
 
 
 @user_blueprint.route('forgot_password', methods=['POST'])
@@ -145,7 +145,8 @@ def forgot_password_email():
     msg.body = "Please click on the following link to change your password- " \
                "http://127.0.0.1:5000/users/change_password/{}".format(user._id)
     mail.send(msg)
-    return "Please check your inbox for the password reset link."
+    return render_template('general.html',
+                           message='Please check your email inbox for reset link.')
 
 
 @user_blueprint.route('/change_password/<string:_id>', methods=['POST', 'GET'])
@@ -160,14 +161,14 @@ def forgot_password(_id):
         session['email'] = user.email
         return redirect(url_for('.forgot_password', _id=_id))
 
-    return render_template('user_dash_apply2.html')
+    return render_template('user_dash_board.html')
 
 
 @user_blueprint.route('user-dashboard')
 def user_dashboard():
     email = session['email']
     user_name = User.get_user_object(email=email).name
-    return render_template('user_dash_apply2.html', name=user_name)
+    return render_template('user_dash_board.html', name=user_name)
     # return "Welcome to your dashboard {}!".format(email)
 
 
@@ -175,7 +176,7 @@ def user_dashboard():
 def user_dashboard_hindi():
     email = session['email']
     user_name = User.get_user_object(email=email).name
-    return render_template('user_dash_apply2.html', name=user_name)
+    return render_template('user_dash_board.html', name=user_name)
     # return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
 

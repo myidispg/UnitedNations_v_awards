@@ -140,7 +140,8 @@ letter-spacing: 2px;
 }
 
 table,
-th{
+th,
+ {
   padding-right: 30px;
   padding-bottom: 20px;
   font-size: 85%;
