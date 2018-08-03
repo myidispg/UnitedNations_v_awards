@@ -58,7 +58,6 @@ class Form1:
         else:
             about.insert_data()
             for each_education in self.education:
-                print(each_education)
                 education = Education(self._id, each_education,
                                       self.education[each_education]['from'],
                                       self.education[each_education]['till'],
