@@ -24,8 +24,8 @@ def save_form_1():
         permanent_address = request.form.get('permanent_address')
         tel_no = request.form.get('tel_no')
         mobile_no = request.form.get('mobile_no')
-        # email = session['email']
-        email = request.form.get('email')
+        email = session['email']
+        # email = request.form.get('email')
         nationality = request.form.get('nationality')
         gender = request.form.get('gender')
         disability = request.form.get('disability')
@@ -113,8 +113,8 @@ def submit_form_1():
         permanent_address = request.form.get('permanent_address')
         tel_no = request.form.get('tel_no')
         mobile_no = request.form.get('mobile_no')
-        # email = session['email']
-        email = request.form.get('email')
+        email = session['email']
+        # email = request.form.get('email')
         nationality = request.form.get('nationality')
         gender = request.form.get('gender')
         disability = request.form.get('disability')
