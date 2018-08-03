@@ -154,6 +154,17 @@ class Database:
         connection.close()
 
     @staticmethod
+    def set_photo_path(photo_path, _id):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET photo_path = ? WHERE _id = ?"
+        cursor.execute(query, (photo_path, _id,))
+
+        connection.commit()
+        connection.close()
+
+    @staticmethod
     def get_all():
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()

@@ -145,3 +145,6 @@ class User:
     def get_all_users():
         list = Database.get_all()
         return list
+
+    def save_photo_path(self):
+        Database.set_photo_path(self.photo_path, self._id)

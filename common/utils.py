@@ -4,6 +4,8 @@ import re
 import requests
 from passlib.hash import pbkdf2_sha512
 
+from config import ALLOWED_EXTENSIONS, IMAGE_ALLOWED_EXTENSIONS, \
+    UPLOAD_FOLDER_PROFILE_PICTURES, UPLOAD_FOLDER_PROFILE_PICTURES_PATH
 
 
 class Utils:
@@ -51,3 +53,7 @@ class Utils:
     @staticmethod
     def search_list_dictionaries(key, value, list_of_dictionaries):
         return [element for element in list_of_dictionaries if element[key] == value]
+
+    @staticmethod
+    def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in IMAGE_ALLOWED_EXTENSIONS

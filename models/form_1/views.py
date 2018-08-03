@@ -1,8 +1,14 @@
+import os
+
 from flask import Blueprint, request, session
 
+from common.utils import Utils
 from models.form_1.form_1 import Form1
 from models.users.user import User
 import models.form_1.errors as Form1Errors
+from werkzeug.utils import secure_filename
+from config import UPLOAD_FOLDER_PROFILE_PICTURES_PATH
+
 
 __author__ = 'myidispg'
 
@@ -25,6 +31,19 @@ def save_form_1():
         disability = request.form.get('disability')
         source_awards = request.form.get('source_awards')
         # remember to add an ability for saving a photo later on
+        file = request.files['file']
+        if file.filename == '':
+            return 'The uploaded file has no filename.'
+        if file and Utils.allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            email = session['email']
+            user = User.get_user_object(email=email)
+            filename_list = filename.split('.')
+            new_file_name = os.path.normpath(os.path.join(UPLOAD_FOLDER_PROFILE_PICTURES_PATH, user._id + "." +
+                                                          filename_list[len(filename_list) - 1]))
+            user.photo_path = new_file_name
+            user.save_photo_path()
+            file.save(new_file_name)
 
         education = {}
         for i in range(1, 5):
@@ -160,3 +179,22 @@ def submit_form_1():
             return 'form 1 has been submitted successfully'
         except Form1Errors.Form1Error as e:
             return e.message
+
+
+# @form1_blueprint.route('/profile-pic', methods=['GET', 'POST'])
+# def upload_profile_picture():
+#     if request.method == 'POST':
+#         file = request['file']
+#         if file.filename == '':
+#             return 'The uploaded file has no filename.'
+#         if file and Utils.allowed_file(file.filename):
+#             filename = secure_filename(file.filename)
+#             email = session['email']
+#             user = User.get_user_object(email=email)
+#             filename_list = filename.split('.')
+#             new_file_name = os.path.normpath(os.path.join(UPLOAD_FOLDER_PROFILE_PICTURES_PATH, user._id +
+#                                                           filename_list[len(filename_list) - 1]))
+#             user.
+#             file.save(new_file_name)
+#             return "Picture saved successfully."
+

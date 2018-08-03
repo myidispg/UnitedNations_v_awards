@@ -31,6 +31,10 @@ def init_db():
     # Database.initialize()
     create_tables
     get_mail(mail)
+    current_directory = os.getcwd()
+    profile_pictures_directory = os.path.join(current_directory, 'profile-pictures')
+    if not os.path.exists(profile_pictures_directory):
+        os.makedirs(profile_pictures_directory)
 
 
 @app.route('/send_email_alerts/email_alerts/form_1')
