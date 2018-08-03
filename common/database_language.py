@@ -70,7 +70,9 @@ class Language:
             dictionary = {
                 "id": row[0],
                 'language': row[1],
-                'understand': row[2]
+                'understand': row[2],
+                'speak': row[3],
+                'read_write': row[4]
             }
             list.append(dictionary)
 

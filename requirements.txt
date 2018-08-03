@@ -6,3 +6,5 @@ sqlite
 goslate
 Flask-Mail
 apscheduler
+xlwt
+openpyxl

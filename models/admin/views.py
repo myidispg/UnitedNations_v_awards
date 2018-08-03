@@ -3,6 +3,7 @@ import csv
 from datetime import datetime
 
 from flask import Blueprint, request, make_response
+from openpyxl.styles import Font
 
 import admin
 from common.database_about import About
@@ -13,6 +14,9 @@ from common.utils import Utils
 from email_alerts import EmailAlerts
 from models.users.user import User
 from temp import *
+import xlwt
+import openpyxl
+from openpyxl.writer.excel import save_virtual_workbook
 
 __author__ = 'myidispg'
 
@@ -94,7 +98,7 @@ def email_alerts_form_2():
 @admin_blueprint.route('/csv_form_1')
 def csv_form_1():
     """
-    Generates a csv file with form 1 details of all the users in the database.
+    Generates a excel file with form 1 details of all the users in the database.
     :return: returns the name of the excel file.
     """
     user_list = User.get_all_users()
@@ -103,29 +107,70 @@ def csv_form_1():
     reference_list = Reference.get_all()
     language_list = Language.get_all()
 
-    si = io.StringIO()
-    wr = csv.writer(si)
-    wr.writerow(['email', 'name', 'mobile', 'telephone no', 'gender', 'dob', 'current_address',
-                 'permanent_address', 'nationality', 'disability', 'hindi_understand', 'english_understand', ])
+    # wb = xlwt.Workbook()
+    # personal = wb.add_sheet('Personal Info')
+    #
+    # personal.write()
 
+    wb = openpyxl.Workbook()
+    bold_font = Font(bold=True)
+    personal = wb.create_sheet('Personal Info')
+    # Create headers
+    personal.append(['Email', 'Name', 'Mobile', 'Telephone no', 'Gender', 'DOB', 'Current Address',
+                     'Permanent Address', 'Nationality', 'Disability'])
+    # set font to bold
+    # personal.cell(row=1).font = bold_font
     for user in user_list:
         row_list = [user['email'], user['name'], user['mobile'], user['tel_no'], user['gender'],
                     user['dob'], user['current_address'], user['permanent_address'],
                     user['nationality'], user['disability']]
 
-        # wr.writerow([user['email'], user['name'], user['mobile'], user['tel_no'], user['gender'],
-        #              user['dob'], user['current_address'], user['permanent_address'],
-        #              user['nationality'], user['disability']])
-        for language in language_list:
-            if language['id'] == user['id']:
-                if language['language'] == 'hindi':
-                    row_list.append(language['understand'])
-                elif language['language'] == 'english':
-                    row_list.append(language['understand'])
-        wr.writerow(row_list)
-    response = make_response(si.getvalue())
-    response.headers["Content-Disposition"] = "attachment; filename=form_1.csv"
+        personal.append(row_list)
+
+    about = wb.create_sheet('About person')
+    # Create headers
+    about.append(['userEmail', 'About You', 'Why volunteer?', 'Communities Associated with?', 'Motivation'])
+    # set font to bold
+    # about.cell(row=1).font = bold_font
+    for i in about_list:
+        user = User.get_user_object(_id=i['id'])
+        row_list = [user.email, i['about'], i['why_volunteer'], i['communities_associated'], i['motivation']]
+        about.append(row_list)
+
+    education = wb.create_sheet('Education')
+    # Create headers
+    education.append(['User Email', 'Course', 'From Date', 'Till Date', 'Institution', 'Board or university'])
+    # set font to bold
+    # education.cell(row=1).font = bold_font
+    for i in education_list:
+        user = User.get_user_object(_id=i['id'])
+        row_list = [user.email, i['course'], i['from_date'], i['till_date'], i['institution'], i['board']]
+        about.append(row_list)
+
+    reference = wb.create_sheet('References')
+    # Create headers
+    reference.append(['User Email', 'Reference Name', 'Address', 'Telephone number', 'Reference EmailEmail', 'Occupation',
+                      'Relation'])
+    # set font to bold
+    # reference.cell(row=1).font = bold_font
+    for i in reference_list:
+        user = User.get_user_object(_id=['id'])
+        row_list = [user.email, i['name'], i['address'], i['tel_no'], i['email'], i['occupation'],
+                    i['relation']]
+        reference_list.append(row_list)
+
+    language = wb.create_sheet('Language Info.')
+    # Create headers
+    language.append(['User Email', 'Language', 'Understand', 'Speaks?', 'Can read or write?'])
+    # set font to bold
+    # language.cell(row=1).font = bold_font
+    for i in language_list:
+        user = User.get_user_object(_id=i['id'])
+        row_list = [user.email, i['language'], i['understand'], i['speak'], i['read_write']]
+        language.append(row_list)
+
+    response = make_response(save_virtual_workbook(wb))
+    response.headers["Content-Disposition"] = "attachment; filename=form_1.xlsx"
     response.headers["Content-type"] = "text/csv"
 
-    print(user_list)
     return response
