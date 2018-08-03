@@ -1,6 +1,6 @@
 __author__ = 'myidispg'
 
-PASSWORD = 'PG@gmail1'
+PASSWORD = None
 
 # following are the date time variables for each form reminders.
 # If the reminder date is 28/07/2018(dd/mm/yyyy) and time is 16:30 (4:30 p.m.)
