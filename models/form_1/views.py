@@ -56,14 +56,14 @@ def save_form_1():
 
         languages = {
             'hindi': {
-                'understand': 'no',
-                'speak': 'no',
-                'read_write': 'no'
+                'understand': 'yes' if request.form.get('hindi_understand') is not None else 'no',
+                'speak': 'yes' if request.form.get('hindi_speak') is not None else 'no',
+                'read_write': 'yes' if request.form.get('hindi_read_write') is not None else 'no'
             },
             'english': {
-                'understand': 'yes',
-                'speak': 'yes',
-                'read_write': 'yes'
+                'understand': 'yes' if request.form.get('english_understand') is not None else 'no',
+                'speak': 'yes' if request.form.get('english_speak') is not None else 'no',
+                'read_write': 'yes' if request.form.get('english_read_write') is not None else 'no'
             }
         }
 
@@ -120,6 +120,19 @@ def submit_form_1():
         disability = request.form.get('disability')
         source_awards = request.form.get('source_awards')
         # remember to add an ability for saving a photo later on
+        file = request.files['file']
+        if file.filename == '':
+            return 'The uploaded file has no filename.'
+        if file and Utils.allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            email = session['email']
+            user = User.get_user_object(email=email)
+            filename_list = filename.split('.')
+            new_file_name = os.path.normpath(os.path.join(UPLOAD_FOLDER_PROFILE_PICTURES_PATH, user._id + "." +
+                                                          filename_list[len(filename_list) - 1]))
+            user.photo_path = new_file_name
+            user.save_photo_path()
+            file.save(new_file_name)
 
         education = {}
         for i in range(1, 5):
