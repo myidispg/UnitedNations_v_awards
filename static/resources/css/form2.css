@@ -1,0 +1,362 @@
+/* ======================================== */
+/* BASIC_SETUP_start */
+/* ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+body{
+    background-color: hsla(0, 0%, 95%, 0.451);
+}
+/* ======================================== */
+/* custom_scroll_bar_start */
+/* ======================================== */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ======================================== */
+/*custom_scroll_bar_end */
+/* ======================================== */
+
+/* ======================================== */
+/* BASIC_SETUP_end */
+/* ======================================== */
+
+/* ======================================== */
+/* reuseable_content_start */
+/* ======================================== */
+.row {
+  /* page width */
+  width: 80%;
+  /* margin of the width */
+  margin: 0 auto;
+}
+
+/* ======================================== */
+/* reuseable_content_end */
+/* ======================================== */
+
+/* ======================================== */
+/* header_start */
+/* ======================================== */
+
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.986), rgba(0, 0, 0, 0.582)),
+    url(imgs/form2_backgroundimage.JPG);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* nav bar */
+.main_navigation {
+  float: right;
+  list-style-type: none;
+
+  margin-right: 100px;
+  /* border-bottom: 1px solid grey; */
+  transition: 2s;
+  font-size: 110%;
+}
+
+.main_navigation li {
+  display: inline;
+  margin-left: 40px;
+}
+
+/* main nav states */
+.main_navigation li a:link,
+.main_navigation li a:visited {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 95%;
+  font-weight: 400;
+  border: 2px solid transparent;
+  /* border-radius: 200px; */
+  padding: 5px;
+  transition: border-bottom 0.2s;
+  letter-spacing: 2px;
+  word-spacing: 3px;
+}
+
+/* main nav hover */
+.main_navigation li a:hover,
+.main_navigation li a:active {
+  border-bottom: 2px solid #18adab;
+  color: rgb(219, 213, 213);
+}
+
+button {
+  background-color: #25a898;
+  color: #f3f3f3;
+  margin-top: 40px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 30px;
+  text-transform: uppercase;
+}
+
+button:link,
+button:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 60px;
+  display: inline-block;
+  border-radius: 200px;
+  transition: all 2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(36, 35, 35, 0.719);
+  background-color: rgba(0, 47, 73, 0.808);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
+  background-color: rgba(0, 47, 73, 0.808);
+}
+
+header img {
+  height: 130px;
+  width: 130px;
+  margin-top: 1%;
+}
+
+header h1 {
+  color: white;
+}
+
+
+/* mouse down animation */
+.center {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.down {
+  position: relative;
+  width: 50px;
+  height: 80px;
+  border-radius: 25px;
+  background: transparent;
+  border: 4px solid white;
+  overflow: hidden;
+}
+
+.down:before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  animation: animate 1.5s linear infinite;
+}
+
+.down:after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  left: 50%;
+  top: 5px;
+  transform: translate(-50%, 0);
+  border-radius: 3px;
+}
+
+
+@keyframes animate {
+    0%{
+        transform: translate(-50%,20px);
+    }
+
+    80%{
+        transform: translate(-50%,60px);
+    }
+
+    100%{
+        transform: translate(-50%,100px);
+    }
+}
+
+
+/* mouse down animation end */
+
+
+
+/* main heading */
+
+.main_heading h1{
+    /* margin-top: 3%; */
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    /* text-transform: uppercase; */
+    font-size: 150%;
+}
+
+.row h1{
+    font-weight: 400;
+    margin-top: 3%;
+}
+.main_form2{
+    margin-top: 1%;
+}
+
+table{
+    width: 70%;
+    border-spacing: 0 1em;
+}
+table tr{
+    /* margin-top:20px; */
+    padding: 10px 10px;
+    /* height: 50px; */
+}
+table td{
+    margin-top: 3%;
+    width: 100%;
+}
+
+/* input elements styling */
+input[type="text"],
+input[type="url"]
+{
+padding: 5px 5px;
+/* width: 100%; */
+border: none;
+border-bottom: 2px solid rgba(48, 45, 212, 0.726);
+
+border-radius: 5px;
+text-align: center;
+font-size: 70%;
+font-family: "Montserrat", sans-serif;
+background-color: transparent;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus
+{
+padding: 5px 5px;
+/* width: 100%; */
+
+text-align: center;
+border-bottom: 2px solid  rgba(48, 45, 212, 0.925);
+box-shadow: 0 3px 1px rgba(36, 35, 35, 0.719);
+}
+
+textarea{
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(36, 35, 35, 0.719);
+    padding: 10px 10px;
+font-family: "Montserrat", sans-serif;
+margin-top: 1%;
+/* font-size: 1em; */
+background-color: transparent;
+
+}
+
+
+/* alignment_1 */
+.align_1{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+
+
+/* ======================================== */
+/*footer_start */
+/* ======================================== */
+
+footer{
+    width: 100%;
+    height:3%;;
+    background-color: #002f49;
+    color: white;
+    margin-top: 1%;
+  }
+
+  footer h1 {
+    text-align: center;
+    font-size: 110%;
+    font-weight: 400;
+    margin-bottom: 1%;
+  }
+
+  footer h1:after{
+  width: 14%;
+  }
+
+
+
+
+  footer ul{
+    list-style: none;
+    margin-bottom:1%;
+    cursor: pointer;
+  }
+
+
+  footer li{
+    display: inline-block;
+    color: white;
+    padding: 8px;
+  }
+
+  .footer_div_style{
+    text-align: center;
+  }
+
+  .foot_a_style{
+    color: rgb(255, 253, 253);
+    transition: all 0.3s;
+  }
+
+
+
+  /* ======================================== */
+  /*footer_end */
+  /* ======================================== */

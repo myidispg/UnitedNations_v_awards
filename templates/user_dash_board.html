@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome,V-awards</title>
+    <link rel="icon" href="{{ url_for('static', filename='resources/css/imgs/logos/main.png') }}" size="20X20">
 
     <!-- style sheet link -->
 
@@ -26,14 +27,45 @@
 
 <body>
 <header>
-    <div>
-        <h1>Welcome,
-        </h1>
-        <h1>{{ name }}</h1>
-        <h3>
-            continue your nomination process..
-        </h3>
+
+    {#    <div>#}
+    {#        <h1>Welcome,#}
+    {#        </h1>#}
+    {#        <h1>{{ name }}</h1>#}
+    {#        <h3>#}
+    {#            continue your nomination process..#}
+    {#        </h3>#}
+    {#    </div>#}
+
+    <!-- nav_bar -->
+    <nav>
+        <div class="">
+            <ul class="main_navigation">
+                <li>
+                    <a href="#about_unv">Home</a>
+                </li>
+
+
+                <li>
+                    <button id="modal_btn" class="log_in_button">logOut</button>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- nav_bar -->
+
+    <!-- logo -->
+    <div class="text_box">
+        <div class="img_textbox">
+            <img src="resources/css/imgs/logos/main.png" style="height: 300px;width: 300px" alt="">
+            <h1>Welcome, {{ name }}</h1>
+            <h3>continue your nomination process.</h3>
+        </div>
+
     </div>
+
+    <!-- logo end-->
 </header>
 
 <section>
@@ -50,13 +82,74 @@
 
     <!-- Tab links -->
     <div class="tab">
+        <button class="tablinks" onclick="openForm(event, 'Personal_info')">Personal Info</button>
         <button class="tablinks" onclick="openForm(event, 'Education')">Education</button>
         <button class="tablinks" onclick="openForm(event, 'Experience')">Experience</button>
         <button class="tablinks" onclick="openForm(event, 'Reference')">Reference</button>
         <button class="tablinks" onclick="openForm(event, 'Declaration')">Declaration</button>
     </div>
-    <div class="tabcontent" id="Education">
 
+    <div class="tabcontent" id="Personal_info">
+        <div class="lan_alignment personal_style">
+            <form action="">
+                <table>
+                    <tr>
+                        {% if language == 0 %}
+                            <th>
+                                Current Address :
+                            </th>
+                            <td>
+                                <input type="text" placeholder="address line 1">
+                                <input type="text" placeholder="address line 2">
+                            </td>
+                        {% else %}
+                            <th>
+                                वर्तमान पता :
+                            </th>
+                            <td>
+                                <input type="text" placeholder="पता पंक्ति 1">
+                                <input type="text" placeholder="पता पंक्ति 2">
+                            </td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if language == 0 %}
+                            <th>
+                                Permanent Address :
+                            </th>
+                            <td>
+                                <input type="text" placeholder="address line 1">
+                                <input type="text" placeholder="address line 2">
+
+                            </td>
+                        {% else %}
+                            <th>
+                                Permanent Address :
+                            </th>
+                            <td>
+                                <input type="text" placeholder="पता पंक्ति 1">
+                                <input type="text" placeholder="पता पंक्ति 2">
+
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                </table>
+
+                {% if language == 0 %}
+                    <p>If you have a disability please do specify and let us know of any special arrangements you
+                        may need, if you are shortlisted for interview and the programme.</p>
+                    <textarea name="" id="" cols="60" rows="10"></textarea>
+                {% else %}
+                    <p>यदि आपके पास विकलांगता है तो कृपया निर्दिष्ट करें और आपको किसी भी विशेष व्यवस्था के बारे में बताएं, यदि
+                        आपको साक्षात्कार और कार्यक्रम के लिए चयन किया गया है।</p>
+                    <textarea name="" id="" cols="60" rows="10"></textarea>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <div class="tabcontent" id="Education">
         <div class="lan_alignment">
             <div>
 

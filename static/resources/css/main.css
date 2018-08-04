@@ -122,18 +122,25 @@ header {
 .text_box {
   position: absolute;
   width: 1140px;
-  top: 28%;
-  left: 52%;
-  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 20%;
+  height: 300px;
+  /* transform: translate(-50%, -50%); */
   text-align: center;
 }
 
-
+.tag_line{
+  margin-top: none;
+  color: white;
+  font-weight: 300;
+  font-size: 250%;
+}
+/*
 .img_textbox{
 
   margin-top: 7%;
   height: 300px;
-}
+} */
 
 .text_box h1 {
   font-weight: 500;
@@ -147,9 +154,6 @@ header {
   font-family: "Lato", sans-serif;
   cursor: pointer;
 }
-
-
-
 
 header h1:after {
   display: block;
@@ -534,12 +538,13 @@ padding: 1% 1%;
   width: 300px;
 } */
 
-
-.span-1-of-5{
+/* ===============PARTNERS CAROSEL============== */
+.span-1-of-3{
   height: 150px;
+  display: inline-block;
 }
 
-.span-1-of-5 img{
+.span-1-of-3 img{
   align-content: center;
   width: 200px;
   height:auto;
@@ -547,57 +552,69 @@ padding: 1% 1%;
   /* background-color: #007ec275; */
 }
 
-.span-1-of-4 img{
-  align-content: center;
-  width: 150px;
-  height: auto;
-  margin: none;
+
+/* Hide the images by default */
+/* .mySlides {
+  display: none;
+} */
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
 }
 
-.span-1-of-4:nth-child(2) img{
-  height: 130px;
-  width: 130px;
-}
-/*
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-input[type="password"],
-textarea {
-  width: 80%;
-  padding: 7px;
-  border-radius: 3px;
-  border: none;
-  border-bottom: 1px solid rgb(216, 216, 216);
-  background: transparent;
-  color: #002f49;
-  outline: 0;
-  border-width: 0 0 0.5px;
-  border-color: grey;
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
 }
 
-input[type="password"]:last-child {
-  padding-top: 20px;
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
 }
 
-.col:first-child {
-  margin-left: 1.5%;
+.active {
+  background-color: #717171;
 }
 
-.span-1-of-2 {
-  margin-top: 5%;
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
-input:focus {
-  border-color: green;
-  border-width: 0 0 2px;
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
 
-label {
-  text-transform: uppercase;
-  /* text-align:center; */
-/* } */
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
 
 button {
   background-color: #25a898;

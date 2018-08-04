@@ -21,7 +21,9 @@ html {
   margin: 0 auto;
 }
 
+p{
 
+}
 
 
 /* ======================================== */
@@ -97,6 +99,7 @@ header .row h1{
 
 .sign_up{
   margin-top: 3%;
+  text-align: center;
 }
 .sign_up h3{
   font-weight:400;
@@ -106,18 +109,7 @@ header .row h1{
 .sign_up .span-1-of-2 .row p{
   margin-top: 1%;
 }
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="email"]
-{
-  /* border: none; */
-  /* margin: 1% 0; */
-  border-width: 0 0 1px;
-  border-bottom: 1px solid #002f49;
-  /* margin-bottom: 1%; */
-  /* border-bottom: 1px; */
-}
+
 
 
 textarea{
@@ -166,6 +158,49 @@ button:active {
   box-shadow: 0 5px 10px rgba(7, 7, 7, 0.5);
   background-color: rgba(0, 47, 73, 0.808);
 }
+
+
+
+/* ======================================== */
+/*table_styling_start */
+/* ======================================== */
+table{
+  width: 100%;
+  background-color: #e0e4e63f;
+  padding:5%;
+  border-radius: 20px;
+
+}
+
+table tr{
+  margin-top: 20%;
+  text-align: left;
+
+}
+
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"]
+{
+  /* border: none; */
+  /* margin: 1% 0; */
+  border-width: 0 0 1px;
+  border-bottom: 1px solid #002f49;
+  background-color: transparent;
+  padding: 5px;
+  /* margin-top: 10%; */
+  /* margin-bottom: 1%; */
+  /* border-bottom: 1px; */
+}
+
+
+
+/* ======================================== */
+/*table_styling_end */
+/* ======================================== */
 
 
 /* ======================================== */

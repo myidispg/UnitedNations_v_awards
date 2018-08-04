@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>V-Awards_inda</title>
-
+    <link rel="icon" href="{{ url_for('static', filename='resources/css/imgs/logos/main.png') }}" size="20X20">
 
     <!-- normalizing_file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='support/css/normalize.css') }}">
@@ -155,7 +155,14 @@
 
     <div class="text_box">
         <div class="img_textbox">
-           <img src="../static/resources/css/imgs/logos/main.png" style="height: 350px;width: 350px" alt="">
+            <img src="../static/resources/css/imgs/logos/main.png" style="height: 350px;width: 350px" alt="">
+        </div>
+        <div class="tag_line">
+            {% if language == 0 %}
+                <q>Volunteerism in action</q>
+            {% else %}
+                <q>कार्रवाई में स्वयंसेवीवाद</q>
+            {% endif %}
         </div>
         {% if language == 0 %}
             <a href="{{ url_for('users.register_user') }}" class="btn btn_white">Apply now</a>
@@ -372,37 +379,89 @@
     </div>
 
     <div class="row">
-        <div class="col span-1-of-5 caption">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/1.png') }}">
+        <div class="mySlides fade">
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/1.png') }}"
+                     style="height: 100%;width: 100%">
+
+            </div>
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/2.png') }}"
+                     style="height: 100%;width: 100%">
+
+
+            </div>
+
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/3.png') }}">
+
+
+            </diV>
         </div>
-        <div class="col span-1-of-5">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/2.png') }}">
+
+
+        <div class="mySlides fade">
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/4.png') }}"
+                     style="height: 80%;width: 100%">
+
+            </div>
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/5.png') }}"
+                     style="height: 60%;width: 80%">
+
+
+            </div>
+
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/6.png') }}"
+                     style="height: 100%;width: 60%">
+
+
+            </diV>
         </div>
-        <div class="col span-1-of-5">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/3.png') }}">
+
+
+        <div class="mySlides fade">
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/7.png') }}"
+                     style="height: 95%;width: 50%"
+                >
+
+            </div>
+            <div class="col span-1-of-3">
+
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/8.png') }}"
+                     style="height: 95%;width: 50%">
+
+
+            </div>
+
+            <div class="col span-1-of-3">
+                <!-- <div class="numbertext">1 / 3</div> -->
+                <img src="{{ url_for('static', filename='resources/css/imgs/logos/9.png') }}">
+
+
+            </diV>
         </div>
-        <div class="col span-1-of-5">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/4.png') }}">
-        </div>
-        <div class="col span-1-of-5">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/5.png') }}">
+        <br>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col span-1-of-4">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/6.png') }}">
-        </div>
-        <div class="col span-1-of-4">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/7.png') }}">
-        </div>
-        <div class="col span-1-of-4">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/8.png') }}">
-        </div>
-        <div class="col span-1-of-4">
-            <img src="{{ url_for('static', filename='resources/css/imgs/logos/9.png') }}">
-        </div>
-    </div>
 </section>
 
 
