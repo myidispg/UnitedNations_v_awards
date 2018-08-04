@@ -99,7 +99,9 @@ def email_alerts_form_2():
 def csv_form_1():
     """
     Generates a excel file with form 1 details of all the users in the database.
-    :return: returns the name of the excel file.
+    It gets a list of all the users and uses the id of the users to find the necessary details from the
+     list of all other fields.
+    :return: returns a response object of the excel file which is downloaded.
     """
     user_list = User.get_all_users()
     about_list = About.get_all()
@@ -107,19 +109,11 @@ def csv_form_1():
     reference_list = Reference.get_all()
     language_list = Language.get_all()
 
-    # wb = xlwt.Workbook()
-    # personal = wb.add_sheet('Personal Info')
-    #
-    # personal.write()
-
     wb = openpyxl.Workbook()
-    bold_font = Font(bold=True)
     personal = wb.create_sheet('Personal Info')
     # Create headers
     personal.append(['Email', 'Name', 'Mobile', 'Telephone no', 'Gender', 'DOB', 'Current Address',
                      'Permanent Address', 'Nationality', 'Disability'])
-    # set font to bold
-    # personal.cell(row=1).font = bold_font
     for user in user_list:
         row_list = [user['email'], user['name'], user['mobile'], user['tel_no'], user['gender'],
                     user['dob'], user['current_address'], user['permanent_address'],
@@ -129,9 +123,7 @@ def csv_form_1():
 
     about = wb.create_sheet('About person')
     # Create headers
-    about.append(['userEmail', 'About You', 'Why volunteer?', 'Communities Associated with?', 'Motivation'])
-    # set font to bold
-    # about.cell(row=1).font = bold_font
+    about.append(['User Email', 'About User', 'Why volunteer?', 'Communities Associated with?', 'Motivation'])
     for i in about_list:
         user = User.get_user_object(_id=i['id'])
         row_list = [user.email, i['about'], i['why_volunteer'], i['communities_associated'], i['motivation']]
@@ -140,34 +132,31 @@ def csv_form_1():
     education = wb.create_sheet('Education')
     # Create headers
     education.append(['User Email', 'Course', 'From Date', 'Till Date', 'Institution', 'Board or university'])
-    # set font to bold
-    # education.cell(row=1).font = bold_font
     for i in education_list:
         user = User.get_user_object(_id=i['id'])
         row_list = [user.email, i['course'], i['from_date'], i['till_date'], i['institution'], i['board']]
-        about.append(row_list)
+        education.append(row_list)
 
     reference = wb.create_sheet('References')
     # Create headers
     reference.append(['User Email', 'Reference Name', 'Address', 'Telephone number', 'Reference EmailEmail', 'Occupation',
                       'Relation'])
-    # set font to bold
-    # reference.cell(row=1).font = bold_font
     for i in reference_list:
-        user = User.get_user_object(_id=['id'])
+        user = User.get_user_object(_id=i['id'])
         row_list = [user.email, i['name'], i['address'], i['tel_no'], i['email'], i['occupation'],
                     i['relation']]
-        reference_list.append(row_list)
+        reference.append(row_list)
 
     language = wb.create_sheet('Language Info.')
     # Create headers
     language.append(['User Email', 'Language', 'Understand', 'Speaks?', 'Can read or write?'])
-    # set font to bold
-    # language.cell(row=1).font = bold_font
     for i in language_list:
         user = User.get_user_object(_id=i['id'])
         row_list = [user.email, i['language'], i['understand'], i['speak'], i['read_write']]
         language.append(row_list)
+
+    # remove the default worksheet from the workbook which is not used.
+    wb.remove(wb.worksheets[0])
 
     response = make_response(save_virtual_workbook(wb))
     response.headers["Content-Disposition"] = "attachment; filename=form_1.xlsx"

@@ -101,12 +101,12 @@ class Database:
             return None
 
     @staticmethod
-    def find_user_id(_id):
+    def find_user_id(user_id):
         connection = sqlite3.connect(DATABASE_URI)
         cursor = connection.cursor()
 
         query = "SELECT * FROM users WHERE _id = ?"
-        result = cursor.execute(query, (_id,))
+        result = cursor.execute(query, (str(user_id),))
         row = result.fetchone()
 
         if row is not None:

@@ -14,7 +14,7 @@ class Form1:
                  mobile_no=None, email=None, nationality=None, gender=None, disability=None,
                  source_awards=None, languages=None, education=None, about_you=None,
                  why_volunteer=None, communities_associated=None, motivation=None, references=None,
-                 form_1_status=None):
+                 form_1_status=None, photo_path = None):
         user = User.get_user_object(email=email)
         self._id = user._id
         self.name = name
@@ -36,6 +36,7 @@ class Form1:
         self.motivation = motivation
         self.references = references
         self.form_1_status = form_1_status if form_1_status is not None else 'saved'
+        self.photo_path = photo_path
 
     def save_form_to_db(self):
         """
@@ -45,11 +46,6 @@ class Form1:
         If the form is submitted, no further changes are allowed.
         :return: nothing
         """
-        # user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
-        #             email_verified='yes', _id=self._id, current_address=self.current_address,
-        #             permanent_address=self.permanent_address, tel_no=self.tel_no,
-        #             nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
-        # user.update_database()
 
         about = About(self._id, self.about_you, self.why_volunteer, self.communities_associated, self.motivation,
                       self.form_1_status)
@@ -68,7 +64,8 @@ class Form1:
             user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
                         email_verified='yes', _id=self._id, current_address=self.current_address,
                         permanent_address=self.permanent_address, tel_no=self.tel_no,
-                        nationality=self.nationality, disability=self.disability, source_awards=self.source_awards)
+                        nationality=self.nationality, disability=self.disability, source_awards=self.source_awards,
+                        photo_path=self.photo_path)
             user.update_database()
 
             for each_language in self.languages:
