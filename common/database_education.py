@@ -24,15 +24,15 @@ class Education:
         cursor = connection.cursor()
 
         query_find_by_id = "SELECT * FROM education WHERE _id=? and course=?"
-        result = cursor.execute(query_find_by_id, (self._id,self.course,))
+        result = cursor.execute(query_find_by_id, (self._id, self.course,))
         rows = result.fetchone()
 
         if rows is not None:
             query = "UPDATE education " \
-                    "SET course = ?, from_date=?, till_date=?, institution = ?, board_university = ? " \
-                    "WHERE _id = ?"
-            cursor.execute(query, (self.course, self.from_date, self.till_date,
-                                   self.institution, self.board_university, self._id,))
+                    "SET from_date=?, till_date=?, institution = ?, board_university = ? " \
+                    "WHERE _id = ? and course = ?"
+            cursor.execute(query, (self.from_date, self.till_date,
+                                   self.institution, self.board_university, self._id, self.course,))
 
         else:
             query = "INSERT INTO education values(?,?,?,?,?,?)"

@@ -18,7 +18,6 @@ form1_blueprint = Blueprint('form1', __name__)
 @form1_blueprint.route('/save_form', methods=['POST'])
 def save_form_1():
     if request.method == 'POST':
-        requests = request
         name = request.form.get('name')
         dob = request.form.get('dob')
         current_address = request.form.get('current_address')
@@ -33,13 +32,17 @@ def save_form_1():
         source_awards = request.form.get('source_awards')
 
         education = {}
-        for i in range(1, 5):
-            education[request.form.get('course_' + str(i))] = {
-                'from': request.form.get('from_' + str(i)),
-                'till': request.form.get('till_' + str(i)),
-                'school': request.form.get('school_' + str(i)),
-                'board': request.form.get('board_' + str(i)),
-            }
+        course_list = ['tenth', 'twelfth', 'graduate', 'postgraduate']
+        for i in course_list:
+            if request.form.get(i):
+                education[i if request.form.get(i) is not None else None] = {
+                    'from': request.form.get('from_' + str(i)),
+                    'till': request.form.get('till_' + str(i)),
+                    'school': request.form.get('school_' + str(i)),
+                    'board': request.form.get('board_' + str(i)),
+                }
+            else:
+                pass
 
         languages = {
             'hindi': {
@@ -124,13 +127,17 @@ def submit_form_1():
         source_awards = request.form.get('source_awards')
 
         education = {}
-        for i in range(1, 5):
-            education[request.form.get('course_' + str(i))] = {
-                'from': request.form.get('from_' + str(i)),
-                'till': request.form.get('till_' + str(i)),
-                'school': request.form.get('school_' + str(i)),
-                'board': request.form.get('board_' + str(i)),
-            }
+        course_list = ['tenth', 'twelfth', 'graduate', 'postgraduate']
+        for i in course_list:
+            if request.form.get(i):
+                education[i if request.form.get(i) is not None else None] = {
+                    'from': request.form.get('from_' + str(i)),
+                    'till': request.form.get('till_' + str(i)),
+                    'school': request.form.get('school_' + str(i)),
+                    'board': request.form.get('board_' + str(i)),
+                }
+            else:
+                pass
 
         languages = {
             'hindi': {
@@ -168,7 +175,7 @@ def submit_form_1():
         why_volunteer = request.form.get('why_volunteer')
         communities_associated = request.form.get('communities_associated')
         motivation = request.form.get('motivation')
-        file = request.files.get('files')
+        file = request.files.get('file')
         new_file_name = None
 
         # None is for education which will be filled in later
