@@ -10,24 +10,20 @@ __author__ = 'myidispg'
 
 class Form1:
 
-    def __init__(self, name=None, dob=None, current_address=None, permanent_address=None, tel_no=None,
-                 mobile_no=None, email=None, nationality=None, gender=None, disability=None,
-                 source_awards=None, languages=None, education=None, about_you=None,
+    def __init__(self, current_address=None, permanent_address=None, tel_no=None, email=None, nationality=None,
+                 gender=None, disability=None,
+                 languages=None, education=None, about_you=None,
                  why_volunteer=None, communities_associated=None, motivation=None, references=None,
-                 form_1_status=None, photo_path = None):
+                 form_1_status=None, photo_path=None):
         user = User.get_user_object(email=email)
         self._id = user._id
-        self.name = name
-        self.dob = dob
         self.current_address = current_address
         self.permanent_address = permanent_address
         self.tel_no = tel_no
-        self.mobile_no = mobile_no
         self.email = email
         self.nationality = nationality
         self.gender = gender
         self.disability = disability
-        self.source_awards = source_awards
         self.languages = languages
         self.education = education
         self.about_you = about_you
@@ -61,12 +57,13 @@ class Form1:
                                       self.education[each_education]['board']
                                       )
                 education.insert_data()
-            user = User(self.email, name=self.name, phone_no=self.mobile_no, gender=self.gender, dob=self.dob,
-                        email_verified='yes', _id=self._id, current_address=self.current_address,
-                        permanent_address=self.permanent_address, tel_no=self.tel_no,
-                        nationality=self.nationality, disability=self.disability, source_awards=self.source_awards,
-                        photo_path=self.photo_path)
-            user.update_database()
+            User.save_form_1_details(self._id, self.current_address, self.permanent_address, self.tel_no,
+                                     self.nationality, self.disability)
+
+            # user = User(self.email, email_verified='yes', _id=self._id, current_address=self.current_address,
+            #             permanent_address=self.permanent_address, tel_no=self.tel_no,
+            #             nationality=self.nationality, disability=self.disability, photo_path=self.photo_path)
+            # user.update_database()
 
             for each_language in self.languages:
                 language = Language(self._id, each_language,
@@ -84,7 +81,3 @@ class Form1:
                                       self.references[each_reference]['occupation'],
                                       self.references[each_reference]['relation'])
                 reference.insert_data()
-
-
-
-

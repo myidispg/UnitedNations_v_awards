@@ -178,7 +178,7 @@ def forgot_password(_id):
 def user_dashboard():
     email = session['email']
     user_name = User.get_user_object(email=email).name
-    return render_template('user_dash_board.html', name=user_name)
+    return render_template('user_dash_board.html', name=user_name, language=0)
     # return "Welcome to your dashboard {}!".format(email)
 
 
@@ -186,7 +186,7 @@ def user_dashboard():
 def user_dashboard_hindi():
     email = session['email']
     user_name = User.get_user_object(email=email).name
-    return render_template('user_dash_board.html', name=user_name)
+    return render_template('user_dash_board.html', name=user_name, language=1)
     # return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
 

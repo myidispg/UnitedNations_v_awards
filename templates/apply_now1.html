@@ -248,18 +248,18 @@
         <div class="col span-1-of-2">
             <div class="row">
                 {% if language == 0 %}
-                    <form action="{{ url_for("users.register_user") }}" method="post">
+                    <form action=   "{{ url_for("users.register_user") }}" method="post">
                         <div>
                             <table>
                                 <tr>
-                                    <td>name</td>
+                                    <td>Name:</td>
                                     <td><input name="name" type="text" placeholder="Full Name"></td>
                                 </tr>
 
                                 <tr>
 
 
-                                    <td>Date Of Birth</td>
+                                    <td>Date Of Birth:</td>
                                     <td><input name="dob" type="date" placeholder="Please enter your email"></td>
                                 </tr>
 
@@ -267,17 +267,17 @@
                                 <tr>
 
 
-                                    <td>E-mail</td>
+                                    <td>E-mail:</td>
                                     <td><input name="email" type="email" placeholder="Please enter your email"></td>
                                 </tr>
 
                                 <tr>
-                                    <td>Mobile Number</td>
+                                    <td>Mobile Number:</td>
                                     <td><input name="phone_no" type="number" placeholder="Your mobile number"></td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender</td>
+                                    <td>Gender:</td>
                                     <td>
                                         Male:
                                         <input type="checkbox" name="gender_male" id="">
@@ -295,7 +295,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>confirm password</td>
+                                    <td>Confirm password:</td>
                                     <td><input type="password" placeholder="minimum 6 letters"></td>
                                 </tr>
                             </table>
@@ -309,44 +309,6 @@
                     </form>
                 {% elif language == 1 %}
                     <form action="{{ url_for("users.register_user_hindi") }}" method="post">
-                        {#                        <div>#}
-                        {#                            <p> पूरा नाम:</p>#}
-                        {#                            <input name="name_hindi" type="text" placeholder="आपका पूरा नाम">#}
-                        {#                        </div>#}
-                        {#                        <div>#}
-                        {#                            <p>ई-मेल</p>#}
-                        {##}
-                        {#                            <input name="email_hindi" type="email" placeholder="आपका ई-मेल">#}
-                        {#                        </div>#}
-                        {##}
-                        {#                        <div>#}
-                        {#                            <p>पासवर्ड:</p>#}
-                        {#                            <input name="new_password_hindi" type="password" placeholder="न्यूनतम 6 अक्षर">#}
-                        {#                        </div>#}
-                        {##}
-                        {#                        <div class="col span-1-of-2">#}
-                        {#                            <div>#}
-                        {#                                <p>जन्म की तारीख:</p>#}
-                        {#                                <!-- <br> -->#}
-                        {#                                <input name="dob_hindi" type="date" placeholder="जन्म की तारीख">#}
-                        {#                            </div>#}
-                        {##}
-                        {#                            <div>#}
-                        {#                                <p>मोबाइल नंबर</p>#}
-                        {#                                <input name="phone_no_hindi" type="number" placeholder="मोबाइल नंबर">#}
-                        {#                            </div>#}
-                        {#                            <div>#}
-                        {#                                <p>लिंग</p>#}
-                        {#                                नर: <input type="checkbox" name="gender_male_hindi" id="">#}
-                        {#                                महिला: <input type="checkbox" name="gender_female_hindi" id="">#}
-                        {#                                अन्य लिंग: <input type="checkbox" name="gender_other_hindi" id="">#}
-                        {#                            </div>#}
-                        {##}
-                        {#                            <div>#}
-                        {#                                <p> पासवर्ड की पुष्टि कीजिये</p>#}
-                        {##}
-                        {#                                <input type="password" placeholder="न्यूनतम 6 अक्षर">#}
-                        {#                            </div>#}
                         <div>
                             <table>
                                 <tr>
@@ -365,17 +327,17 @@
                                 <tr>
 
 
-                                    <td>ई-मेल</td>
+                                    <td>ई-मेल:</td>
                                     <td><input name="email" type="email" placeholder="आपका ई-मेल"></td>
                                 </tr>
 
                                 <tr>
-                                    <td>मोबाइल नंबर</td>
+                                    <td>मोबाइल नंबर:</td>
                                     <td><input name="phone_no" type="number" placeholder="आपका मोबाइल नंबर"></td>
                                 </tr>
 
                                 <tr>
-                                    <td>लिंग</td>
+                                    <td>लिंग:</td>
                                     <td>
                                         नर:
                                         <input type="checkbox" name="gender_male" id="">
@@ -393,7 +355,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>पासवर्ड की पुष्टि कीजिये</td>
+                                    <td>पासवर्ड की पुष्टि कीजिये:</td>
                                     <td><input type="password" placeholder="न्यूनतम 6 अक्षर"></td>
                                 </tr>
                             </table>

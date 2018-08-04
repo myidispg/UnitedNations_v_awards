@@ -194,3 +194,16 @@ class Database:
         connection.close()
         return user_list
 
+    @staticmethod
+    def update_user_form(_id, current_address, permanent_address, tel_no, nationality, disability):
+        connection = sqlite3.connect(DATABASE_URI)
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET current_address = ?, permanent_address = ?, tel_no = ?, nationality=?," \
+                " disability=? WHERE _id=?"
+
+        cursor.execute(query, (current_address, permanent_address, tel_no, nationality, disability, _id,))
+
+        connection.commit()
+        connection.close()
+

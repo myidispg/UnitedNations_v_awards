@@ -148,3 +148,8 @@ class User:
 
     def save_photo_path(self):
         Database.set_photo_path(self.photo_path, self._id)
+
+    @staticmethod
+    def save_form_1_details(_id, current_address, permanent_address, tel_no, nationality, disability):
+        Database.update_user_form(_id, current_address, permanent_address, tel_no, nationality, disability)
+

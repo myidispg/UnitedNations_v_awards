@@ -28,15 +28,6 @@
 <body>
 <header>
 
-    {#    <div>#}
-    {#        <h1>Welcome,#}
-    {#        </h1>#}
-    {#        <h1>{{ name }}</h1>#}
-    {#        <h3>#}
-    {#            continue your nomination process..#}
-    {#        </h3>#}
-    {#    </div>#}
-
     <!-- nav_bar -->
     <nav>
         <div class="">
@@ -59,6 +50,8 @@
     <div class="text_box">
         <div class="img_textbox">
             <img src="resources/css/imgs/logos/main.png" style="height: 300px;width: 300px" alt="">
+            <img src="{{ url_for('static', filename='resources/css/imgs/logos/main.png') }}"
+                 style="height: 300px;width: 300px" alt="">
             <h1>Welcome, {{ name }}</h1>
             <h3>continue your nomination process.</h3>
         </div>
@@ -91,7 +84,7 @@
 
     <div class="tabcontent" id="Personal_info">
         <div class="lan_alignment personal_style">
-            <form action="">
+            <form action="{{ url_for("form1.save_form_1") }}" method="post">
                 <table>
                     <tr>
                         {% if language == 0 %}
@@ -99,10 +92,10 @@
                                 Current Address :
                             </th>
                             <td>
-                                <input type="text" placeholder="address line 1">
-                                <input type="text" placeholder="address line 2">
+                                <input type="text" name="current_address_line_1" placeholder="address line 1">
+                                <input type="text" name="current_address_line_2" placeholder="address line 2">
                             </td>
-                        {% else %}
+                        {% elif language == 1 %}
                             <th>
                                 वर्तमान पता :
                             </th>
@@ -118,13 +111,13 @@
                                 Permanent Address :
                             </th>
                             <td>
-                                <input type="text" placeholder="address line 1">
-                                <input type="text" placeholder="address line 2">
+                                <input type="text" name="permanent_address_line_1" placeholder="address line 1">
+                                <input type="text" name="permanent_address_line_2" placeholder="address line 2">
 
                             </td>
-                        {% else %}
+                        {% elif language == 1 %}
                             <th>
-                                Permanent Address :
+                                स्थाई पता :
                             </th>
                             <td>
                                 <input type="text" placeholder="पता पंक्ति 1">
@@ -139,13 +132,13 @@
                 {% if language == 0 %}
                     <p>If you have a disability please do specify and let us know of any special arrangements you
                         may need, if you are shortlisted for interview and the programme.</p>
-                    <textarea name="" id="" cols="60" rows="10"></textarea>
+                    <textarea name="disability" id="" cols="60" rows="10"></textarea>
                 {% else %}
-                    <p>यदि आपके पास विकलांगता है तो कृपया निर्दिष्ट करें और आपको किसी भी विशेष व्यवस्था के बारे में बताएं, यदि
+                    <p>यदि आपके पास विकलांगता है तो कृपया निर्दिष्ट करें और आपको किसी भी विशेष व्यवस्था के बारे में
+                        बताएं, यदि
                         आपको साक्षात्कार और कार्यक्रम के लिए चयन किया गया है।</p>
                     <textarea name="" id="" cols="60" rows="10"></textarea>
                 {% endif %}
-            </form>
         </div>
     </div>
 
@@ -173,21 +166,21 @@
 
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="hindi_understand"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
 
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="hindi_speak"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
 
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="hindi_read_write"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
@@ -197,21 +190,21 @@
                         <td>English</td>
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="english_understand"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
 
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="english_speak"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
 
                         <td>
                             <label for="">
-                                <input type="checkbox"> yes</label> &nbsp;
+                                <input type="checkbox" name="english_read_write"> yes</label> &nbsp;
                             <label for="">
                                 <input type="checkbox" class="no_check"> no</label>
                         </td>
@@ -235,61 +228,61 @@
                     <h1>course</h1>
                     <br>
                     <div class="input_course">
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="tenth" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="twelfth" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="graduate" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="postgraduate" id="" placeholder=" name">
                     </div>
                 </div>
                 <div class="col span-1-of-4">
-                    <h1 style="padding-left: 15%">time</h1>
+                    <h1 style="padding-left: 15%">Time</h1>
 
                     <div class="input_time">
                         <table>
                             <tr>
                                 <th>From</th>
-                                <th>to</th>
+                                <th>Till</th>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="date">
+                                    <input type="date" name="from_tenth">
                                 </td>
                                 <td>
-                                    <input type="date">
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <input type="date">
-                                </td>
-                                <td>
-                                    <input type="date">
+                                    <input type="date" name="till_tenth">
                                 </td>
                             </tr>
 
 
                             <tr>
                                 <td>
-                                    <input type="date">
+                                    <input type="date" name="from_twelfth">
                                 </td>
                                 <td>
-                                    <input type="date">
+                                    <input type="date" name="till_twelfth">
                                 </td>
                             </tr>
 
 
                             <tr>
                                 <td>
-                                    <input type="date">
+                                    <input type="date" name="from_graduate">
                                 </td>
                                 <td>
-                                    <input type="date">
+                                    <input type="date" name="till_graduate">
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <input type="date" name="from_postgraduate">
+                                </td>
+                                <td>
+                                    <input type="date" name="till_postgraduate">
                                 </td>
                             </tr>
                         </table>
@@ -299,13 +292,13 @@
                     <h1>school/institution</h1>
                     <br>
                     <div class="input_course">
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="school_tenth" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="school_twelfth" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="school_graduate" id="" placeholder=" name">
 
-                        <input type="text" name="" id="" placeholder=" name">
+                        <input type="text" name="school_postgraduate" id="" placeholder=" name">
                     </div>
 
                 </div>
@@ -313,13 +306,13 @@
                     <h1>board/university</h1>
                     <br>
                     <div class="input_course">
-                        <input type="text" name="" id="" placeholder="DD/MM/YYYY">
+                        <input type="text" name="board_tenth" id="" placeholder="DD/MM/YYYY">
 
-                        <input type="text" name="" id="" placeholder="DD/MM/YYYY">
+                        <input type="text" name="board_twelfth" id="" placeholder="DD/MM/YYYY">
 
-                        <input type="text" name="" id="" placeholder="DD/MM/YYYY">
+                        <input type="text" name="board_graduate" id="" placeholder="DD/MM/YYYY">
 
-                        <input type="text" name="" id="" placeholder="DD/MM/YYY">
+                        <input type="text" name="board_postgraduate" id="" placeholder="DD/MM/YYY">
                     </div>
 
                 </div>
@@ -334,7 +327,7 @@
                 influences
                 and experiences that have shaped and inspired you? What are some of your passions? (450-500 words) </h3>
             <p>
-                <textarea name="" id="" cols="150" rows="10"></textarea>
+                <textarea name="about_you" id="" cols="150" rows="10"></textarea>
             </p>
         </div>
 
@@ -343,7 +336,7 @@
             <h3>We would like to know why do you volunteer: </h3>
             <div>
                 <p>
-                    <textarea name="" id="" cols="150" rows="10"></textarea>
+                    <textarea name="why_volunteer" id="" cols="150" rows="10"></textarea>
                 </p>
             </div>
         </div>
@@ -354,14 +347,14 @@
                 communities
                 and how?</h3>
             <p>
-                <textarea name="" id="" cols="150" rows="10"></textarea>
+                <textarea name="communities_associated" id="" cols="150" rows="10"></textarea>
             </p>
         </div>
 
         <div>
             <h3>What is your motivation to apply for this award?</h3>
             <p>
-                <textarea name="" id="" cols="150" rows="10"></textarea>
+                <textarea name="motivation" id="" cols="150" rows="10"></textarea>
             </p>
         </div>
 
@@ -376,46 +369,46 @@
 
         <div>
             <div class="col span-1-of-2">
-                <h3>first refree</h3>
+                <h3>first referee</h3>
                 <p>
-                    <input type="text" placeholder="Full Name">
+                    <input type="text" name="first_name" placeholder="Full Name">
                 </p>
                 <p>
-                    <input type="text" placeholder="Address">
+                    <input type="text" name="first_address" placeholder="Address">
                 </p>
                 <p>
-                    <input type="text" name="" id="" placeholder="Occupation">
+                    <input type="text" name="first_occupation" id="" placeholder="Occupation">
                 </p>
                 <p>
-                    <input type="text" placeholder="relationship">
+                    <input type="text" name="first_relation" placeholder="relationship">
                 </p>
                 <p>
-                    <input type="number" placeholder="Tel. No.">
+                    <input type="number" name="first_tel_no" placeholder="Tel. No.">
                 </p>
                 <p>
-                    <input type="email" name="" id="" placeholder="Email Address">
+                    <input type="email" name="first_email" id="" placeholder="Email Address">
                 </p>
             </div>
 
             <div class="col span-1-of-2">
-                <h3>second refree</h3>
+                <h3>second referee</h3>
                 <p>
-                    <input type="text" placeholder="Full Name">
+                    <input type="text" name="second_name" placeholder="Full Name">
                 </p>
                 <p>
-                    <input type="text" placeholder="Address">
+                    <input type="text" name="second_address" placeholder="Address">
                 </p>
                 <p>
-                    <input type="text" name="" id="" placeholder="Occupation">
+                    <input type="text" name="second_occupation" id="" placeholder="Occupation">
                 </p>
                 <p>
-                    <input type="text" placeholder="relationship">
+                    <input type="text" name="second_relation" placeholder="relationship">
                 </p>
                 <p>
-                    <input type="number" placeholder="Tel. No.">
+                    <input type="number" name="second_tel_no" placeholder="Tel. No.">
                 </p>
                 <p>
-                    <input type="email" name="" id="" placeholder="Email Address">
+                    <input type="email" name="second_email" id="" placeholder="Email Address">
                 </p>
             </div>
         </div>
@@ -434,13 +427,14 @@
         </div>
 
         <div>
-            <button>Save</button>
-            <button>Submit</button>
+            <button type="submit">Save</button>
+            <button type="submit">Submit</button>
         </div>
+        </form>
         <div>
             <p class="imp_info"><label for="" class="sign">*</label> Save your form to edit before the last date of
                 application. <br>
-                <label for="" class="sign">*</label> you cannot edit your form once you submit it</p>
+                <label for="" class="sign">*</label> You cannot edit your form once you submit it</p>
         </div>
     </div>
 

@@ -18,18 +18,17 @@ form1_blueprint = Blueprint('form1', __name__)
 @form1_blueprint.route('/save_form', methods=['POST'])
 def save_form_1():
     if request.method == 'POST':
-        name = request.form.get('name')
-        dob = request.form.get('dob')
-        current_address = request.form.get('current_address')
-        permanent_address = request.form.get('permanent_address')
+        current_address_line_1 = request.form.get('current_address_line_1')
+        current_address_line_2 = request.form.get('current_address_line_2')
+        current_address = current_address_line_1 + " " + current_address_line_2
+        permanent_address_line_1 = request.form.get('permanent_address_line_1')
+        permanent_address_line_2 = request.form.get('permanent_address_line_2')
+        permanent_address = permanent_address_line_1 + " " + permanent_address_line_2
         tel_no = request.form.get('tel_no')
-        mobile_no = request.form.get('mobile_no')
-        # email = session['email']
-        email = request.form.get('email')
+        email = session['email']
+        # email = request.form.get('email')
         nationality = request.form.get('nationality')
-        gender = request.form.get('gender')
         disability = request.form.get('disability')
-        source_awards = request.form.get('source_awards')
 
         education = {}
         course_list = ['tenth', 'twelfth', 'graduate', 'postgraduate']
@@ -83,7 +82,6 @@ def save_form_1():
         file = request.files.get('file')
         new_file_name = None
 
-        # None is for education which will be filled in later
         # form 1 status is saved by default.
         # If the form is final, then add the last parameter to Form constructor as 'submit'
         try:
@@ -100,10 +98,11 @@ def save_form_1():
                 if os.path.exists(new_file_name):
                     os.remove(new_file_name)
                 file.save(new_file_name)
-            form_1 = Form1(name, dob, current_address, permanent_address, tel_no, mobile_no, email,
-                           nationality, gender, disability, source_awards, languages, education,
-                           about_you, why_volunteer, communities_associated, motivation, references,
-                           photo_path=new_file_name)
+            form_1 = Form1(current_address=current_address, permanent_address=permanent_address, tel_no=tel_no,
+                           email=email, nationality=nationality, disability=disability, languages=languages,
+                           education=education, about_you=about_you, why_volunteer=why_volunteer,
+                           communities_associated=communities_associated, motivation=motivation,
+                           references=references, photo_path=new_file_name)
             form_1.save_form_to_db()
             return 'form 1 has been saved successfully'
         except Form1Errors.Form1Error as e:
@@ -113,18 +112,13 @@ def save_form_1():
 @form1_blueprint.route('/submit_form', methods=['POST'])
 def submit_form_1():
     if request.method == 'POST':
-        name = request.form.get('name')
-        dob = request.form.get('dob')
         current_address = request.form.get('current_address')
         permanent_address = request.form.get('permanent_address')
         tel_no = request.form.get('tel_no')
-        mobile_no = request.form.get('mobile_no')
-        # email = session['email']
-        email = request.form.get('email')
+        email = session['email']
+        # email = request.form.get('email')
         nationality = request.form.get('nationality')
-        gender = request.form.get('gender')
         disability = request.form.get('disability')
-        source_awards = request.form.get('source_awards')
 
         education = {}
         course_list = ['tenth', 'twelfth', 'graduate', 'postgraduate']
@@ -197,8 +191,8 @@ def submit_form_1():
                 if os.path.exists(new_file_name):
                     os.remove(new_file_name)
                 file.save(new_file_name)
-            form_1 = Form1(name, dob, current_address, permanent_address, tel_no, mobile_no, email,
-                           nationality, gender, disability, source_awards, languages, education,
+            form_1 = Form1(current_address, permanent_address, tel_no, email,
+                           nationality, disability, languages, education,
                            about_you, why_volunteer, communities_associated, motivation, references,
                            form_1_status='submit', photo_path=new_file_name)
             form_1.save_form_to_db()
