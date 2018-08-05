@@ -9,7 +9,6 @@ import models.form_1.errors as Form1Errors
 from werkzeug.utils import secure_filename
 from config import UPLOAD_FOLDER_PROFILE_PICTURES_PATH
 
-
 __author__ = 'myidispg'
 
 form1_blueprint = Blueprint('form1', __name__)
@@ -112,8 +111,12 @@ def save_form_1():
 @form1_blueprint.route('/submit_form', methods=['POST'])
 def submit_form_1():
     if request.method == 'POST':
-        current_address = request.form.get('current_address')
-        permanent_address = request.form.get('permanent_address')
+        current_address_line_1 = request.form.get('current_address_line_1')
+        current_address_line_2 = request.form.get('current_address_line_2')
+        current_address = current_address_line_1 + " " + current_address_line_2
+        permanent_address_line_1 = request.form.get('permanent_address_line_1')
+        permanent_address_line_2 = request.form.get('permanent_address_line_2')
+        permanent_address = permanent_address_line_1 + " " + permanent_address_line_2
         tel_no = request.form.get('tel_no')
         email = session['email']
         # email = request.form.get('email')
@@ -191,10 +194,11 @@ def submit_form_1():
                 if os.path.exists(new_file_name):
                     os.remove(new_file_name)
                 file.save(new_file_name)
-            form_1 = Form1(current_address, permanent_address, tel_no, email,
-                           nationality, disability, languages, education,
-                           about_you, why_volunteer, communities_associated, motivation, references,
-                           form_1_status='submit', photo_path=new_file_name)
+            form_1 = Form1(current_address=current_address, permanent_address=permanent_address, tel_no=tel_no,
+                           email=email, nationality=nationality, disability=disability, languages=languages,
+                           education=education, about_you=about_you, why_volunteer=why_volunteer,
+                           communities_associated=communities_associated, motivation=motivation,
+                           references=references, form_1_status='submit', photo_path=new_file_name)
             form_1.save_form_to_db()
             return 'form 1 has been submitted successfully'
         except Form1Errors.Form1Error as e:
