@@ -1,9 +1,6 @@
-import io
-import csv
 from datetime import datetime
 
 from flask import Blueprint, request, make_response
-from openpyxl.styles import Font
 
 import admin
 from common.database_about import About
@@ -14,18 +11,12 @@ from common.utils import Utils
 from email_alerts import EmailAlerts
 from models.users.user import User
 from temp import *
-import xlwt
 import openpyxl
 from openpyxl.writer.excel import save_virtual_workbook
 
 __author__ = 'myidispg'
 
 admin_blueprint = Blueprint('admin', __name__)
-
-
-def get_mail(app_mail):
-    global mail
-    mail = app_mail
 
 
 @admin_blueprint.route('/save_password', methods=['POST'])
@@ -60,13 +51,13 @@ def email_alerts_form_1():
             datetime.now() > \
             datetime(form_1_reminder_1_year, form_1_reminder_1_month, form_1_reminder_1_day,
                      form_1_reminder_1_hour, form_1_reminder_1_minute, form_1_reminder_1_seconds):
-        EmailAlerts.email_alerts_form_1(mail, 'reminder_1')
+        EmailAlerts.email_alerts_form_1('reminder_1')
     elif datetime(form_1_reminder_2_year, form_1_reminder_2_month, form_1_reminder_2_day + 1,
                   form_1_reminder_2_hour, form_1_reminder_2_minute, form_1_reminder_2_seconds) > \
             datetime.now() > \
             datetime(form_1_reminder_2_year, form_1_reminder_2_month, form_1_reminder_2_day,
                      form_1_reminder_2_hour, form_1_reminder_2_minute, form_1_reminder_2_seconds):
-        EmailAlerts.email_alerts_form_1(mail, 'reminder_2')
+        EmailAlerts.email_alerts_form_1('reminder_2')
     else:
         pass
 
@@ -82,13 +73,13 @@ def email_alerts_form_2():
             datetime.now() > \
             datetime(form_2_reminder_1_year, form_2_reminder_1_month, form_2_reminder_1_day,
                      form_2_reminder_1_hour, form_2_reminder_1_minute, form_2_reminder_2_seconds):
-        EmailAlerts.email_alerts_form_2(mail, 'reminder_1')
+        EmailAlerts.email_alerts_form_2('reminder_1')
     elif datetime(form_2_reminder_2_year, form_2_reminder_2_month, form_2_reminder_2_day + 1,
                   form_2_reminder_2_hour, form_2_reminder_2_minute, form_2_reminder_2_seconds) > \
             datetime.now() > \
             datetime(form_2_reminder_2_year, form_2_reminder_2_month, form_2_reminder_2_day,
                      form_2_reminder_2_hour, form_2_reminder_2_minute, form_2_reminder_2_seconds):
-        EmailAlerts.email_alerts_form_2(mail, 'reminder_2')
+        EmailAlerts.email_alerts_form_2('reminder_2')
     else:
         pass
 

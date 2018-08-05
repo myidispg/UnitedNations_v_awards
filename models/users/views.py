@@ -2,11 +2,10 @@ import goslate
 from flask import Blueprint, request, session, redirect, url_for, render_template
 from flask_mail import Message
 
-from common.database_user import Database
+from common.mail_sender import MailSender
 from common.utils import Utils
 from models.users.user import User
 import models.users.errors as UserErrors
-from app import mail
 
 user_blueprint = Blueprint('users', __name__)
 
@@ -84,7 +83,8 @@ def register_user():
                                ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
                                'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
                                ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
-                    mail.send(msg)
+                    MailSender.send_mail(msg)
+                    # mail.send(msg)
                     # return 'Please check your inbox for verification of the email before accessing your dashboard'
                     return render_template('general.html',
                                            heading='Email verification required',
@@ -130,7 +130,8 @@ def register_user_hindi():
                                ' http://127.0.0.1:5000/users/user-verify/{}\n\n\n' \
                                'कृपया निम्न लिंक पर क्लिक करके अपना ईमेल सत्यापित करें-' \
                                ' http://127.0.0.1:5000/users/hi/user-verify/{}'.format(user._id, user._id)
-                    mail.send(msg)
+                    MailSender.send_mail(msg)
+                    # mail.send(msg)
                     # return 'अपने डैशबोर्ड तक पहुंचने से पहले ईमेल के सत्यापन के लिए कृपया अपना इनबॉक्स जांचें'
                     return render_template('general.html',
                                            heading='ईमेल सत्यापन आवश्यक है',
@@ -161,7 +162,8 @@ def forgot_password_email():
                   recipients=[email])
     msg.body = "Please click on the following link to change your password- " \
                "http://127.0.0.1:5000/users/change_password/{}".format(user._id)
-    mail.send(msg)
+    MailSender.send_mail(msg)
+    # mail.send(msg)
     return render_template('general.html',
                            message='Please check your email inbox for reset link.')
 

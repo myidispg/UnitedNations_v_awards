@@ -6,9 +6,10 @@ from datetime import datetime
 
 import create_tables
 import temp
-from models.admin.views import admin_blueprint, get_mail
+from models.admin.views import admin_blueprint
 from temp import *
 from email_alerts import EmailAlerts
+from common.mail_sender import MailSender
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -30,7 +31,7 @@ mail = Mail(app)
 def init_db():
     # Database.initialize()
     create_tables
-    get_mail(mail)
+    MailSender.get_mail(mail)
     current_directory = os.getcwd()
     profile_pictures_directory = os.path.join(current_directory, 'profile-pictures')
     if not os.path.exists(profile_pictures_directory):
@@ -105,7 +106,7 @@ app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
 
 if __name__ == "__main__":
-    app.run(Debug=True)
+    app.run(host='0.0.0.0')
 
 
 @app.context_processor

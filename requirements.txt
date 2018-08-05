@@ -2,7 +2,6 @@ Flask
 pymongo
 passlib
 requests
-sqlite
 goslate
 Flask-Mail
 openpyxl
