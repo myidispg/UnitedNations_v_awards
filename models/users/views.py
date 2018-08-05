@@ -25,7 +25,7 @@ def login_user():
             return e.message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('user_dash_board.html', language=0)
+    return redirect(url_for('home_english'))
 
 
 @user_blueprint.route('/hi/login', methods=['GET', 'POST'])
@@ -37,14 +37,14 @@ def login_user_hindi():
         try:
             if User.is_login_valid(email, password):
                 session['email'] = email
-                return redirect(url_for('.user_dashboard'))
+                return redirect(url_for('.user_dashboard_hindi'))
         except UserErrors.UserError as e:
             gs = goslate.Goslate()
             message = gs.translate(e.message, 'hi')
             return message
 
     # this return works if the request method is GET or the login credentials are invalid
-    return render_template('user_dash_board.html', language=1)
+    return redirect(url_for('home_hindi'))
 
 
 @user_blueprint.route('/logout')

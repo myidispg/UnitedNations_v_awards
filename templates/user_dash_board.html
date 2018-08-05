@@ -33,13 +33,25 @@
         <div class="">
             <ul class="main_navigation">
                 <li>
-                    <a href="#about_unv">Home</a>
-                </li>
+                    {% if language == 0 %}
+                        <a href="#about_unv">Home</a>
+                        </li>
 
 
-                <li>
-                    <button id="modal_btn" class="log_in_button"><a href="{{ url_for('users.logout_user') }}">logOut</a></button>
-                </li>
+                        <li>
+                            <button id="modal_btn" class="log_in_button"><a href="{{ url_for('users.logout_user') }}">Log Out</a>
+                            </button>
+                            {% else %}
+                            <a href="#about_unv">होम</a>
+                        </li>
+
+
+                        <li>
+                        <button id="modal_btn" class="log_in_button"><a
+                                href="{{ url_for('users.logout_user') }}">लोग आउट</a>
+                        </button>
+                    {% endif %}
+                    </li>
 
             </ul>
         </div>
@@ -52,8 +64,13 @@
             <img src="resources/css/imgs/logos/main.png" style="height: 300px;width: 300px" alt="">
             <img src="{{ url_for('static', filename='resources/css/imgs/logos/main.png') }}"
                  style="height: 300px;width: 300px" alt="">
-            <h1>Welcome, {{ name }}</h1>
-            <h3>continue your nomination process.</h3>
+            {% if language == 0 %}
+                <h1>Welcome, {{ name }}</h1>
+                <h3>continue your nomination process.</h3>
+            {% else %}
+                <h1>स्वागत हे, {{ name }}</h1>
+                <h3>अपनी नामांकन प्रक्रिया जारी रखें।</h3>
+            {% endif %}
         </div>
 
     </div>
@@ -68,23 +85,34 @@
 <section class="sec2">
     <!-- main heading -->
     <div>
-        <h1>Let's know you better</h1>
-
+        {% if language == 0 %}
+            <h1>Let's know you better</h1>
+        {% else %}
+            <h1>Let's know you better</h1>
+        {% endif %}
     </div>
 
 
     <!-- Tab links -->
     <div class="tab">
-        <button class="tablinks" onclick="openForm(event, 'Personal_info')">Personal Info</button>
-        <button class="tablinks" onclick="openForm(event, 'Education')">Education</button>
-        <button class="tablinks" onclick="openForm(event, 'Experience')">Experience</button>
-        <button class="tablinks" onclick="openForm(event, 'Reference')">Reference</button>
-        <button class="tablinks" onclick="openForm(event, 'Declaration')">Declaration</button>
+        {% if language == 0 %}
+            <button class="tablinks" onclick="openForm(event, 'Personal_info')">Personal Info</button>
+            <button class="tablinks" onclick="openForm(event, 'Education')">Education</button>
+            <button class="tablinks" onclick="openForm(event, 'Experience')">Experience</button>
+            <button class="tablinks" onclick="openForm(event, 'Reference')">Reference</button>
+            <button class="tablinks" onclick="openForm(event, 'Declaration')">Declaration</button>
+        {% else %}
+            <button class="tablinks" onclick="openForm(event, 'Personal_info')">व्यक्तिगत जानकारी</button>
+            <button class="tablinks" onclick="openForm(event, 'Education')">शिक्षा</button>
+            <button class="tablinks" onclick="openForm(event, 'Experience')">अनुभव</button>
+            <button class="tablinks" onclick="openForm(event, 'Reference')">संदर्भ</button>
+            <button class="tablinks" onclick="openForm(event, 'Declaration')">घोषणा</button>
+        {% endif %}
     </div>
 
     <div class="tabcontent" id="Personal_info">
         <div class="lan_alignment personal_style">
-            <form  method="post">
+            <form method="post">
                 <table>
                     <tr>
                         {% if language == 0 %}
@@ -145,298 +173,600 @@
     <div class="tabcontent" id="Education">
         <div class="lan_alignment">
             <div>
+                {% if language == 0 %}
+                    <h2>Language skills</h2>
 
-                <h2>Language skills</h2>
-
-                <p> Please indicate level of proficiency by selecting accurate response</p>
-            </div>
-            <!-- lannguage_questionaire -->
-            <div class="row ">
-                <table>
-                    <tr>
-                        <th>LANGUAGES</th>
-                        <th>Understand</th>
-                        <th>speak</th>
-                        <th>read/write</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            Hindi
-                        </td>
-
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="hindi_understand"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="hindi_speak"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="hindi_read_write"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-                    </tr>
-                    <tr>
-
-                        <td>English</td>
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="english_understand"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="english_speak"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-
-                        <td>
-                            <label for="">
-                                <input type="checkbox" name="english_read_write"> yes</label> &nbsp;
-                            <label for="">
-                                <input type="checkbox" class="no_check"> no</label>
-                        </td>
-                    </tr>
-
-                </table>
-                <!-- <div>
-                    <a href="#" class="save_button">Save</a>
-                </div> -->
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="edu">
-                <h2>Education and Training</h2>
-                <p> (start with most recent qualification) </p>
-            </div>
-            <div class="edu">
-                <div class="col span-1-of-4">
-                    <h1>course</h1>
-                    <br>
-                    <div class="input_course">
-                        <input type="text" name="tenth" id="" placeholder=" name">
-
-                        <input type="text" name="twelfth" id="" placeholder=" name">
-
-                        <input type="text" name="graduate" id="" placeholder=" name">
-
-                        <input type="text" name="postgraduate" id="" placeholder=" name">
+                    <p> Please indicate level of proficiency by selecting accurate response</p>
                     </div>
-                </div>
-                <div class="col span-1-of-4">
-                    <h1 style="padding-left: 15%">Time</h1>
-
-                    <div class="input_time">
+                    <!-- lannguage_questionaire -->
+                    <div class="row ">
                         <table>
                             <tr>
-                                <th>From</th>
-                                <th>Till</th>
+                                <th>LANGUAGES</th>
+                                <th>Understand</th>
+                                <th>speak</th>
+                                <th>read/write</th>
                             </tr>
-
                             <tr>
                                 <td>
-                                    <input type="date" name="from_tenth">
+                                    Hindi
                                 </td>
+
                                 <td>
-                                    <input type="date" name="till_tenth">
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_understand"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_speak"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_read_write"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
                                 </td>
                             </tr>
-
-
                             <tr>
+
+                                <td>English</td>
                                 <td>
-                                    <input type="date" name="from_twelfth">
+                                    <label for="">
+                                        <input type="checkbox" name="english_understand"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
                                 </td>
+
                                 <td>
-                                    <input type="date" name="till_twelfth">
+                                    <label for="">
+                                        <input type="checkbox" name="english_speak"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_read_write"> yes</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> no</label>
                                 </td>
                             </tr>
 
-
-                            <tr>
-                                <td>
-                                    <input type="date" name="from_graduate">
-                                </td>
-                                <td>
-                                    <input type="date" name="till_graduate">
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <input type="date" name="from_postgraduate">
-                                </td>
-                                <td>
-                                    <input type="date" name="till_postgraduate">
-                                </td>
-                            </tr>
                         </table>
                     </div>
-                </div>
-                <div class="col span-1-of-4">
-                    <h1>school/institution</h1>
-                    <br>
-                    <div class="input_course">
-                        <input type="text" name="school_tenth" id="" placeholder=" name">
-
-                        <input type="text" name="school_twelfth" id="" placeholder=" name">
-
-                        <input type="text" name="school_graduate" id="" placeholder=" name">
-
-                        <input type="text" name="school_postgraduate" id="" placeholder=" name">
                     </div>
 
-                </div>
-                <div class="col span-1-of-4">
-                    <h1>board/university</h1>
-                    <br>
-                    <div class="input_course">
-                        <input type="text" name="board_tenth" id="" placeholder="DD/MM/YYYY">
 
-                        <input type="text" name="board_twelfth" id="" placeholder="DD/MM/YYYY">
+                    <div class="row">
+                        <div class="edu">
+                            <h2>Education and Training</h2>
+                            <p> (start with most recent qualification) </p>
+                        </div>
+                        <div class="edu">
+                            <div class="col span-1-of-4">
+                                <h1>course</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="tenth" id="" placeholder=" name">
 
-                        <input type="text" name="board_graduate" id="" placeholder="DD/MM/YYYY">
+                                    <input type="text" name="twelfth" id="" placeholder=" name">
 
-                        <input type="text" name="board_postgraduate" id="" placeholder="DD/MM/YYY">
+                                    <input type="text" name="graduate" id="" placeholder=" name">
+
+                                    <input type="text" name="postgraduate" id="" placeholder=" name">
+                                </div>
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1 style="padding-left: 15%">Time</h1>
+
+                                <div class="input_time">
+                                    <table>
+                                        <tr>
+                                            <th>From</th>
+                                            <th>Till</th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_tenth">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_tenth">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_twelfth">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_twelfth">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_graduate">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_graduate">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_postgraduate">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_postgraduate">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1>school/institution</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="school_tenth" id="" placeholder=" name">
+
+                                    <input type="text" name="school_twelfth" id="" placeholder=" name">
+
+                                    <input type="text" name="school_graduate" id="" placeholder=" name">
+
+                                    <input type="text" name="school_postgraduate" id="" placeholder=" name">
+                                </div>
+
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1>board/university</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="board_tenth" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_twelfth" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_graduate" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_postgraduate" id="" placeholder="DD/MM/YYY">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     </div>
 
+
+                    <div class="tabcontent Exp_align" id="Experience">
+                        <div class="">
+                            <h3>About you: Please share something about yourself – your journey so far and what have
+                                been the major
+                                influences
+                                and experiences that have shaped and inspired you? What are some of your passions?
+                                (450-500 words) </h3>
+                            <p>
+                                <textarea name="about_you" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+
+                        <div class="row">
+                            <h3>We would like to know why do you volunteer: </h3>
+                            <div>
+                                <p>
+                                    <textarea name="why_volunteer" id="" cols="150" rows="10"></textarea>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <h3>Who are the communities you are working with? Is your project directly impacting
+                                socially excluded
+                                communities
+                                and how?</h3>
+                            <p>
+                                <textarea name="communities_associated" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3>What is your motivation to apply for this award?</h3>
+                            <p>
+                                <textarea name="motivation" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabcontent Exp_align" id="Reference">
+                        <h3>REFERENCE </h3>
+                        <p>Please give two referees with names and addresses. The referees should be people you have
+                            worked/working with
+                            (someone from commutiny can also be referee) or studied/studying under (No family members or
+                            close friends
+                            please)
+                        </p>
+
+                        <div>
+                            <div class="col span-1-of-2">
+                                <h3>first referee</h3>
+                                <p>
+                                    <input type="text" name="first_name" placeholder="Full Name">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_address" placeholder="Address">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_occupation" id="" placeholder="Occupation">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_relation" placeholder="relationship">
+                                </p>
+                                <p>
+                                    <input type="number" name="first_tel_no" placeholder="Tel. No.">
+                                </p>
+                                <p>
+                                    <input type="email" name="first_email" id="" placeholder="Email Address">
+                                </p>
+                            </div>
+
+                            <div class="col span-1-of-2">
+                                <h3>second referee</h3>
+                                <p>
+                                    <input type="text" name="second_name" placeholder="Full Name">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_address" placeholder="Address">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_occupation" id="" placeholder="Occupation">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_relation" placeholder="relationship">
+                                </p>
+                                <p>
+                                    <input type="number" name="second_tel_no" placeholder="Tel. No.">
+                                </p>
+                                <p>
+                                    <input type="email" name="second_email" id="" placeholder="Email Address">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tabcontent Declar_align" id="Declaration">
+                        <div>
+
+                            <p>
+                                I hereby declare that all the above entries made are true to the best of my knowledge
+                                and we understand
+                                that any false information can lead to disqualification from the Youth Award.
+                                I understand that merely signing this form does not entitle us to be part of this award.
+                            </p>
+
+                        </div>
+
+                        <div>
+                            <button type="submit" name="form_1_btn" id="save_btn"
+                                    formaction="{{ url_for("form1.save_form_1") }}">Save
+                            </button>
+                            <button type="submit" name="form_1_btn" id="submit_btn"
+                                    formaction="{{ url_for("form1.submit_form_1") }}">
+                                Submit
+                            </button>
+                        </div>
+                        </form>
+                        <div>
+                            <p class="imp_info"><label for="" class="sign">*</label> Save your form to edit before the
+                                last date of
+                                application. <br>
+                                <label for="" class="sign">*</label> You cannot edit your form once you submit it</p>
+                        </div>
+                        {% else %}
+                        <h2>भाषा कौशल</h2>
+
+                        <p> सटीक प्रतिक्रिया का चयन करके दक्षता के स्तर को इंगित करें</p>
+                    </div>
+                    <!-- language_questionaire -->
+                    <div class="row ">
+                        <table>
+                            <tr>
+                                <th>भाषाएं</th>
+                                <th>समझना</th>
+                                <th>बोले</th>
+                                <th>पढ़ना लिखना</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    हिंदी
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_understand"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_speak"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="hindi_read_write"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>अंग्रेज़ी</td>
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_understand"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_speak"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+
+                                <td>
+                                    <label for="">
+                                        <input type="checkbox" name="english_read_write"> हाँ</label> &nbsp;
+                                    <label for="">
+                                        <input type="checkbox" class="no_check"> नहीं</label>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="edu">
+                            <h2>शिक्षा और प्रशिक्षण</h2>
+                            <p> (सबसे हालिया योग्यता के साथ शुरू करो) </p>
+                        </div>
+                        <div class="edu">
+                            <div class="col span-1-of-4">
+                                <h1>कोर्स</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="tenth" id="" placeholder=" name">
+
+                                    <input type="text" name="twelfth" id="" placeholder=" name">
+
+                                    <input type="text" name="graduate" id="" placeholder=" name">
+
+                                    <input type="text" name="postgraduate" id="" placeholder=" name">
+                                </div>
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1 style="padding-left: 15%">पहर</h1>
+
+                                <div class="input_time">
+                                    <table>
+                                        <tr>
+                                            <th>से</th>
+                                            <th>जब तक</th>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_tenth">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_tenth">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_twelfth">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_twelfth">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_graduate">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_graduate">
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>
+                                                <input type="date" name="from_postgraduate">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="till_postgraduate">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1>स्कूल / संस्था</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="school_tenth" id="" placeholder=" name">
+
+                                    <input type="text" name="school_twelfth" id="" placeholder=" name">
+
+                                    <input type="text" name="school_graduate" id="" placeholder=" name">
+
+                                    <input type="text" name="school_postgraduate" id="" placeholder=" name">
+                                </div>
+
+                            </div>
+                            <div class="col span-1-of-4">
+                                <h1>बोर्ड / विश्वविद्यालय</h1>
+                                <br>
+                                <div class="input_course">
+                                    <input type="text" name="board_tenth" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_twelfth" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_graduate" id="" placeholder="DD/MM/YYYY">
+
+                                    <input type="text" name="board_postgraduate" id="" placeholder="DD/MM/YYY">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <div class="tabcontent Exp_align" id="Experience">
+                        <div class="">
+                            <h3>आपके बारे में: कृपया अपने बारे में कुछ साझा करें - अब तक आपकी यात्रा और प्रमुख प्रभाव और
+                                अनुभव क्या हैं जो आपको आकार और प्रेरित करते हैं? आपके कुछ जुनून क्या हैं? (450-500
+                                शब्द) </h3>
+                            <p>
+                                <textarea name="about_you" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+
+                        <div class="row">
+                            <h3>हम जानना चाहते हैं कि आप स्वयंसेवक क्यों हैं: </h3>
+                            <div>
+                                <p>
+                                    <textarea name="why_volunteer" id="" cols="150" rows="10"></textarea>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <h3>आप किस समुदायों के साथ काम कर रहे हैं? क्या आपकी परियोजना सीधे सामाजिक रूप से बहिष्कृत
+                                समुदायों को प्रभावित करती है और कैसे?</h3>
+                            <p>
+                                <textarea name="communities_associated" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3>इस पुरस्कार के लिए आवेदन करने के लिए आपकी प्रेरणा क्या है?</h3>
+                            <p>
+                                <textarea name="motivation" id="" cols="150" rows="10"></textarea>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabcontent Exp_align" id="Reference">
+                        <h3>संदर्भ </h3>
+                        <p>कृपया नाम और पते के साथ दो रेफरी दें। रेफरी उन लोगों के साथ होनी चाहिए जिनके साथ आपने काम
+                            किया है / काम कर रहे हैं (कम्यूटिटी से कोई भी रेफरी भी हो सकता है) या अध्ययन / अध्ययन कर रहा
+                            है (कोई परिवार के सदस्य या करीबी दोस्त कृपया)
+                        </p>
+
+                        <div>
+                            <div class="col span-1-of-2">
+                                <h3>पहला रेफरी</h3>
+                                <p>
+                                    <input type="text" name="first_name" placeholder="पूरा नाम">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_address" placeholder="पता">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_occupation" id="" placeholder="व्यवसाय">
+                                </p>
+                                <p>
+                                    <input type="text" name="first_relation" placeholder="संबंध">
+                                </p>
+                                <p>
+                                    <input type="number" name="first_tel_no" placeholder="टेलीफोन नंबर">
+                                </p>
+                                <p>
+                                    <input type="email" name="first_email" id="" placeholder="ईमेल पता">
+                                </p>
+                            </div>
+
+                            <div class="col span-1-of-2">
+                                <h3>second referee</h3>
+                                <p>
+                                    <input type="text" name="second_name" placeholder="पूरा नाम">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_address" placeholder="पता">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_occupation" id="" placeholder="व्यवसाय">
+                                </p>
+                                <p>
+                                    <input type="text" name="second_relation" placeholder="संबंध">
+                                </p>
+                                <p>
+                                    <input type="number" name="second_tel_no" placeholder="टेलीफोन नंबर">
+                                </p>
+                                <p>
+                                    <input type="email" name="second_email" id="" placeholder="ईमेल पता">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tabcontent Declar_align" id="Declaration">
+                    <div>
+
+                        <p>
+                            मैं इस प्रकार घोषणा करता हूं कि उपर्युक्त सभी प्रविष्टियां मेरे ज्ञान के सर्वोत्तम हैं और हम
+                            समझते हैं कि किसी भी झूठी सूचना से युवा पुरस्कार से अयोग्यता हो सकती है। मैं समझता हूं कि इस
+                            फ़ॉर्म पर हस्ताक्षर करने से हमें इस पुरस्कार का हिस्सा बनने का अधिकार नहीं है।
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <button type="submit" name="form_1_btn" id="save_btn"
+                                formaction="{{ url_for("form1.save_form_1") }}">बचाना
+                        </button>
+                        <button type="submit" name="form_1_btn" id="submit_btn"
+                                formaction="{{ url_for("form1.submit_form_1") }}">जमा करें
+                        </button>
+                    </div>
+                    </form>
+                    <div>
+                        <p class="imp_info"><label for="" class="sign">*</label> आवेदन की अंतिम तिथि से पहले संपादित
+                            करने के लिए अपना फॉर्म सहेजें।<br>
+                            <label for="" class="sign">*</label> सबमिट करने के बाद आप अपना फॉर्म संपादित नहीं कर सकते
+                            हैं</p>
+                    </div>
+                {% endif %}
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="tabcontent Exp_align" id="Experience">
-        <div class="">
-            <h3>About you: Please share something about yourself – your journey so far and what have been the major
-                influences
-                and experiences that have shaped and inspired you? What are some of your passions? (450-500 words) </h3>
-            <p>
-                <textarea name="about_you" id="" cols="150" rows="10"></textarea>
-            </p>
-        </div>
-
-
-        <div class="row">
-            <h3>We would like to know why do you volunteer: </h3>
-            <div>
-                <p>
-                    <textarea name="why_volunteer" id="" cols="150" rows="10"></textarea>
-                </p>
-            </div>
-        </div>
-
-
-        <div>
-            <h3>Who are the communities you are working with? Is your project directly impacting socially excluded
-                communities
-                and how?</h3>
-            <p>
-                <textarea name="communities_associated" id="" cols="150" rows="10"></textarea>
-            </p>
-        </div>
-
-        <div>
-            <h3>What is your motivation to apply for this award?</h3>
-            <p>
-                <textarea name="motivation" id="" cols="150" rows="10"></textarea>
-            </p>
-        </div>
-
-    </div>
-
-    <div class="tabcontent Exp_align" id="Reference">
-        <h3>REFERENCE </h3>
-        <p>Please give two referees with names and addresses. The referees should be people you have worked/working with
-            (someone from commutiny can also be referee) or studied/studying under (No family members or close friends
-            please)
-        </p>
-
-        <div>
-            <div class="col span-1-of-2">
-                <h3>first referee</h3>
-                <p>
-                    <input type="text" name="first_name" placeholder="Full Name">
-                </p>
-                <p>
-                    <input type="text" name="first_address" placeholder="Address">
-                </p>
-                <p>
-                    <input type="text" name="first_occupation" id="" placeholder="Occupation">
-                </p>
-                <p>
-                    <input type="text" name="first_relation" placeholder="relationship">
-                </p>
-                <p>
-                    <input type="number" name="first_tel_no" placeholder="Tel. No.">
-                </p>
-                <p>
-                    <input type="email" name="first_email" id="" placeholder="Email Address">
-                </p>
-            </div>
-
-            <div class="col span-1-of-2">
-                <h3>second referee</h3>
-                <p>
-                    <input type="text" name="second_name" placeholder="Full Name">
-                </p>
-                <p>
-                    <input type="text" name="second_address" placeholder="Address">
-                </p>
-                <p>
-                    <input type="text" name="second_occupation" id="" placeholder="Occupation">
-                </p>
-                <p>
-                    <input type="text" name="second_relation" placeholder="relationship">
-                </p>
-                <p>
-                    <input type="number" name="second_tel_no" placeholder="Tel. No.">
-                </p>
-                <p>
-                    <input type="email" name="second_email" id="" placeholder="Email Address">
-                </p>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="tabcontent Declar_align" id="Declaration">
-        <div>
-
-            <p>
-                I hereby declare that all the above entries made are true to the best of my knowledge and we understand
-                that any false information can lead to disqualification from the Youth Award.
-                I understand that merely signing this form does not entitle us to be part of this award.
-            </p>
-
-        </div>
-
-        <div>
-            <button type="submit" name="form_1_btn" id="save_btn" formaction="{{ url_for("form1.save_form_1") }}">Save</button>
-            <button type="submit"name="form_1_btn" id="submit_btn" formaction="{{ url_for("form1.submit_form_1") }}">Submit</button>
-        </div>
-        </form>
-        <div>
-            <p class="imp_info"><label for="" class="sign">*</label> Save your form to edit before the last date of
-                application. <br>
-                <label for="" class="sign">*</label> You cannot edit your form once you submit it</p>
-        </div>
-    </div>
 
 
 </section>
