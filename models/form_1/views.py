@@ -1,12 +1,12 @@
 import os
 
-from flask import Blueprint, request, session
+from flask import Blueprint, request, session, url_for
 
 from common.utils import Utils
 from models.form_1.form_1 import Form1
 from models.users.user import User
 import models.form_1.errors as Form1Errors
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename, redirect
 from config import UPLOAD_FOLDER_PROFILE_PICTURES_PATH
 
 __author__ = 'myidispg'
@@ -14,8 +14,9 @@ __author__ = 'myidispg'
 form1_blueprint = Blueprint('form1', __name__)
 
 
-@form1_blueprint.route('/save_form', methods=['POST'])
+@form1_blueprint.route('/save_form', methods=['POST', 'GET'])
 def save_form_1():
+    email = session['email']
     if request.method == 'POST':
         current_address_line_1 = request.form.get('current_address_line_1')
         current_address_line_2 = request.form.get('current_address_line_2')
@@ -106,10 +107,14 @@ def save_form_1():
             return 'form 1 has been saved successfully'
         except Form1Errors.Form1Error as e:
             return e.message
+    else:
+        session['email'] = email
+        return redirect(url_for('users.user_dashboard'))
 
 
-@form1_blueprint.route('/submit_form', methods=['POST'])
+@form1_blueprint.route('/submit_form', methods=['POST', 'GET'])
 def submit_form_1():
+    email = session['email']
     if request.method == 'POST':
         current_address_line_1 = request.form.get('current_address_line_1')
         current_address_line_2 = request.form.get('current_address_line_2')
@@ -203,3 +208,6 @@ def submit_form_1():
             return 'form 1 has been submitted successfully'
         except Form1Errors.Form1Error as e:
             return e.message
+    else:
+        session['email'] = email
+        return redirect(url_for('users.user_dashboard'))

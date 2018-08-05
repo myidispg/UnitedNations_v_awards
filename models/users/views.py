@@ -47,6 +47,13 @@ def login_user_hindi():
     return render_template('user_dash_board.html', language=1)
 
 
+@user_blueprint.route('/logout')
+def logout_user():
+    session['email'] = None
+    return render_template('general.html', message='You have been logged out successfully.',
+                           heading='Logout successful.')
+
+
 @user_blueprint.route('register', methods=['GET', 'POST'])
 def register_user():
     if request.method == 'POST':
@@ -177,17 +184,22 @@ def forgot_password(_id):
 @user_blueprint.route('user-dashboard')
 def user_dashboard():
     email = session['email']
+    if email is None:
+        return render_template('general.html', message='You are not logged in. Please log in to access your dashboard.',
+                               heading='ERROR!')
     user_name = User.get_user_object(email=email).name
     return render_template('user_dash_board.html', name=user_name, language=0)
-    # return "Welcome to your dashboard {}!".format(email)
 
 
 @user_blueprint.route('/hi/user-dashboard')
 def user_dashboard_hindi():
     email = session['email']
+    if email is None:
+        return render_template('general.html',
+                               message='आप लॉग इन नहीं हैं। कृपया अपने डैशबोर्ड तक पहुंचने के लिए लॉग इन करें।',
+                               heading='ERROR!')
     user_name = User.get_user_object(email=email).name
     return render_template('user_dash_board.html', name=user_name, language=1)
-    # return "आपके डैशबोर्ड में आपका स्वागत है {}!".format(email)
 
 
 @user_blueprint.route('user-verify/<string:_id>')
